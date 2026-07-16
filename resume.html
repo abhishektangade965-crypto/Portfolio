@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resume | Abhishek Tangade — Java Backend Developer</title>
+<meta name="description" content="Download Abhishek Tangade's resume — Java Backend Developer with skills in Spring Boot, Microservices, Kafka, Redis and MySQL.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abhishektangade-portfolio.netlify.app/resume.html">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+<link rel="alternate icon" href="favicon.ico">
+
+<!-- Fonts & Libraries -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+<style>html,body{background:#0D0D0D;margin:0;}</style>
+
+<style>
+@view-transition { navigation: auto; }
+::view-transition-old(root) { animation: fadeOut 0.2s ease forwards; }
+::view-transition-new(root) { animation: fadeIn 0.2s ease forwards; }
+@keyframes fadeOut { to { opacity: 0; } }
+@keyframes fadeIn { from { opacity: 0; } }
+</style>
+<!-- Stylesheets -->
+<link rel="stylesheet" href="assets/css/style.css?v=8">
+<link rel="stylesheet" href="assets/css/animations.css?v=8">
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<!-- Ambient canvas & noise overlay -->
+<canvas id="ambient-canvas"></canvas>
+<canvas id="lightningCanvas"></canvas>
+<div class="noise-overlay"></div>
+
+<!-- Command Palette Modal Backdrop -->
+<div class="cmd-palette-backdrop" id="cmdPalette">
+  <div class="cmd-palette-box">
+    <div class="cmd-input-container">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" class="cmd-input" placeholder="Type a command or search..." autocomplete="off">
+    </div>
+    <div class="cmd-list">
+      <div class="cmd-item" data-action="nav" data-value="index.html">
+        <div class="cmd-item-left"><i class="fa-solid fa-house"></i><span>Navigate to Home</span></div>
+        <span class="cmd-shortcut">H</span>
+      </div>
+      <div class="cmd-item" data-action="nav" data-value="about.html">
+        <div class="cmd-item-left"><i class="fa-solid fa-user"></i><span>Navigate to About</span></div>
+        <span class="cmd-shortcut">A</span>
+      </div>
+      <div class="cmd-item" data-action="nav" data-value="skills.html">
+        <div class="cmd-item-left"><i class="fa-solid fa-code"></i><span>Navigate to Skills</span></div>
+        <span class="cmd-shortcut">S</span>
+      </div>
+      <div class="cmd-item" data-action="nav" data-value="projects.html">
+        <div class="cmd-item-left"><i class="fa-solid fa-laptop-code"></i><span>Navigate to Projects</span></div>
+        <span class="cmd-shortcut">P</span>
+      </div>
+      <div class="cmd-item" data-action="nav" data-value="resume.html">
+        <div class="cmd-item-left"><i class="fa-solid fa-file-pdf"></i><span>Navigate to Resume</span></div>
+        <span class="cmd-shortcut">R</span>
+      </div>
+      <div class="cmd-item" data-action="nav" data-value="contact.html">
+        <div class="cmd-item-left"><i class="fa-solid fa-envelope"></i><span>Navigate to Contact</span></div>
+        <span class="cmd-shortcut">C</span>
+      </div>
+      <div class="cmd-item" data-action="theme" data-value="toggle">
+        <div class="cmd-item-left"><i class="fa-solid fa-circle-half-stroke"></i><span>Toggle Light/Dark Theme</span></div>
+        <span class="cmd-shortcut">T</span>
+      </div>
+      <div class="cmd-item" data-action="accent" data-value="orange">
+        <div class="cmd-item-left"><i class="fa-solid fa-palette" style="color: #FF4D00;"></i><span>Switch Accent: Abhishek Orange</span></div>
+        <span class="cmd-shortcut">O</span>
+      </div>
+      <div class="cmd-item" data-action="accent" data-value="green">
+        <div class="cmd-item-left"><i class="fa-solid fa-palette" style="color: #3FB950;"></i><span>Switch Accent: Spring Green</span></div>
+        <span class="cmd-shortcut">G</span>
+      </div>
+      <div class="cmd-item" data-action="accent" data-value="amber">
+        <div class="cmd-item-left"><i class="fa-solid fa-palette" style="color: #E3A31C;"></i><span>Switch Accent: Java Amber</span></div>
+        <span class="cmd-shortcut">M</span>
+      </div>
+      <div class="cmd-item" data-action="download" data-value="assets/resume/Abhishek_Tangade_Resume.pdf">
+        <div class="cmd-item-left"><i class="fa-solid fa-download"></i><span>Download PDF Resume</span></div>
+        <span class="cmd-shortcut">D</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- GPU-Accelerated Custom Cursors -->
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+
+<!-- Floating Navigation Bar -->
+<nav class="navbar flex-between">
+  <a href="index.html" class="brand"><span class="tag">&lt;</span>Abhishek<span class="dim">.dev</span><span class="tag">/&gt;</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="skills.html">Skills</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="resume.html">Resume</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="theme-toggle" aria-label="Toggle theme"><i class="bi bi-sun"></i></button>
+    <a href="contact.html" class="btn btn-primary btn-sm">Hire Me</a>
+    <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- Mobile Navigation Menu Overlay Drawer -->
+<div class="mobile-drawer">
+  <div class="nav-links-mobile">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="skills.html">Skills</a>
+    <a href="projects.html">Projects</a>
+    <a href="resume.html">Resume</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</div>
+
+<section class="resume-hero" id="main" style="padding-top: 140px; padding-bottom: 40px; text-align: center;">
+  <div class="container">
+    <span class="eyebrow" style="justify-content:center;"><span class="dot"></span> Print-Ready Document</span>
+    <h1 class="section-title">My Resume</h1>
+    <p class="section-sub" style="margin-left:auto; margin-right:auto;">
+      A concise summary of my projects, education, and technical capabilities.
+    </p>
+    <a href="assets/resume/Abhishek_Tangade_Resume.pdf" class="btn btn-primary" download>
+      <i class="fa-solid fa-download"></i> Download PDF Resume
+    </a>
+  </div>
+</section>
+
+<!-- Print Preview Sheet -->
+<section style="padding-top:20px;">
+  <div class="container resume-preview" style="max-width: 800px;">
+    <div class="card card-glass" style="padding: 48px;">
+
+      <div style="text-align:center; margin-bottom:40px; border-bottom: 1px solid var(--border); padding-bottom: 24px;">
+        <h2 style="font-size: 2rem; font-weight: 800; margin-bottom:4px; color: var(--text);">Abhishek Tangade</h2>
+        <p style="color:var(--accent); font-family:var(--font-mono); font-size:.9rem; margin:0;">Java Backend Developer (Fresher)</p>
+        <p style="color:var(--text-muted); font-size:.85rem; margin-top:8px;">
+          Beed, Maharashtra &nbsp;·&nbsp; abhishektangade965@gmail.com &nbsp;·&nbsp; +91 98343 97528
+        </p>
+      </div>
+
+      <div class="resume-block">
+        <h3>Summary</h3>
+        <p style="color:var(--text-muted); font-size:.92rem; line-height:1.7;">
+          Java Backend Developer (Fresher) skilled in Java, Spring Boot, Spring Security, Hibernate/JPA, REST APIs, Kafka, Redis, JWT and MySQL. Built 3 full-stack backend systems applying event-driven design with Kafka, caching with Redis and secure authentication with JWT and Spring Security. Achieved a 45% API response-time reduction through Redis caching. Strong fundamentals in scalable, maintainable backend architecture.
+        </p>
+      </div>
+
+      <div class="resume-block">
+        <h3>Education</h3>
+        <div class="resume-entry">
+          <div class="head"><b>Bachelor of Computer Application (BCA)</b><span>2022 – 2025</span></div>
+          <p>R B Attal College, Georai — Dr. Babasaheb Ambedkar Marathwada University · Grade: 75%</p>
+        </div>
+      </div>
+
+      <div class="resume-block">
+        <h3>Skills</h3>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+          <span class="badge">Java</span><span class="badge">SQL</span><span class="badge">PL/SQL</span>
+          <span class="badge">Spring Boot</span><span class="badge">Spring Security 6</span><span class="badge">Spring Data JPA</span>
+          <span class="badge">Hibernate</span><span class="badge">Microservices</span><span class="badge">Kafka</span>
+          <span class="badge">Redis (Basic)</span><span class="badge">MySQL</span><span class="badge">Oracle SQL</span>
+          <span class="badge">MongoDB</span><span class="badge">HTML/CSS</span><span class="badge">JavaScript (Basic)</span>
+          <span class="badge">Git &amp; GitHub</span><span class="badge">Maven &amp; Gradle</span><span class="badge">JWT</span>
+          <span class="badge">Apache Tomcat</span><span class="badge">Eclipse</span>
+        </div>
+      </div>
+
+      <div class="resume-block">
+        <h3>Projects</h3>
+        <div class="resume-entry">
+          <div class="head"><b>Delivoos — Enterprise Food Delivery Platform</b><span>Spring Boot · Kafka · Redis</span></div>
+          <p>Developed 8 Spring Boot microservices using event-driven Saga orchestration across services with Kafka and API Gateway. Achieved 45% faster response times by introducing Redis caching.</p>
+        </div>
+        <div class="resume-entry">
+          <div class="head"><b>SmartBank — Enterprise Banking Platform</b><span>Spring Boot · Spring Security 6 · MySQL</span></div>
+          <p>Built secure digital banking portal executing atomic ledger bookkeeping. Developed 30+ REST APIs, simulated 10K+ transactions, and secured endpoints using Spring Security 6 and JWT.</p>
+        </div>
+        <div class="resume-entry">
+          <div class="head"><b>Smart Logistics &amp; Supply Chain Portal</b><span>Spring Boot · MySQL · Redis</span></div>
+          <p>Built supply chain portal with live KPI analytics and warehouse space indicators. Added fuzzy search command palettes and robust Redis cache failover handling.</p>
+        </div>
+      </div>
+
+      <div class="resume-block">
+        <h3>Certifications</h3>
+        <p style="color:var(--text-muted); font-size:.92rem; line-height:1.8;">
+          • <b>Java Programming Masterclass</b> — Udemy, 2024 (Completed)<br>
+          • <b>SQL Query Optimization</b> — Udemy, 2024 (Completed)<br>
+          • <b>Spring Boot Microservices</b> — Udemy (In Progress)
+        </p>
+      </div>
+
+      <div class="resume-block" style="margin-bottom:0;">
+        <h3>Soft Skills</h3>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+          <span class="badge">Problem-Solving</span><span class="badge">Adaptability</span><span class="badge">Team Collaboration</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Minimal Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-cta-box">
+      <h2>Ready to build something reliable?</h2>
+      <p>I am looking for Java Backend Developer roles. Let's discuss how I can contribute to your development team.</p>
+      <a href="contact.html" class="btn btn-primary">Contact Me <i class="fa-solid fa-paper-plane"></i></a>
+    </div>
+    
+    <div class="footer-bottom">
+      <span>&copy; <span data-year></span> Abhishek Tangade. All rights reserved.</span>
+      <span>Built with GSAP, Lenis, SplitType &amp; Custom Canvas Nodes.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Animations Dependencies -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
+
+<!-- Scripts -->
+<script src="assets/js/lightning.js?v=4" defer></script>
+<script src="assets/js/main.js?v=4" defer></script>
+<script src="assets/js/animations.js?v=4" defer></script>
+</body>
+</html>

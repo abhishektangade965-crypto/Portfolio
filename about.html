@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | Abhishek Tangade — Java Backend Developer</title>
+<meta name="description" content="Learn about Abhishek Tangade's background, education (BCA, R B Attal College), and skills as a Java Backend Developer specializing in scalable systems.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abhishektangade-portfolio.netlify.app/about.html">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+<link rel="alternate icon" href="favicon.ico">
+
+<!-- Fonts & Libraries -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+<style>html,body{background:#0D0D0D;margin:0;}</style>
+
+<style>
+@view-transition { navigation: auto; }
+::view-transition-old(root) { animation: fadeOut 0.2s ease forwards; }
+::view-transition-new(root) { animation: fadeIn 0.2s ease forwards; }
+@keyframes fadeOut { to { opacity: 0; } }
+@keyframes fadeIn { from { opacity: 0; } }
+</style>
+<!-- Stylesheets -->
+<link rel="stylesheet" href="assets/css/style.css?v=8">
+<link rel="stylesheet" href="assets/css/animations.css?v=8">
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<!-- Ambient canvas & noise overlay -->
+<canvas id="ambient-canvas"></canvas>
+<canvas id="lightningCanvas"></canvas>
+<div class="noise-overlay"></div>
+
+<!-- Command Palette Modal Backdrop -->
+<div class="cmd-palette-backdrop" id="cmdPalette">
+  <div class="cmd-palette-box">
+    <div class="cmd-input-container">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" class="cmd-input" placeholder="Type a command or search..." autocomplete="off">
+    </div>
+    <div class="cmd-list">
+      <div class="cmd-item" data-action="nav" data-value="index.html">
+        <div class="cmd-item-left"><i class="fa-solid fa-house"></i><span>Navigate to Home</span></div>
+        <span class="cmd-shortcut">H</span>
+      </div>
+      <div class="cmd-item" data-action="nav" data-value="about.html">
+        <div class="cmd-item-left"><i class="fa-solid fa-user"></i><span>Navigate to About</span></div>
+        <span class="cmd-shortcut">A</span>
+      </div>
+      <div class="cmd-item" data-action="nav" data-value="skills.html">
+        <div class="cmd-item-left"><i class="fa-solid fa-code"></i><span>Navigate to Skills</span></div>
+        <span class="cmd-shortcut">S</span>
+      </div>
+      <div class="cmd-item" data-action="nav" data-value="projects.html">
+        <div class="cmd-item-left"><i class="fa-solid fa-laptop-code"></i><span>Navigate to Projects</span></div>
+        <span class="cmd-shortcut">P</span>
+      </div>
+      <div class="cmd-item" data-action="nav" data-value="resume.html">
+        <div class="cmd-item-left"><i class="fa-solid fa-file-pdf"></i><span>Navigate to Resume</span></div>
+        <span class="cmd-shortcut">R</span>
+      </div>
+      <div class="cmd-item" data-action="nav" data-value="contact.html">
+        <div class="cmd-item-left"><i class="fa-solid fa-envelope"></i><span>Navigate to Contact</span></div>
+        <span class="cmd-shortcut">C</span>
+      </div>
+      <div class="cmd-item" data-action="theme" data-value="toggle">
+        <div class="cmd-item-left"><i class="fa-solid fa-circle-half-stroke"></i><span>Toggle Light/Dark Theme</span></div>
+        <span class="cmd-shortcut">T</span>
+      </div>
+      <div class="cmd-item" data-action="accent" data-value="orange">
+        <div class="cmd-item-left"><i class="fa-solid fa-palette" style="color: #FF4D00;"></i><span>Switch Accent: Abhishek Orange</span></div>
+        <span class="cmd-shortcut">O</span>
+      </div>
+      <div class="cmd-item" data-action="accent" data-value="green">
+        <div class="cmd-item-left"><i class="fa-solid fa-palette" style="color: #3FB950;"></i><span>Switch Accent: Spring Green</span></div>
+        <span class="cmd-shortcut">G</span>
+      </div>
+      <div class="cmd-item" data-action="accent" data-value="amber">
+        <div class="cmd-item-left"><i class="fa-solid fa-palette" style="color: #E3A31C;"></i><span>Switch Accent: Java Amber</span></div>
+        <span class="cmd-shortcut">M</span>
+      </div>
+      <div class="cmd-item" data-action="download" data-value="assets/resume/Abhishek_Tangade_Resume.pdf">
+        <div class="cmd-item-left"><i class="fa-solid fa-download"></i><span>Download PDF Resume</span></div>
+        <span class="cmd-shortcut">D</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- GPU-Accelerated Custom Cursors -->
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+
+<!-- Floating Navigation Bar -->
+<nav class="navbar flex-between">
+  <a href="index.html" class="brand"><span class="tag">&lt;</span>Abhishek<span class="dim">.dev</span><span class="tag">/&gt;</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="skills.html">Skills</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="resume.html">Resume</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="theme-toggle" aria-label="Toggle theme"><i class="bi bi-sun"></i></button>
+    <a href="contact.html" class="btn btn-primary btn-sm">Hire Me</a>
+    <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- Mobile Navigation Menu Overlay Drawer -->
+<div class="mobile-drawer">
+  <div class="nav-links-mobile">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="skills.html">Skills</a>
+    <a href="projects.html">Projects</a>
+    <a href="resume.html">Resume</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</div>
+
+<div class="page-header" id="main" style="padding-top: 140px; padding-bottom: 40px;">
+  <div class="container">
+    <span class="eyebrow"><span class="dot"></span> My Story</span>
+    <h1 class="section-title">The developer behind the logs.</h1>
+    <p class="section-sub">A background in computer applications combined with an interest in distributed backend architectures.</p>
+  </div>
+</div>
+
+<!-- Bio & Education Section -->
+<section style="padding-top:0;">
+  <div class="container grid-2">
+    <div>
+      <h2 style="font-size: 1.8rem; font-weight: 700; margin-bottom: 20px;">Java-First Engineering</h2>
+      <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 1rem; line-height: 1.7;">
+        I am a fresh Java Backend Developer holding a Bachelor of Computer Application (BCA). During my studies, I focused on core computer science foundations, relational schemas, database index tuning, and OOP methodologies.
+      </p>
+      <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.7;">
+        Rather than building simple CRUD apps, I challenge myself with distributed microservices, event streaming using Kafka, JWT tokens validation, and caching. I enjoy figuring out concurrency problems, designing secure endpoints, and scaling backend data access pipelines.
+      </p>
+    </div>
+
+    <div>
+      <div class="card card-glass" id="education" style="border-left: 4px solid var(--accent);">
+        <span class="eyebrow" style="margin-bottom: 12px;"><i class="fa-solid fa-graduation-cap"></i> Education Detail</span>
+        <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 8px;">Bachelor of Computer Application (BCA)</h3>
+        <p style="font-size: 0.95rem; font-family: var(--font-mono); color: var(--accent); margin-bottom: 12px;">Graduated: 2022 - 2025</p>
+        <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.6; margin-bottom: 16px;">
+          R B Attal College, Georai — Dr. Babasaheb Ambedkar Marathwada University.
+        </p>
+        <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding-top: 14px;">
+          <span style="font-size: 0.88rem; color: var(--text-muted);">Cumulative Grade</span>
+          <span style="font-family: var(--font-mono); font-size: 1.1rem; font-weight: 700; color: var(--text);">75% Marks</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Editorial Timeline Grid -->
+<section style="background: var(--bg-soft); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+  <div class="container">
+    <span class="eyebrow" style="justify-content: center; display: flex; margin-bottom: 16px;"><span class="dot"></span> Career Milestones</span>
+    <h2 class="section-title" style="text-align: center; margin-bottom: 64px;">My Journey from BCA to Backend Architecture</h2>
+    
+    <div class="timeline-container">
+      <div class="timeline-line"></div>
+      
+      <!-- Milestone 1 -->
+      <div class="timeline-item">
+        <div class="timeline-year">2024 - PRESENT</div>
+        <div class="timeline-title">Event-Driven Backend Architectures</div>
+        <div class="timeline-desc">
+          Shifted focus towards distributed design. Built Delivoos using 8 Spring Boot microservices, Kafka event streams, and Redis cache failovers, resulting in a 45% API latency drop.
+        </div>
+      </div>
+
+      <!-- Milestone 2 -->
+      <div class="timeline-item">
+        <div class="timeline-year">2023 - 2024</div>
+        <div class="timeline-title">REST APIs &amp; JWT Implementations</div>
+        <div class="timeline-desc">
+          Designed enterprise banking endpoints (SmartBank) securing transfer paths using Spring Security 6. Mastered SQL optimizations, relational database integrity mapping, and JUnit testing.
+        </div>
+      </div>
+
+      <!-- Milestone 3 -->
+      <div class="timeline-item">
+        <div class="timeline-year">2022</div>
+        <div class="timeline-title">Foundation &amp; Academic Inception</div>
+        <div class="timeline-desc">
+          Began computer applications degree (BCA) learning structured algorithms, database normalization, relational algebra in SQL, OOP principles in Java, and basic Git patterns.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Asymmetric Highlight Cards -->
+<section>
+  <div class="container">
+    <div class="grid-4">
+      <div class="card counter-card">
+        <div class="num" data-count="3">0</div>
+        <div class="lbl">Enterprise Projects</div>
+      </div>
+      <div class="card counter-card">
+        <div class="num" data-count="30" data-suffix="+">0</div>
+        <div class="lbl">REST APIs Built</div>
+      </div>
+      <div class="card counter-card">
+        <div class="num" data-count="75" data-suffix="%">0</div>
+        <div class="lbl">BCA Graduate Score</div>
+      </div>
+      <div class="card counter-card">
+        <div class="num" data-count="14">0</div>
+        <div class="lbl">Java-First Technologies</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Minimal Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-cta-box">
+      <h2>Ready to build something reliable?</h2>
+      <p>I am looking for Java Backend Developer roles. Let's discuss how I can contribute to your development team.</p>
+      <a href="contact.html" class="btn btn-primary">Contact Me <i class="fa-solid fa-paper-plane"></i></a>
+    </div>
+    
+    <div class="footer-bottom">
+      <span>&copy; <span data-year></span> Abhishek Tangade. All rights reserved.</span>
+      <span>Built with GSAP, Lenis, SplitType &amp; Custom Canvas Nodes.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Animations Dependencies -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
+<script src="https://unpkg.com/split-type" defer></script>
+
+<!-- Scripts -->
+<script src="assets/js/lightning.js?v=4" defer></script>
+<script src="assets/js/main.js?v=4" defer></script>
+<script src="assets/js/animations.js?v=4" defer></script>
+</body>
+</html>

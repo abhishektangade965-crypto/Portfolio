@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abhishek Tangade | Java Backend Developer</title>
+<meta name="description" content="Personal portfolio of Abhishek Tangade, a Java Backend Developer and BCA graduate specializing in Spring Boot, Spring Security 6, Microservices, Kafka, Redis, and MySQL.">
+<meta name="keywords" content="Java Developer, Spring Boot Developer, Backend Developer, Microservices, Spring Security, Kafka, Redis, Abhishek Tangade">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abhishektangade-portfolio.netlify.app/index.html">
+
+<!-- Open Graph / Social Cards -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Abhishek Tangade | Java Backend Developer">
+<meta property="og:description" content="Personal portfolio of Abhishek Tangade, a Java Backend Developer specializing in Spring Boot, Spring Security 6, Microservices, Kafka, Redis, and MySQL.">
+<meta property="og:image" content="assets/images/og-cover.png">
+<meta property="og:url" content="https://abhishektangade-portfolio.netlify.app/index.html">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Abhishek Tangade | Java Backend Developer">
+<meta name="twitter:description" content="Personal portfolio of Abhishek Tangade, a Java Backend Developer.">
+<meta name="twitter:image" content="assets/images/og-cover.png">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+<link rel="alternate icon" href="favicon.ico">
+
+<!-- Fonts & Libraries -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+<style>html,body{background:#0D0D0D;margin:0;}</style>
+
+<style>
+@view-transition { navigation: auto; }
+::view-transition-old(root) { animation: fadeOut 0.2s ease forwards; }
+::view-transition-new(root) { animation: fadeIn 0.2s ease forwards; }
+@keyframes fadeOut { to { opacity: 0; } }
+@keyframes fadeIn { from { opacity: 0; } }
+</style>
+<!-- Stylesheets -->
+<link rel="stylesheet" href="assets/css/style.css?v=8">
+<link rel="stylesheet" href="assets/css/animations.css?v=8">
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Abhishek Tangade",
+  "jobTitle": "Java Backend Developer",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Beed",
+    "addressRegion": "Maharashtra",
+    "addressCountry": "IN"
+  },
+  "email": "abhishektangade965@gmail.com",
+  "telephone": "+91 98343 97528",
+  "url": "https://abhishektangade-portfolio.netlify.app/",
+  "sameAs": [
+    "https://github.com/abhishektangade965-crypto",
+    "https://linkedin.com/in/abhishek-tangade"
+  ]
+}
+</script>
+</head>
+<body>
+
+<div class="scroll-progress-bar" id="scrollProgress"></div>
+
+<!-- Skip link for keyboard accessibility -->
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<!-- Ambient canvas & noise overlay -->
+<canvas id="ambient-canvas"></canvas>
+<canvas id="lightningCanvas"></canvas>
+<div class="noise-overlay"></div>
+
+<!-- Command Palette Modal Backdrop -->
+<div class="cmd-palette-backdrop" id="cmdPalette">
+  <div class="cmd-palette-box">
+    <div class="cmd-input-container">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" class="cmd-input" placeholder="Type a command or search..." autocomplete="off">
+    </div>
+    <div class="cmd-list">
+      <div class="cmd-item" data-action="nav" data-value="index.html">
+        <div class="cmd-item-left"><i class="fa-solid fa-house"></i><span>Navigate to Home</span></div>
+        <span class="cmd-shortcut">H</span>
+      </div>
+      <div class="cmd-item" data-action="nav" data-value="about.html">
+        <div class="cmd-item-left"><i class="fa-solid fa-user"></i><span>Navigate to About</span></div>
+        <span class="cmd-shortcut">A</span>
+      </div>
+      <div class="cmd-item" data-action="nav" data-value="skills.html">
+        <div class="cmd-item-left"><i class="fa-solid fa-code"></i><span>Navigate to Skills</span></div>
+        <span class="cmd-shortcut">S</span>
+      </div>
+      <div class="cmd-item" data-action="nav" data-value="projects.html">
+        <div class="cmd-item-left"><i class="fa-solid fa-briefcase"></i><span>Navigate to Projects</span></div>
+        <span class="cmd-shortcut">P</span>
+      </div>
+      <div class="cmd-item" data-action="nav" data-value="resume.html">
+        <div class="cmd-item-left"><i class="fa-solid fa-file-pdf"></i><span>Navigate to Resume</span></div>
+        <span class="cmd-shortcut">R</span>
+      </div>
+      <div class="cmd-item" data-action="nav" data-value="contact.html">
+        <div class="cmd-item-left"><i class="fa-solid fa-envelope"></i><span>Navigate to Contact</span></div>
+        <span class="cmd-shortcut">C</span>
+      </div>
+      <div class="cmd-item" data-action="theme" data-value="toggle">
+        <div class="cmd-item-left"><i class="fa-solid fa-circle-half-stroke"></i><span>Toggle Light/Dark Theme</span></div>
+        <span class="cmd-shortcut">T</span>
+      </div>
+      <div class="cmd-item" data-action="accent" data-value="orange">
+        <div class="cmd-item-left"><i class="fa-solid fa-palette" style="color: #FF4D00;"></i><span>Switch Accent: Abhishek Orange</span></div>
+        <span class="cmd-shortcut">O</span>
+      </div>
+      <div class="cmd-item" data-action="accent" data-value="green">
+        <div class="cmd-item-left"><i class="fa-solid fa-palette" style="color: #3FB950;"></i><span>Switch Accent: Spring Green</span></div>
+        <span class="cmd-shortcut">G</span>
+      </div>
+      <div class="cmd-item" data-action="accent" data-value="amber">
+        <div class="cmd-item-left"><i class="fa-solid fa-palette" style="color: #E3A31C;"></i><span>Switch Accent: Java Amber</span></div>
+        <span class="cmd-shortcut">M</span>
+      </div>
+      <div class="cmd-item" data-action="download" data-value="assets/resume/Abhishek_Tangade_Resume.pdf">
+        <div class="cmd-item-left"><i class="fa-solid fa-download"></i><span>Download PDF Resume</span></div>
+        <span class="cmd-shortcut">D</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- GPU-Accelerated Custom Cursors -->
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+
+<!-- Floating Navigation Bar -->
+<nav class="navbar flex-between">
+  <a href="index.html" class="brand"><span class="tag">&lt;</span>Abhishek<span class="dim">.dev</span><span class="tag">/&gt;</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="skills.html">Skills</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="resume.html">Resume</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="cmd-trigger-badge" aria-label="Open Commands" id="cmdTriggerBtn">⌘K</button>
+    <button class="theme-toggle" aria-label="Toggle theme"><i class="bi bi-sun"></i></button>
+    <a href="contact.html" class="btn btn-primary btn-sm">Hire Me</a>
+    <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- Mobile Navigation Menu Overlay Drawer -->
+<div class="mobile-drawer">
+  <div class="nav-links-mobile">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="skills.html">Skills</a>
+    <a href="projects.html">Projects</a>
+    <a href="resume.html">Resume</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</div>
+
+<!-- Fullscreen Hero Showcase -->
+<header class="hero" id="main">
+  <div class="hero-aurora"></div>
+  <div class="container hero-grid">
+    <div class="hero-text-block">
+      <div class="hero-kicker float-badge">
+        <span class="dot"></span> Open to opportunities <span class="badge-divider">|</span> Beed, MH
+      </div>
+      <h1 class="hero-title">Hi, I'm <span class="gradient-text">Abhishek</span> Tangade</h1>
+      <div class="role-line">
+        <span data-typing='["Java Backend Developer", "Spring Boot Engineer", "Microservices Developer", "Fresh Graduate, Ready to Ship"]'></span><span class="cursor-blink">&nbsp;</span>
+      </div>
+      <p class="hero-text">
+        Building scalable, secure, and event-driven backend systems. Specializing in high-performance Java architectures, distributed message orchestration, and REST API services.
+      </p>
+      
+      <div class="hero-cta">
+        <a href="assets/resume/Abhishek_Tangade_Resume.pdf" class="btn btn-primary hero-btn-primary" download>
+          <i class="fa-solid fa-download"></i> Download Resume
+        </a>
+        <a href="projects.html" class="btn btn-outline">
+          View Projects <i class="fa-solid fa-arrow-right"></i>
+        </a>
+        <a href="contact.html" class="btn btn-ghost">
+          Get In Touch
+        </a>
+      </div>
+
+      <div class="hero-socials">
+        <a class="social-btn" href="https://github.com/abhishektangade965-crypto" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a class="social-btn" href="https://linkedin.com/in/abhishek-tangade" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a class="social-btn" href="mailto:abhishektangade965@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+        <a class="social-btn" href="tel:+919834397528" aria-label="Phone"><i class="fa-solid fa-phone"></i></a>
+      </div>
+
+      <div class="hero-trust-badges">
+        <span class="trust-title">CORE STACK</span>
+        <div class="trust-list">
+          <span class="trust-badge"><i class="fa-brands fa-java"></i> Java</span>
+          <span class="trust-badge"><i class="fa-solid fa-leaf"></i> Spring Boot</span>
+          <span class="trust-badge"><i class="fa-solid fa-network-wired"></i> Kafka</span>
+          <span class="trust-badge"><i class="fa-solid fa-database"></i> Redis</span>
+        </div>
+      </div>
+
+      <div class="hero-metrics">
+        <div class="metric-item">
+          <div class="metric-num-wrapper">
+            <span class="metric-val" data-target="4">0</span>
+          </div>
+          <span class="metric-lbl">Projects</span>
+        </div>
+        <div class="metric-item">
+          <div class="metric-num-wrapper">
+            <span class="metric-val" data-target="30">0</span><span class="metric-val-suffix">+</span>
+          </div>
+          <span class="metric-lbl">REST APIs</span>
+        </div>
+        <div class="metric-item">
+          <div class="metric-num-wrapper">
+            <span class="metric-val" data-target="10">0</span><span class="metric-val-suffix">K+</span>
+          </div>
+          <span class="metric-lbl">Simulated Tx</span>
+        </div>
+        <div class="metric-item">
+          <div class="metric-num-wrapper">
+            <span class="metric-val" data-target="75">0</span><span class="metric-val-suffix">%</span>
+          </div>
+          <span class="metric-lbl">BCA Grade</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="hero-media">
+      <div class="canvas-hero-wrapper" style="width: 100%; height: 420px; position: relative;">
+        <canvas id="heroNetworkCanvas" style="width: 100%; height: 100%; cursor: pointer;"></canvas>
+        <div class="hero-console-log" style="position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); width: 90%; background: rgba(0,0,0,0.85); border: 1px solid var(--border-strong); border-radius: 8px; padding: 12px 18px; font-family: var(--font-mono); font-size: 0.72rem; color: #32d74b; text-align: left; max-height: 84px; overflow-y: hidden; pointer-events: none; opacity: 0.85; box-shadow: var(--shadow);">
+          <div class="console-line">> [INFO] System Initialized. Awaiting packet stream...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="scroll-indicator" id="heroScrollIndicator">
+    <span>SCROLL DOWN</span>
+    <div class="mouse-icon">
+      <div class="wheel"></div>
+    </div>
+  </div>
+</header>
+
+<!-- Asymmetric Statistics Strip -->
+<section style="background: var(--bg-soft); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+  <div class="container">
+    <div class="counter-strip">
+      <div class="card card-glass counter-card">
+        <div class="num" data-count="4">0</div>
+        <div class="lbl">Backend Systems</div>
+      </div>
+      <div class="card card-glass counter-card">
+        <div class="num" data-count="30" data-suffix="+">0</div>
+        <div class="lbl">REST APIs Built</div>
+      </div>
+      <div class="card card-glass counter-card">
+        <div class="num" data-count="14">0</div>
+        <div class="lbl">Tech Stack Stacked</div>
+      </div>
+      <div class="card card-glass counter-card">
+        <div class="num" data-count="75" data-suffix="%">0</div>
+        <div class="lbl">BCA Grad Score</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Projects Bento Showcase -->
+<section>
+  <div class="container">
+    <span class="eyebrow"><span class="dot"></span> Highlighted Work</span>
+    <h2 class="section-title">A selection of backend systems.</h2>
+    <p class="section-sub">Event-driven saga orchestration, security endpoints, caching, and clean schema architectures.</p>
+
+    <div class="project-list">
+      <!-- Project 1: Delivoos -->
+      <div class="project-bento">
+        <div class="mockup-container">
+          <div class="device-mockup">
+            <div class="device-screen">
+              <img src="assets/images/delivoos/home.png" alt="Delivoos food delivery platform dashboard" loading="lazy">
+            </div>
+          </div>
+        </div>
+        <div class="project-details">
+          <h3>Delivoos — Food Delivery Enterprise</h3>
+          <span class="tagline">Event-Driven Saga Orchestration &amp; Microservices</span>
+          <p class="paragraph">
+            A distributed backend architecture designed to coordinate <strong>8 Spring Boot microservices</strong>. Leveraged Apache Kafka to orchestrate transactional order flows asynchronously, eliminating database locking issues.
+          </p>
+          <div class="project-metrics">
+            <div class="metric-box">
+              <span class="metric-num">45%</span>
+              <span class="metric-label">API Response Gain</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-num">8</span>
+              <span class="metric-label">Microservices</span>
+            </div>
+          </div>
+          <div class="badge-row">
+            <span class="badge">Spring Boot</span>
+            <span class="badge">Kafka</span>
+            <span class="badge">Redis</span>
+            <span class="badge">API Gateway</span>
+          </div>
+          <div class="hero-cta" style="margin-bottom:0;">
+            <a href="https://github.com/abhishektangade965-crypto/Food-Delivery-Enterprise-System" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm"><i class="fa-brands fa-github"></i> GitHub</a>
+            <a href="projects.html#project-1" class="btn btn-outline btn-sm">Case Study</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2: SmartBank -->
+      <div class="project-bento reverse">
+        <div class="project-details">
+          <h3>SmartBank — Enterprise Banking</h3>
+          <span class="tagline">Stateless JWT Security &amp; Ledger Consistency</span>
+          <p class="paragraph">
+            A digital banking system designed with atomic transactional controls. Built and benchmarked <strong>30+ secure REST APIs</strong> with role-based isolation, handling high-velocity deposit transactions smoothly.
+          </p>
+          <div class="project-metrics">
+            <div class="metric-box">
+              <span class="metric-num">10K+</span>
+              <span class="metric-label">Simulated Trans.</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-num">30+</span>
+              <span class="metric-label">REST APIs</span>
+            </div>
+          </div>
+          <div class="badge-row">
+            <span class="badge">Spring Boot</span>
+            <span class="badge">Spring Security 6</span>
+            <span class="badge">JWT</span>
+            <span class="badge">MySQL</span>
+          </div>
+          <div class="hero-cta" style="margin-bottom:0;">
+            <a href="https://github.com/abhishektangade965-crypto/Smart-Banking-Enterprise-System" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm"><i class="fa-brands fa-github"></i> GitHub</a>
+            <a href="projects.html#project-2" class="btn btn-outline btn-sm">Case Study</a>
+          </div>
+        </div>
+        <div class="mockup-container">
+          <div class="device-mockup">
+            <div class="device-screen">
+              <img src="assets/images/smartbank/dashboard.png" alt="SmartBank transaction portal" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Minimal Footer CTA -->
+<footer>
+  <div class="container">
+    <div class="footer-cta-box">
+      <h2>Ready to build something reliable?</h2>
+      <p>I am looking for Java Backend Developer roles. Let's discuss how I can contribute to your development team.</p>
+      <a href="contact.html" class="btn btn-primary">Contact Me <i class="fa-solid fa-paper-plane"></i></a>
+    </div>
+    
+    <div class="footer-bottom">
+      <span>&copy; <span data-year></span> Abhishek Tangade. All rights reserved.</span>
+      <span>Built with GSAP, Lenis, SplitType &amp; Custom Canvas Nodes.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Animations Dependencies -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
+<script src="https://unpkg.com/split-type" defer></script>
+
+<!-- Scripts -->
+<script src="assets/js/lightning.js?v=4" defer></script>
+<script src="assets/js/main.js?v=4" defer></script>
+<script src="assets/js/animations.js?v=4" defer></script>
+</body>
+</html>

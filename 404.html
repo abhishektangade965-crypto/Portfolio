@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — Page Not Found | Abhishek Tangade</title>
+<meta name="robots" content="noindex, follow">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+<link rel="alternate icon" href="favicon.ico">
+
+<!-- Fonts & Libraries -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>html,body{background:#0D0D0D;margin:0;}</style>
+
+<style>
+@view-transition { navigation: auto; }
+::view-transition-old(root) { animation: fadeOut 0.2s ease forwards; }
+::view-transition-new(root) { animation: fadeIn 0.2s ease forwards; }
+@keyframes fadeOut { to { opacity: 0; } }
+@keyframes fadeIn { from { opacity: 0; } }
+</style>
+<!-- Stylesheets -->
+<link rel="stylesheet" href="assets/css/style.css?v=8">
+<link rel="stylesheet" href="assets/css/animations.css?v=8">
+<style>
+  .err-wrap { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; flex-direction: column; padding: 24px; position: relative; z-index: 1; }
+  .err-code { font-family: var(--font-mono); font-size: clamp(4rem, 14vw, 8rem); font-weight: 800; line-height: 1; color: var(--accent); margin-bottom: 24px; }
+</style>
+</head>
+<body>
+
+<!-- Ambient canvas & noise overlay -->
+<canvas id="ambient-canvas"></canvas>
+<canvas id="lightningCanvas"></canvas>
+<div class="noise-overlay"></div>
+
+<!-- Command Palette Modal Backdrop -->
+<div class="cmd-palette-backdrop" id="cmdPalette">
+  <div class="cmd-palette-box">
+    <div class="cmd-input-container">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" class="cmd-input" placeholder="Type a command or search..." autocomplete="off">
+    </div>
+    <div class="cmd-list">
+      <div class="cmd-item" data-action="nav" data-value="index.html">
+        <div class="cmd-item-left"><i class="fa-solid fa-house"></i><span>Navigate to Home</span></div>
+        <span class="cmd-shortcut">H</span>
+      </div>
+      <div class="cmd-item" data-action="nav" data-value="about.html">
+        <div class="cmd-item-left"><i class="fa-solid fa-user"></i><span>Navigate to About</span></div>
+        <span class="cmd-shortcut">A</span>
+      </div>
+      <div class="cmd-item" data-action="nav" data-value="skills.html">
+        <div class="cmd-item-left"><i class="fa-solid fa-code"></i><span>Navigate to Skills</span></div>
+        <span class="cmd-shortcut">S</span>
+      </div>
+      <div class="cmd-item" data-action="nav" data-value="projects.html">
+        <div class="cmd-item-left"><i class="fa-solid fa-laptop-code"></i><span>Navigate to Projects</span></div>
+        <span class="cmd-shortcut">P</span>
+      </div>
+      <div class="cmd-item" data-action="nav" data-value="resume.html">
+        <div class="cmd-item-left"><i class="fa-solid fa-file-pdf"></i><span>Navigate to Resume</span></div>
+        <span class="cmd-shortcut">R</span>
+      </div>
+      <div class="cmd-item" data-action="nav" data-value="contact.html">
+        <div class="cmd-item-left"><i class="fa-solid fa-envelope"></i><span>Navigate to Contact</span></div>
+        <span class="cmd-shortcut">C</span>
+      </div>
+      <div class="cmd-item" data-action="theme" data-value="toggle">
+        <div class="cmd-item-left"><i class="fa-solid fa-circle-half-stroke"></i><span>Toggle Light/Dark Theme</span></div>
+        <span class="cmd-shortcut">T</span>
+      </div>
+      <div class="cmd-item" data-action="accent" data-value="orange">
+        <div class="cmd-item-left"><i class="fa-solid fa-palette" style="color: #FF4D00;"></i><span>Switch Accent: Abhishek Orange</span></div>
+        <span class="cmd-shortcut">O</span>
+      </div>
+      <div class="cmd-item" data-action="accent" data-value="green">
+        <div class="cmd-item-left"><i class="fa-solid fa-palette" style="color: #3FB950;"></i><span>Switch Accent: Spring Green</span></div>
+        <span class="cmd-shortcut">G</span>
+      </div>
+      <div class="cmd-item" data-action="accent" data-value="amber">
+        <div class="cmd-item-left"><i class="fa-solid fa-palette" style="color: #E3A31C;"></i><span>Switch Accent: Java Amber</span></div>
+        <span class="cmd-shortcut">M</span>
+      </div>
+      <div class="cmd-item" data-action="download" data-value="assets/resume/Abhishek_Tangade_Resume.pdf">
+        <div class="cmd-item-left"><i class="fa-solid fa-download"></i><span>Download PDF Resume</span></div>
+        <span class="cmd-shortcut">D</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- GPU-Accelerated Custom Cursors -->
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+
+<div class="err-wrap">
+  <span class="eyebrow" style="justify-content:center;"><span class="dot"></span> Error 404</span>
+  <div class="err-code">throw 404;</div>
+  <h2 style="margin-top:14px; font-family: var(--font-display); font-size: 2rem; font-weight: 800;">This route doesn't exist — yet.</h2>
+  <p style="color:var(--text-muted); max-width:420px; margin:10px auto 28px; font-size: 1rem;">
+    The page you're looking for was moved, renamed, or never compiled. Let's get you back on track.
+  </p>
+  <a href="index.html" class="btn btn-primary"><i class="fa-solid fa-house"></i> Back to Home</a>
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/lightning.js?v=4" defer></script>
+<script src="assets/js/main.js?v=4" defer></script>
+</body>
+</html>

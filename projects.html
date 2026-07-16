@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects | Abhishek Tangade — Java Backend Developer</title>
+<meta name="description" content="Detailed walkthroughs of Abhishek Tangade's backend projects: Delivoos food delivery platform, SmartBank digital banking platform, Smart Logistics supply chain tracking, and Tourism API.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abhishektangade-portfolio.netlify.app/projects.html">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+<link rel="alternate icon" href="favicon.ico">
+
+<!-- Fonts & Libraries -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+<style>html,body{background:#0D0D0D;margin:0;}</style>
+
+<style>
+@view-transition { navigation: auto; }
+::view-transition-old(root) { animation: fadeOut 0.2s ease forwards; }
+::view-transition-new(root) { animation: fadeIn 0.2s ease forwards; }
+@keyframes fadeOut { to { opacity: 0; } }
+@keyframes fadeIn { from { opacity: 0; } }
+</style>
+<!-- Stylesheets -->
+<link rel="stylesheet" href="assets/css/style.css?v=8">
+<link rel="stylesheet" href="assets/css/animations.css?v=8">
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<!-- Ambient canvas & noise overlay -->
+<canvas id="ambient-canvas"></canvas>
+<canvas id="lightningCanvas"></canvas>
+<div class="noise-overlay"></div>
+
+<!-- Command Palette Modal Backdrop -->
+<div class="cmd-palette-backdrop" id="cmdPalette">
+  <div class="cmd-palette-box">
+    <div class="cmd-input-container">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" class="cmd-input" placeholder="Type a command or search..." autocomplete="off">
+    </div>
+    <div class="cmd-list">
+      <div class="cmd-item" data-action="nav" data-value="index.html">
+        <div class="cmd-item-left"><i class="fa-solid fa-house"></i><span>Navigate to Home</span></div>
+        <span class="cmd-shortcut">H</span>
+      </div>
+      <div class="cmd-item" data-action="nav" data-value="about.html">
+        <div class="cmd-item-left"><i class="fa-solid fa-user"></i><span>Navigate to About</span></div>
+        <span class="cmd-shortcut">A</span>
+      </div>
+      <div class="cmd-item" data-action="nav" data-value="skills.html">
+        <div class="cmd-item-left"><i class="fa-solid fa-code"></i><span>Navigate to Skills</span></div>
+        <span class="cmd-shortcut">S</span>
+      </div>
+      <div class="cmd-item" data-action="nav" data-value="projects.html">
+        <div class="cmd-item-left"><i class="fa-solid fa-laptop-code"></i><span>Navigate to Projects</span></div>
+        <span class="cmd-shortcut">P</span>
+      </div>
+      <div class="cmd-item" data-action="nav" data-value="resume.html">
+        <div class="cmd-item-left"><i class="fa-solid fa-file-pdf"></i><span>Navigate to Resume</span></div>
+        <span class="cmd-shortcut">R</span>
+      </div>
+      <div class="cmd-item" data-action="nav" data-value="contact.html">
+        <div class="cmd-item-left"><i class="fa-solid fa-envelope"></i><span>Navigate to Contact</span></div>
+        <span class="cmd-shortcut">C</span>
+      </div>
+      <div class="cmd-item" data-action="theme" data-value="toggle">
+        <div class="cmd-item-left"><i class="fa-solid fa-circle-half-stroke"></i><span>Toggle Light/Dark Theme</span></div>
+        <span class="cmd-shortcut">T</span>
+      </div>
+      <div class="cmd-item" data-action="accent" data-value="orange">
+        <div class="cmd-item-left"><i class="fa-solid fa-palette" style="color: #FF4D00;"></i><span>Switch Accent: Abhishek Orange</span></div>
+        <span class="cmd-shortcut">O</span>
+      </div>
+      <div class="cmd-item" data-action="accent" data-value="green">
+        <div class="cmd-item-left"><i class="fa-solid fa-palette" style="color: #3FB950;"></i><span>Switch Accent: Spring Green</span></div>
+        <span class="cmd-shortcut">G</span>
+      </div>
+      <div class="cmd-item" data-action="accent" data-value="amber">
+        <div class="cmd-item-left"><i class="fa-solid fa-palette" style="color: #E3A31C;"></i><span>Switch Accent: Java Amber</span></div>
+        <span class="cmd-shortcut">M</span>
+      </div>
+      <div class="cmd-item" data-action="download" data-value="assets/resume/Abhishek_Tangade_Resume.pdf">
+        <div class="cmd-item-left"><i class="fa-solid fa-download"></i><span>Download PDF Resume</span></div>
+        <span class="cmd-shortcut">D</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- GPU-Accelerated Custom Cursors -->
+<div class="cursor-dot"></div>
+<div class="cursor-ring"></div>
+
+<!-- Floating Navigation Bar -->
+<nav class="navbar flex-between">
+  <a href="index.html" class="brand"><span class="tag">&lt;</span>Abhishek<span class="dim">.dev</span><span class="tag">/&gt;</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="skills.html">Skills</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="resume.html">Resume</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="theme-toggle" aria-label="Toggle theme"><i class="bi bi-sun"></i></button>
+    <a href="contact.html" class="btn btn-primary btn-sm">Hire Me</a>
+    <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- Mobile Navigation Menu Overlay Drawer -->
+<div class="mobile-drawer">
+  <div class="nav-links-mobile">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="skills.html">Skills</a>
+    <a href="projects.html">Projects</a>
+    <a href="resume.html">Resume</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</div>
+
+<div class="page-header" id="main" style="padding-top: 140px; padding-bottom: 40px;">
+  <div class="container">
+    <span class="eyebrow"><span class="dot"></span> Case Studies</span>
+    <h1 class="section-title">Four systems, four different problems.</h1>
+    <p class="section-sub">A deep dive into backend system metrics, data modeling, security endpoints, and API design.</p>
+  </div>
+</div>
+
+<!-- Projects Grid Bento Layout -->
+<section style="padding-top:0;">
+  <div class="container">
+    <div class="project-list">
+
+      <!-- Project 1: Delivoos -->
+      <div class="project-bento" id="delivoos-card">
+        <div class="mockup-container">
+          <div class="device-mockup">
+            <div class="device-screen">
+              <img src="assets/images/delivoos/home.png" alt="Delivoos platform mockup" loading="lazy">
+            </div>
+          </div>
+        </div>
+        <div class="project-details">
+          <h3>Delivoos — Food Delivery Enterprise</h3>
+          <span class="tagline">Event-Driven Saga Orchestration</span>
+          <p class="paragraph">
+            <strong>Problem:</strong> Orchestrating order placement, courier dispatch, and billing transactional updates across isolated schemas without risking inconsistency during network anomalies.
+          </p>
+          <p class="paragraph">
+            <strong>Solution:</strong> Built an asynchronous Saga orchestrator coordinating 8 Spring Boot microservices via Apache Kafka. Integrated Redis caching to reduce database read bottlenecks.
+          </p>
+          <div class="project-metrics">
+            <div class="metric-box">
+              <span class="metric-num">45%</span>
+              <span class="metric-label">API response reduction</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-num">8</span>
+              <span class="metric-label">Microservices</span>
+            </div>
+          </div>
+          <div class="badge-row">
+            <span class="badge">Spring Boot</span><span class="badge">Kafka</span><span class="badge">Redis</span><span class="badge">API Gateway</span>
+          </div>
+          <div class="hero-cta" style="margin-bottom:0;">
+            <a href="https://github.com/abhishektangade965-crypto/Food-Delivery-Enterprise-System" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm"><i class="fa-brands fa-github"></i> GitHub</a>
+            <button class="btn btn-outline btn-sm" data-case="p1"><i class="fa-solid fa-book-open"></i> Case Study</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2: SmartBank -->
+      <div class="project-bento reverse" id="smartbank-card">
+        <div class="project-details">
+          <h3>SmartBank — Enterprise Banking</h3>
+          <span class="tagline">Stateless JWT Security &amp; ACID Ledger</span>
+          <p class="paragraph">
+            <strong>Problem:</strong> Managing high-velocity balance transfers and deposit operations securely while ensuring transactional consistency under concurrent transfers.
+          </p>
+          <p class="paragraph">
+            <strong>Solution:</strong> Developed 30+ REST APIs executing secure transactions. Configured role-based access controls using Spring Security 6 and stateless JWT token exchanges.
+          </p>
+          <div class="project-metrics">
+            <div class="metric-box">
+              <span class="metric-num">10K+</span>
+              <span class="metric-label">Simulated Transactions</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-num">30+</span>
+              <span class="metric-label">Secure REST APIs</span>
+            </div>
+          </div>
+          <div class="badge-row">
+            <span class="badge">Spring Boot</span><span class="badge">Spring Security 6</span><span class="badge">JWT</span><span class="badge">MySQL</span>
+          </div>
+          <div class="hero-cta" style="margin-bottom:0;">
+            <a href="https://github.com/abhishektangade965-crypto/Smart-Banking-Enterprise-System" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm"><i class="fa-brands fa-github"></i> GitHub</a>
+            <button class="btn btn-outline btn-sm" data-case="p2"><i class="fa-solid fa-book-open"></i> Case Study</button>
+          </div>
+        </div>
+        <div class="mockup-container">
+          <div class="device-mockup">
+            <div class="device-screen">
+              <img src="assets/images/smartbank/dashboard.png" alt="SmartBank transaction portal" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 3: Smart Logistics -->
+      <div class="project-bento" id="logistics-card">
+        <div class="mockup-container">
+          <div class="device-mockup">
+            <div class="device-screen">
+              <img src="assets/images/logistics/dashboard.webp" alt="Smart Logistics tracking portal" loading="lazy">
+            </div>
+          </div>
+        </div>
+        <div class="project-details">
+          <h3>Smart Logistics &amp; Supply Chain</h3>
+          <span class="tagline">Live KPI Analytics &amp; Cache Failover</span>
+          <p class="paragraph">
+            <strong>Problem:</strong> Resolving database read delays in dashboard metric tracking and enabling fuzzy search across large supply chain stock tables.
+          </p>
+          <p class="paragraph">
+            <strong>Solution:</strong> Developed live KPI metrics analytics panels with fuzzy search selectors. Configured a Redis cache failover system to handle server timeouts.
+          </p>
+          <div class="project-metrics">
+            <div class="metric-box">
+              <span class="metric-num">Fuzzy</span>
+              <span class="metric-label">Command Palettes</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-num">Robust</span>
+              <span class="metric-label">Redis Failover</span>
+            </div>
+          </div>
+          <div class="badge-row">
+            <span class="badge">Spring Boot</span><span class="badge">MySQL</span><span class="badge">Redis</span><span class="badge">Fuzzy Search</span>
+          </div>
+          <div class="hero-cta" style="margin-bottom:0;">
+            <a href="https://github.com/abhishektangade965-crypto/Smart-Logistics" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm"><i class="fa-brands fa-github"></i> GitHub</a>
+            <button class="btn btn-outline btn-sm" data-case="p3"><i class="fa-solid fa-book-open"></i> Case Study</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 4: Tourism API -->
+      <div class="project-bento reverse" id="tourism-card">
+        <div class="project-details">
+          <h3>Tourism Management API</h3>
+          <span class="tagline">Spring Data JPA Schema Mapping</span>
+          <p class="paragraph">
+            <strong>Problem:</strong> Mapping nested hotel room bookings, travel itineraries, and customer reservations cleanly without query amplification issues.
+          </p>
+          <p class="paragraph">
+            <strong>Solution:</strong> Designed REST APIs managing travel packaging CRUD flows. Implemented Spring Data JPA schema mapping (one-to-many, many-to-one) and tested via Postman.
+          </p>
+          <div class="project-metrics">
+            <div class="metric-box">
+              <span class="metric-num">RESTful</span>
+              <span class="metric-label">CRUD API</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-num">Postman</span>
+              <span class="metric-label">Unit Verified</span>
+            </div>
+          </div>
+          <div class="badge-row">
+            <span class="badge">Spring Boot</span><span class="badge">REST API</span><span class="badge">MySQL</span><span class="badge">Postman</span>
+          </div>
+          <div class="hero-cta" style="margin-bottom:0;">
+            <a href="https://github.com/abhishektangade965-crypto/Tourism-Management-Api" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm"><i class="fa-brands fa-github"></i> GitHub</a>
+            <button class="btn btn-outline btn-sm" data-case="p4"><i class="fa-solid fa-book-open"></i> Case Study</button>
+          </div>
+        </div>
+        <div class="mockup-container">
+          <div class="device-mockup">
+            <div class="device-screen">
+              <img src="assets/images/tourism/home.webp" alt="Tourism API dashboard" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Continuous Learning Certifications -->
+<section style="background: var(--bg-soft); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+  <div class="container">
+    <span class="eyebrow" style="justify-content: center; display: flex;"><span class="dot"></span> Continuous Learning</span>
+    <h2 class="section-title" style="text-align: center; margin-bottom: 48px;">My Certifications</h2>
+    <div class="grid-3">
+      <div class="card card-glass" style="text-align: center; padding: 36px 20px;">
+        <span style="font-size: 2.2rem; color: var(--accent); margin-bottom: 16px; display: block;"><i class="fa-brands fa-java"></i></span>
+        <h4 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 8px;">Java Programming Masterclass</h4>
+        <p style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--text-muted); text-transform: uppercase;">Udemy — 2024 (Completed)</p>
+      </div>
+      <div class="card card-glass" style="text-align: center; padding: 36px 20px;">
+        <span style="font-size: 2.2rem; color: var(--accent); margin-bottom: 16px; display: block;"><i class="fa-solid fa-database"></i></span>
+        <h4 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 8px;">SQL Query Optimization</h4>
+        <p style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--text-muted); text-transform: uppercase;">Udemy — 2024 (Completed)</p>
+      </div>
+      <div class="card card-glass" style="text-align: center; padding: 36px 20px;">
+        <span style="font-size: 2.2rem; color: var(--accent); margin-bottom: 16px; display: block;"><i class="fa-solid fa-leaf"></i></span>
+        <h4 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 8px;">Spring Boot Microservices</h4>
+        <p style="font-family: var(--font-mono); font-size: 0.76rem; color: var(--text-muted); text-transform: uppercase;">Udemy — In Progress</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Glassmorphic Case Study Modal overlay -->
+<div class="case-modal-backdrop" id="caseModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: 10000; align-items: center; justify-content: center; padding: 20px;">
+  <div class="card card-glass case-modal-box" style="width: 100%; max-width: 760px; max-height: 90vh; overflow-y: auto; padding: 48px; border-radius: var(--radius-lg); position: relative;">
+    <button class="case-modal-close" aria-label="Close modal" style="position: absolute; top: 24px; right: 24px; font-size: 1.4rem; cursor: pointer; color: var(--text-muted); transition: color 0.2s;"><i class="fa-solid fa-xmark"></i></button>
+
+    <!-- Case Study 1 -->
+    <div class="case-panel" data-case-panel="p1" style="display: none;">
+      <h3 style="font-size: 2rem; font-weight: 800; margin-bottom: 8px; color: var(--text);">Delivoos — Food Delivery Enterprise</h3>
+      <p style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent); margin-bottom: 24px;">Spring Boot · Kafka · Redis · Microservices · API Gateway</p>
+      <p style="color: var(--text-muted); margin-bottom: 20px;">
+        Designed and developed an event-driven food delivery coordination backend system resolving high transaction lock bottlenecks.
+      </p>
+      <h4 style="font-size: 1.1rem; font-weight: 700; margin-top: 24px; margin-bottom: 8px; color: var(--text);">What I Built</h4>
+      <ul style="list-style: disc; padding-left: 20px; color: var(--text-muted); margin-bottom: 20px;">
+        <li style="margin-bottom: 8px;">Configured Saga transactional patterns via Apache Kafka to orchestrate orders asynchronously across 8 microservices.</li>
+        <li style="margin-bottom: 8px;">Built a central API Gateway for load balancing routing, request logging filters, and mapping path translations.</li>
+        <li style="margin-bottom: 8px;">Integrated Redis caching for catalog lookups, yielding a 45% reduction in API server response latencies.</li>
+      </ul>
+      <h4 style="font-size: 1.1rem; font-weight: 700; color: var(--text); margin-bottom: 8px;">Performance Outcome</h4>
+      <p style="color: var(--text-muted);">
+        A highly scalable, asynchronous order fulfillment platform capable of handling concurrent transactions without database locks.
+      </p>
+    </div>
+
+    <!-- Case Study 2 -->
+    <div class="case-panel" data-case-panel="p2" style="display: none;">
+      <h3 style="font-size: 2rem; font-weight: 800; margin-bottom: 8px; color: var(--text);">SmartBank — Enterprise Banking</h3>
+      <p style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent); margin-bottom: 24px;">Spring Boot · Spring Security 6 · JWT · MySQL</p>
+      <p style="color: var(--text-muted); margin-bottom: 20px;">
+        Built a digital banking system with role-based security configurations and strict transactional ledger controls.
+      </p>
+      <h4 style="font-size: 1.1rem; font-weight: 700; margin-top: 24px; margin-bottom: 8px; color: var(--text);">What I Built</h4>
+      <ul style="list-style: disc; padding-left: 20px; color: var(--text-muted); margin-bottom: 20px;">
+        <li style="margin-bottom: 8px;">Developed 30+ secure REST APIs executing transactional bookkeeping steps with ACID validation.</li>
+        <li style="margin-bottom: 8px;">Configured endpoint isolation using Spring Security 6 stateless filter chains and JWT verification.</li>
+        <li style="margin-bottom: 8px;">Simulated and benchmarked 10K+ transactions to verify ledger consistency under concurrent transfer threads.</li>
+      </ul>
+      <h4 style="font-size: 1.1rem; font-weight: 700; color: var(--text); margin-bottom: 8px;">Performance Outcome</h4>
+      <p style="color: var(--text-muted);">
+        A highly secure digital ledger backend demonstrating 45% faster response times via optimized query index paths.
+      </p>
+    </div>
+
+    <!-- Case Study 3 -->
+    <div class="case-panel" data-case-panel="p3" style="display: none;">
+      <h3 style="font-size: 2rem; font-weight: 800; margin-bottom: 8px; color: var(--text);">Smart Logistics &amp; Supply Chain</h3>
+      <p style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent); margin-bottom: 24px;">Spring Boot · MySQL · Redis · Fuzzy Search</p>
+      <p style="color: var(--text-muted); margin-bottom: 20px;">
+        Built an tracking dashboard portal to manage warehouse occupancy spaces and log metrics.
+      </p>
+      <h4 style="font-size: 1.1rem; font-weight: 700; margin-top: 24px; margin-bottom: 8px; color: var(--text);">What I Built</h4>
+      <ul style="list-style: disc; padding-left: 20px; color: var(--text-muted); margin-bottom: 20px;">
+        <li style="margin-bottom: 8px;">Created warehouse catalog status panels showing inventory volumes.</li>
+        <li style="margin-bottom: 8px;">Implemented fuzzy search command lookup selectors for warehouse operators.</li>
+        <li style="margin-bottom: 8px;">Configured a Redis cache failover handler to redirect database queries dynamically during caching downtime.</li>
+      </ul>
+      <h4 style="font-size: 1.1rem; font-weight: 700; color: var(--text); margin-bottom: 8px;">Performance Outcome</h4>
+      <p style="color: var(--text-muted);">
+        Highly resilient supply chain backend maintaining operational search uptime during server failover events.
+      </p>
+    </div>
+
+    <!-- Case Study 4 -->
+    <div class="case-panel" data-case-panel="p4" style="display: none;">
+      <h3 style="font-size: 2rem; font-weight: 800; margin-bottom: 8px; color: var(--text);">Tourism Management API</h3>
+      <p style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent); margin-bottom: 24px;">Spring Boot · REST API · MySQL · Postman</p>
+      <p style="color: var(--text-muted); margin-bottom: 20px;">
+        A CRUD-driven REST API package designed to manage travel packages, hotel rooms bookings, and customer itineraries.
+      </p>
+      <h4 style="font-size: 1.1rem; font-weight: 700; margin-top: 24px; margin-bottom: 8px; color: var(--text);">What I Built</h4>
+      <ul style="list-style: disc; padding-left: 20px; color: var(--text-muted); margin-bottom: 20px;">
+        <li style="margin-bottom: 8px;">Created REST endpoints handling reservation CRUD paths.</li>
+        <li style="margin-bottom: 8px;">Mapped nested relational databases using JPA schemas (one-to-many, many-to-one).</li>
+        <li style="margin-bottom: 8px;">Executed automated endpoint assertions using Postman Collection tests.</li>
+      </ul>
+      <h4 style="font-size: 1.1rem; font-weight: 700; color: var(--text); margin-bottom: 8px;">Performance Outcome</h4>
+      <p style="color: var(--text-muted);">
+        Clean relational data mapping model designed to integrate with consumer-facing booking platforms.
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<!-- Minimal Footer -->
+<footer>
+  <div class="container">
+    <div class="footer-cta-box">
+      <h2>Ready to build something reliable?</h2>
+      <p>I am looking for Java Backend Developer roles. Let's discuss how I can contribute to your development team.</p>
+      <a href="contact.html" class="btn btn-primary">Contact Me <i class="fa-solid fa-paper-plane"></i></a>
+    </div>
+    
+    <div class="footer-bottom">
+      <span>&copy; <span data-year></span> Abhishek Tangade. All rights reserved.</span>
+      <span>Built with GSAP, Lenis, SplitType &amp; Custom Canvas Nodes.</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Animations Dependencies -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
+
+<!-- Scripts -->
+<script src="assets/js/lightning.js?v=4" defer></script>
+<script src="assets/js/main.js?v=4" defer></script>
+<script src="assets/js/animations.js?v=4" defer></script>
+</body>
+</html>

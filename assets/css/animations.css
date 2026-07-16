@@ -1,0 +1,98 @@
+/* ======================================================================
+   Abhishek Tangade — animations.css
+   Support styles for GSAP, ScrollTrigger, Lenis, and mouse events.
+   ====================================================================== */
+
+/* SplitType character reveals */
+.line {
+  overflow: hidden;
+  white-space: nowrap;
+}
+.char {
+  display: inline-block;
+  transform: translateY(105%);
+  transition: transform 0.8s var(--ease);
+}
+
+/* Scroll Trigger reveals */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+}
+.reveal-up.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Mouse spotlight following overlay container */
+.spotlight-container {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+.spotlight {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 77, 0, 0.08) 0%, rgba(255, 77, 0, 0) 70%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  mix-blend-mode: screen;
+  will-change: transform;
+}
+
+/* GPU Animated mesh backdrop */
+.mesh-canvas {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+/* Magnetic link indicators */
+.magnetic-item {
+  display: inline-block;
+  will-change: transform;
+  transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Float badge pulsing glow */
+.float-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  animation: badgeFloat 4s ease-in-out infinite, badgeGlow 3s ease-in-out infinite alternate;
+}
+@keyframes badgeFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes badgeGlow {
+  0% { box-shadow: 0 0 10px rgba(255, 77, 0, 0.15); }
+  100% { box-shadow: 0 0 24px rgba(255, 77, 0, 0.35); }
+}
+
+/* Lenis smooth scrolling body indicators */
+html.lenis {
+  height: auto;
+}
+.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis-smooth [data-aos] {
+  transition-property: none !important;
+}
+
+/* 3D tilt perspective settings */
+.tilt-card-parent {
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
+}
+.tilt-card-child {
+  transform: translateZ(24px);
+}
