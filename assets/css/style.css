@@ -21,6 +21,15 @@
   --glass: rgba(13, 13, 13, 0.85);
   --shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
 
+  /* Layer Z-Index Scale */
+  --z-bg: -2;
+  --z-lightning: -1;
+  --z-content: 1;
+  --z-canvas-overlay: 100;
+  --z-nav: 1000;
+  --z-modal: 2000;
+  --z-cursor: 3000;
+
   /* Typography */
   --font-display: 'Inter', sans-serif;
   --font-body: 'Inter', sans-serif;
@@ -174,7 +183,7 @@ section { padding: 120px 0; position: relative; }
   transform: translateX(-50%);
   width: 90%;
   max-width: var(--container);
-  z-index: 1000;
+  z-index: var(--z-nav);
   background: var(--glass);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -859,7 +868,7 @@ footer {
   border-radius: 50%;
   position: fixed;
   pointer-events: none;
-  z-index: 10000;
+  z-index: var(--z-cursor);
   transform: translate(-50%, -50%);
   transition: width 0.2s, height 0.2s, background-color 0.2s;
 }
@@ -870,7 +879,7 @@ footer {
   border-radius: 50%;
   position: fixed;
   pointer-events: none;
-  z-index: 9999;
+  z-index: calc(var(--z-cursor) - 1);
   transform: translate(-50%, -50%);
   transition: width 0.3s var(--ease), height 0.3s var(--ease), border-color 0.3s var(--ease);
 }
@@ -957,7 +966,7 @@ footer {
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  z-index: 10010;
+  z-index: var(--z-modal);
   display: none;
   align-items: flex-start;
   justify-content: center;
@@ -1290,7 +1299,7 @@ footer {
   width: calc(100% + 16px) !important;
   height: calc(100% + 16px) !important;
   pointer-events: none !important;
-  z-index: 100 !important;
+  z-index: var(--z-canvas-overlay) !important;
 }
 
 /* Custom spotlight reflections when theme is dark */

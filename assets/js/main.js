@@ -128,6 +128,50 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  /* ---------- Global Keyboard Navigation Shortcuts ---------- */
+  window.addEventListener('keydown', (e) => {
+    const active = document.activeElement;
+    if (active && (
+      active.tagName === 'INPUT' || 
+      active.tagName === 'TEXTAREA' || 
+      active.isContentEditable
+    )) {
+      return;
+    }
+    if (e.ctrlKey || e.altKey || e.metaKey) {
+      return;
+    }
+    const cmdPalette = document.getElementById('cmdPalette');
+    if (cmdPalette && cmdPalette.classList.contains('show')) {
+      return;
+    }
+    const mobileDrawer = document.querySelector('.mobile-drawer');
+    if (mobileDrawer && mobileDrawer.classList.contains('open')) {
+      return;
+    }
+
+    const key = e.key.toLowerCase();
+    const shortcuts = {
+      'h': 'index.html',
+      'a': 'about.html',
+      's': 'skills.html',
+      'p': 'projects.html',
+      'r': 'resume.html',
+      'c': 'contact.html'
+    };
+
+    if (shortcuts[key]) {
+      e.preventDefault();
+      if (document.startViewTransition) {
+        document.startViewTransition(() => {
+          window.location.href = shortcuts[key];
+        });
+      } else {
+        window.location.href = shortcuts[key];
+      }
+    }
+  });
+
   /* ---------- Lenis Smooth Scroll Initialization ---------- */
   if (typeof Lenis !== 'undefined') {
     const lenis = new Lenis({
