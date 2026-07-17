@@ -34,10 +34,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 2. Navbar slide down
   if (document.querySelector('.navbar')) {
+    const position = document.querySelector('.hero-aurora') ? '<=0.4' : '+=0';
     heroTl.fromTo('.navbar', 
       { y: -80, opacity: 0 }, 
       { y: 0, opacity: 1, duration: 1.2 },
-      '-=1.4'
+      position
     );
   }
 
