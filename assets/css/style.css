@@ -1276,10 +1276,26 @@ footer {
 
 /* Force remove static borders ONLY on elements wrapping the active ElectricBorder */
 #delivoos-card, 
+#smartbank-card, 
+#logistics-card, 
+#tourism-card, 
 .hero-btn-primary, 
 #java-card {
   border: none !important;
   outline: none !important;
+}
+
+/* Padding and glass styles for decorated project bentos */
+.project-bento.electric-border-card {
+  padding: 40px !important;
+  border-radius: var(--radius-lg) !important;
+  background: var(--glass) !important;
+  transition: background 0.3s var(--ease);
+}
+@media (max-width: 768px) {
+  .project-bento.electric-border-card {
+    padding: 24px !important;
+  }
 }
 
 /* Keep device screen aspect ratio & clipping */
@@ -1531,5 +1547,23 @@ footer {
   .trust-badge:hover, .btn:hover {
     transform: none !important;
   }
+}
+
+/* Glassmorphic Case Study Modal Overrides */
+.case-modal-backdrop {
+  background: rgba(13, 13, 13, 0.75) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  z-index: var(--z-modal) !important;
+  transition: opacity 0.3s var(--ease);
+}
+.case-modal-box {
+  border: 1px solid rgba(244, 241, 234, 0.08) !important;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.75) !important;
+  background: var(--glass) !important;
+  border-radius: var(--radius-lg) !important;
+}
+.case-modal-close:hover {
+  color: var(--accent) !important;
 }
 

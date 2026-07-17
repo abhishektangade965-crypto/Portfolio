@@ -775,6 +775,9 @@ window.ElectricBorder = ElectricBorder;
 document.addEventListener('DOMContentLoaded', () => {
   const CARD_SELECTORS = [
     '#delivoos-card',
+    '#smartbank-card',
+    '#logistics-card',
+    '#tourism-card',
     '.hero-btn-primary',
     '#java-card'
   ];

@@ -503,4 +503,47 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  /* ---------- Case Study Modal Interactivity ---------- */
+  const caseButtons = document.querySelectorAll('[data-case]');
+  const caseModal = document.getElementById('caseModal');
+  const closeBtn = document.querySelector('.case-modal-close');
+  const panels = document.querySelectorAll('.case-panel');
+
+  if (caseModal) {
+    caseButtons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const caseId = btn.getAttribute('data-case');
+        
+        // Hide all case study content panels
+        panels.forEach(p => p.style.display = 'none');
+        
+        // Show matching case study content panel
+        const activePanel = document.querySelector(`[data-case-panel="${caseId}"]`);
+        if (activePanel) {
+          activePanel.style.display = 'block';
+          caseModal.style.display = 'flex';
+          document.body.style.overflow = 'hidden'; // prevent page scroll behind modal
+        }
+      });
+    });
+
+    const closeModal = () => {
+      caseModal.style.display = 'none';
+      document.body.style.overflow = ''; // restore scrolling
+    };
+
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+
+    caseModal.addEventListener('click', (e) => {
+      if (e.target === caseModal) closeModal();
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && caseModal.style.display === 'flex') {
+        closeModal();
+      }
+    });
+  }
+
 });
