@@ -68,20 +68,37 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ---------- Floating Navbar Show/Hide on Scroll ---------- */
-  let lastScrollY = window.scrollY;
+  /* ---------- Floating Navbar Show/Hide/Shrink on Scroll ---------- */
+  let lastScroll = window.scrollY;
   const navbar = document.querySelector('.navbar');
   window.addEventListener('scroll', () => {
-    const currentScrollY = window.scrollY;
+    const cur = window.scrollY;
     if (navbar) {
-      if (currentScrollY > lastScrollY && currentScrollY > 150) {
+      navbar.classList.toggle('shrink', cur > 80);
+      navbar.classList.toggle('hide-nav', cur > lastScroll && cur > 200);
+      
+      if (cur > lastScroll && cur > 200) {
         navbar.classList.add('hide');
       } else {
         navbar.classList.remove('hide');
       }
     }
-    lastScrollY = currentScrollY;
+    lastScroll = cur;
   });
+
+  /* ---------- Hero Cursor Spotlight Tracker ---------- */
+  const spotlight = document.getElementById('spotlight');
+  const heroSection = document.querySelector('.hero');
+  if (spotlight && heroSection) {
+    heroSection.addEventListener('pointermove', (e) => {
+      spotlight.style.left = e.clientX + 'px';
+      spotlight.style.top = e.clientY + 'px';
+      spotlight.style.opacity = '1';
+    });
+    heroSection.addEventListener('pointerleave', () => {
+      spotlight.style.opacity = '0';
+    });
+  }
 
   /* ---------- Hamburger Menu Overlay Drawer ---------- */
   const hamburger = document.querySelector('.hamburger');

@@ -175,6 +175,7 @@
 <!-- Fullscreen Hero Showcase -->
 <header class="hero" id="main">
   <div class="hero-aurora"></div>
+  <div class="cursor-spotlight" id="spotlight"></div>
   <div class="container hero-grid">
     <div class="hero-text-block">
       <div class="hero-kicker float-badge">
@@ -249,7 +250,19 @@
     <div class="hero-media">
       <div class="canvas-hero-wrapper" style="width: 100%; height: 420px; position: relative;">
         <canvas id="heroNetworkCanvas" style="width: 100%; height: 100%; cursor: pointer;"></canvas>
-        <div class="hero-console-log" style="position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); width: 90%; background: rgba(0,0,0,0.85); border: 1px solid var(--border-strong); border-radius: 8px; padding: 12px 18px; font-family: var(--font-mono); font-size: 0.72rem; color: #32d74b; text-align: left; max-height: 84px; overflow-y: hidden; pointer-events: none; opacity: 0.85; box-shadow: var(--shadow);">
+        <div class="float-card card-glass" style="top: 10%; left: -8%;">
+          <span class="float-card-lbl">JWT VALID</span>
+          <span class="float-card-val">99.98%</span>
+        </div>
+        <div class="float-card card-glass" style="top: 55%; right: -10%;">
+          <span class="float-card-lbl">Kafka</span>
+          <span class="float-card-val">125 msg/s</span>
+        </div>
+        <div class="float-card card-glass" style="bottom: 5%; left: 5%;">
+          <span class="float-card-lbl">Redis</span>
+          <span class="float-card-val">3ms</span>
+        </div>
+        <div class="hero-console-log card-glass" style="position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); width: 90%; padding: 12px 18px; font-family: var(--font-mono); font-size: 0.72rem; color: #32d74b; text-align: left; max-height: 84px; overflow-y: hidden; pointer-events: none; opacity: 0.85;">
           <div class="console-line">> [INFO] System Initialized. Awaiting packet stream...</div>
         </div>
       </div>
@@ -263,30 +276,6 @@
     </div>
   </div>
 </header>
-
-<!-- Asymmetric Statistics Strip -->
-<section style="background: var(--bg-soft); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
-  <div class="container">
-    <div class="counter-strip">
-      <div class="card card-glass counter-card">
-        <div class="num" data-count="4">0</div>
-        <div class="lbl">Backend Systems</div>
-      </div>
-      <div class="card card-glass counter-card">
-        <div class="num" data-count="30" data-suffix="+">0</div>
-        <div class="lbl">REST APIs Built</div>
-      </div>
-      <div class="card card-glass counter-card">
-        <div class="num" data-count="14">0</div>
-        <div class="lbl">Tech Stack Stacked</div>
-      </div>
-      <div class="card card-glass counter-card">
-        <div class="num" data-count="75" data-suffix="%">0</div>
-        <div class="lbl">BCA Grad Score</div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- Featured Projects Bento Showcase -->
 <section>

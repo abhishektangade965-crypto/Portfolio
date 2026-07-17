@@ -20,84 +20,64 @@ document.addEventListener('DOMContentLoaded', () => {
       progress.style.width = `${percentage}%`;
     }
   });
-
   /* ---------- Page Load Hero Master Entrance Timeline ---------- */
-  const heroTl = gsap.timeline({ defaults: { ease: 'power4.out' } });
+  const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
   // 1. Aurora fade-in
   if (document.querySelector('.hero-aurora')) {
     heroTl.fromTo('.hero-aurora', 
       { scale: 0.8, opacity: 0 }, 
-      { scale: 1, opacity: 1, duration: 1.8, ease: 'power2.out' }
+      { scale: 1, opacity: 1, duration: 1.5, ease: 'power2.out' }
     );
   }
 
   // 2. Navbar slide down
   if (document.querySelector('.navbar')) {
     const position = document.querySelector('.hero-aurora') ? '<=0.4' : '+=0';
-    heroTl.fromTo('.navbar', 
-      { y: -80, opacity: 0 }, 
-      { y: 0, opacity: 1, duration: 1.2 },
-      position
-    );
+    heroTl.from('.navbar', { y: -40, opacity: 0, duration: 0.6 }, position);
   }
 
   // 3. Status kicker badge reveal
   if (document.querySelector('.hero-kicker')) {
-    heroTl.fromTo('.hero-kicker', 
-      { y: 30, opacity: 0 }, 
-      { y: 0, opacity: 1, duration: 0.9 },
-      '-=1.0'
-    );
+    heroTl.from('.hero-kicker', { y: 20, opacity: 0, duration: 0.5 }, '-=0.3');
   }
 
-  // 4. Hero title word-by-word stagger using Split-Type
+  // 4. Hero title character-by-character stagger using Split-Type
   const splitTitle = document.querySelector('.hero-title');
   if (splitTitle && typeof SplitType !== 'undefined') {
-    const text = new SplitType(splitTitle, { types: 'words' });
-    // Set overflow hidden on parents to hide words sliding up
-    gsap.set(text.words, { overflow: 'hidden' });
-    heroTl.fromTo(text.words,
-      { y: 60, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1.0, stagger: 0.08, ease: 'power4.out' },
-      '-=0.8'
-    );
+    const text = new SplitType(splitTitle, { types: 'chars' });
+    gsap.set(text.chars, { overflow: 'hidden' });
+    heroTl.from(text.chars, { y: 60, opacity: 0, stagger: 0.02, duration: 0.6 }, '-=0.2');
   } else if (splitTitle) {
-    heroTl.fromTo(splitTitle,
-      { y: 40, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1.0 },
-      '-=0.8'
-    );
+    heroTl.from(splitTitle, { y: 40, opacity: 0, duration: 0.6 }, '-=0.2');
   }
 
   // 5. Role description line reveal
   if (document.querySelector('.role-line')) {
-    heroTl.fromTo('.role-line',
-      { y: 20, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.8 },
-      '-=0.7'
-    );
+    heroTl.from('.role-line', { opacity: 0, duration: 0.4 }, '-=0.3');
   }
 
   // 6. Description paragraph fade-up
   if (document.querySelector('.hero-text')) {
-    heroTl.fromTo('.hero-text',
-      { y: 20, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.9 },
-      '-=0.7'
-    );
+    heroTl.from('.hero-text', { y: 20, opacity: 0, duration: 0.5 }, '-=0.2');
   }
 
   // 7. CTA buttons slide-up
   if (document.querySelector('.hero-cta')) {
-    heroTl.fromTo('.hero-cta .btn',
-      { y: 25, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.9, stagger: 0.1 },
-      '-=0.8'
-    );
+    heroTl.from('.hero-cta .btn', { y: 20, opacity: 0, stagger: 0.1, duration: 0.4 }, '-=0.2');
   }
 
-  // 8. Metrics counter animations (sequential count up)
+  // 8. Canvas centerpiece zoom entrance
+  if (document.getElementById('heroNetworkCanvas')) {
+    heroTl.from('#heroNetworkCanvas', { scale: 0.9, opacity: 0, duration: 0.8 }, '-=0.4');
+  }
+
+  // 9. Floating cards stagger reveal
+  if (document.querySelector('.float-card')) {
+    heroTl.from('.float-card', { y: 30, opacity: 0, stagger: 0.15, duration: 0.5 }, '-=0.4');
+  }
+
+  // 10. Metrics counter animations (sequential count up)
   const metrics = document.querySelectorAll('.metric-val');
   if (metrics.length) {
     metrics.forEach((m, idx) => {
@@ -110,26 +90,27 @@ document.addEventListener('DOMContentLoaded', () => {
         onUpdate: () => {
           m.textContent = Math.floor(countVal.val);
         }
-      }, `-=${idx === 0 ? 0.7 : 1.2}`);
+      }, `-=${idx === 0 ? 0.4 : 1.2}`);
     });
   }
 
-  // 9. Trust badges stagger reveal
+  // 11. Trust badges stagger reveal
   if (document.querySelector('.hero-trust-badges')) {
-    heroTl.fromTo('.hero-trust-badges', { opacity: 0 }, { opacity: 1, duration: 0.6 }, '-=0.9');
-    heroTl.fromTo('.trust-badge',
-      { y: 15, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.7, stagger: 0.08 },
-      '-=0.7'
-    );
+    heroTl.from('.hero-trust-badges', { opacity: 0, duration: 0.4 }, '-=0.6');
+    heroTl.from('.trust-badge', { y: 15, opacity: 0, duration: 0.5, stagger: 0.08 }, '-=0.4');
   }
 
-  // 10. Scroll indicator fade-in
+  // 12. Counter cards stagger reveal
+  if (document.querySelector('.counter-card')) {
+    heroTl.from('.counter-card', { y: 30, opacity: 0, stagger: 0.1, duration: 0.4 }, '-=0.2');
+  }
+
+  // 13. Scroll indicator fade-in
   if (document.querySelector('.scroll-indicator')) {
     heroTl.fromTo('.scroll-indicator', 
       { opacity: 0, y: 10 }, 
       { opacity: 1, y: 0, duration: 0.8 },
-      '-=0.5'
+      '-=0.3'
     );
   }
 
