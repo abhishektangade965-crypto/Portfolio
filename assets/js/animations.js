@@ -263,7 +263,7 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ---------- Section Reveal Animations on Scroll ---------- */
   if (typeof ScrollTrigger !== 'undefined') {
     // Fade reveal titles, subtitles, and general container elements
-    const fadeUps = document.querySelectorAll('.section-title, .section-sub, .card, .timeline-item, .project-bento, .contact-wrapper');
+    const fadeUps = document.querySelectorAll('.section-title, .section-sub, .card, .project-bento, .contact-wrapper');
     fadeUps.forEach(el => {
       gsap.fromTo(el, 
         { y: 50, opacity: 0 },
@@ -316,6 +316,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       );
     }
+
+    // Staggered alternating reveal animations for timeline items
+    gsap.utils.toArray('.timeline-item').forEach((item, i) => {
+      gsap.from(item, {
+        opacity: 0,
+        x: i % 2 === 0 ? -45 : 45,
+        duration: 0.8,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: item,
+          start: 'top 85%',
+          toggleActions: 'play none none none'
+        }
+      });
+    });
   }
 
   /* ---------- Interactive Backend Architecture Data Stream Graph ---------- */

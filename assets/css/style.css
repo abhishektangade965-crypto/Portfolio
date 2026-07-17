@@ -1648,3 +1648,73 @@ footer {
   top: -999px;
 }
 
+/* ======================================================================
+   ABOUT PAGE STYLING SYSTEM
+   ====================================================================== */
+.text-accent {
+  color: var(--accent);
+  font-weight: 600;
+}
+.bio-heading {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--text);
+}
+.bio-para {
+  color: var(--text-muted);
+  margin-bottom: 20px;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+.edu-card {
+  border-left: 4px solid var(--accent) !important;
+  padding: 28px !important;
+}
+.edu-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+.edu-duration {
+  font-size: 0.95rem;
+  font-family: var(--font-mono);
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+.edu-school {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+.edu-grade-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
+}
+.edu-grade-label {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+.edu-grade-val {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.page-header .section-title {
+  font-size: clamp(2.8rem, 6vw, 4.5rem);
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+.page-header .section-sub {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  max-width: 560px;
+  line-height: 1.6;
+}
+
