@@ -2,7 +2,7 @@
 
 A modern, production-grade personal portfolio website showcasing distributed microservices architecture, event-driven design, and high-performance WebGL aesthetics.
 
-[![Live Portfolio](https://img.shields.io/badge/Live_Portfolio-https%3A%2F%2Fabhishektangade--portfolio.netlify.app-FF4D00?style=for-the-badge&logo=netlify)](https://abhishektangade-portfolio.netlify.app/)
+
 [![Java](https://img.shields.io/badge/Java-21-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)](https://www.oracle.com/java/)
 [![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.x-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)](https://spring.io/projects/spring-boot)
 [![Kafka](https://img.shields.io/badge/Apache_Kafka-Event_Streams-231F20?style=for-the-badge&logo=apachekafka&logoColor=white)](https://kafka.apache.org/)
