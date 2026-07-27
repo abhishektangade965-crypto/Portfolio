@@ -6,16 +6,16 @@
 <title>404 — Page Not Found | Abhishek Tangade</title>
 <meta name="robots" content="noindex, follow">
 
-<!-- Favicon -->
-<link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
-<link rel="alternate icon" href="favicon.ico">
+<!-- Premium AT Favicon -->
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
 
 <!-- Fonts & Libraries -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-<style>html,body{background:#0D0D0D;margin:0;}</style>
+<style>html,body{background:var(--bg);margin:0;}</style>
 
 <style>
 @view-transition { navigation: auto; }
@@ -33,6 +33,14 @@
 </style>
 </head>
 <body>
+
+<!-- Light Theme Background Video & Fallback (Dark Theme Untouched) -->
+<video id="silkBackground" class="silk-bg-video" autoplay muted loop playsinline preload="none">
+  <source src="assets/videos/silk-fabric-light-loop.webm" type="video/webm">
+  <source src="assets/videos/silk-fabric-light-loop.mp4" type="video/mp4">
+</video>
+<div id="silkBackdropFallback" class="silk-bg-fallback"></div>
+
 
 <div class="scroll-progress-bar" id="scrollProgress"></div>
 
@@ -102,7 +110,7 @@
 <div class="cursor-dot"></div>
 <div class="cursor-ring"></div>
 
-<div class="err-wrap">
+<div class="err-wrap" style="position: relative;">
   <span class="eyebrow" style="justify-content:center;"><span class="dot"></span> Error 404</span>
   <div class="err-code">throw 404;</div>
   <h2 style="margin-top:14px; font-family: var(--font-display); font-size: 2rem; font-weight: 800;">This route doesn't exist — yet.</h2>
@@ -114,6 +122,7 @@
 
 <!-- Scripts -->
 <script src="assets/js/lightning.js?v=4" defer></script>
+<script src="assets/js/splash-cursor.js" defer></script>
 <script src="assets/js/main.js?v=4" defer></script>
 </body>
 </html>

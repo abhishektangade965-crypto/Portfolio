@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abhishek.dev — Animated Portfolio GIF Showcase & Demo</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+  :root {
+    --bg: #0D0D0D;
+    --surface: #1A1A1A;
+    --border: rgba(255, 255, 255, 0.1);
+    --accent: #FF4D00;
+    --text: #FFFFFF;
+    --text-muted: rgba(255, 255, 255, 0.7);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 16px;
+    overflow-x: hidden;
+  }
+  .header-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    color: var(--accent);
+    background: rgba(255, 77, 0, 0.12);
+    border: 1px solid rgba(255, 77, 0, 0.3);
+    padding: 6px 16px;
+    border-radius: 30px;
+    margin-bottom: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .header-tag .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent); }
+  h1 { font-size: 2.2rem; font-weight: 900; margin-bottom: 8px; text-align: center; }
+  p.subtitle { color: var(--text-muted); font-size: 1rem; margin-bottom: 28px; text-align: center; max-width: 600px; }
+  
+  /* Mockup Frame */
+  .mockup-wrapper {
+    width: 100%;
+    max-width: 960px;
+    background: #141414;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.8), 0 0 40px rgba(255, 77, 0, 0.15);
+    overflow: hidden;
+    position: relative;
+  }
+  .mockup-header {
+    background: #0A0A0A;
+    padding: 12px 18px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .mockup-dots { display: flex; gap: 8px; }
+  .mockup-dot { width: 12px; height: 12px; border-radius: 50%; }
+  .dot-red { background: #FF5F56; }
+  .dot-yellow { background: #FFBD2E; }
+  .dot-green { background: #27C93F; }
+  .mockup-url {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    padding: 4px 16px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.76rem;
+    color: var(--text-muted);
+    width: 320px;
+    text-align: center;
+  }
+  .iframe-container {
+    width: 100%;
+    height: 560px;
+    position: relative;
+    overflow: hidden;
+  }
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  
+  /* Control Bar */
+  .controls-bar {
+    display: flex;
+    gap: 16px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .btn {
+    background: var(--accent);
+    color: #FFF;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.92rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(255,77,0,0.4); }
+  .btn-secondary { background: var(--surface); border: 1px solid var(--border); color: var(--text); }
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); box-shadow: none; }
+</style>
+</head>
+<body>
+
+<div class="header-tag"><span class="dot"></span> Animated Portfolio Showcase</div>
+<h1>Abhishek.dev Live Showcase &amp; GIF Preview</h1>
+<p class="subtitle">An interactive demonstration of Abhishek Tangade's Java Backend Developer portfolio featuring WebGL lighting, microservices architecture, and dual light/dark silk theme.</p>
+
+<div class="mockup-wrapper">
+  <div class="mockup-header">
+    <div class="mockup-dots">
+      <div class="mockup-dot dot-red"></div>
+      <div class="mockup-dot dot-yellow"></div>
+      <div class="mockup-dot dot-green"></div>
+    </div>
+    <div class="mockup-url"><i class="fa-solid fa-lock" style="font-size:0.7rem; margin-right:6px; color:#3FB950;"></i> https://abhishektangade.dev</div>
+    <div style="width: 50px;"></div>
+  </div>
+  <div class="iframe-container">
+    <iframe src="index.html" id="previewIframe" title="Abhishek Tangade Portfolio Live Preview"></iframe>
+  </div>
+</div>
+
+<div class="controls-bar">
+  <button class="btn" onclick="toggleAutoScroll()"><i class="fa-solid fa-play"></i> Auto-Scroll Demo</button>
+  <button class="btn btn-secondary" onclick="switchPreviewPage('projects.html')"><i class="fa-solid fa-diagram-project"></i> Projects View</button>
+  <button class="btn btn-secondary" onclick="switchPreviewPage('about.html')"><i class="fa-solid fa-user"></i> About View</button>
+  <a href="assets/images/portfolio-showcase.jpg" download class="btn btn-secondary"><i class="fa-solid fa-image"></i> Download Showcase Banner</a>
+</div>
+
+<script>
+  let scrolling = false;
+  let scrollInterval = null;
+  
+  function switchPreviewPage(page) {
+    document.getElementById('previewIframe').src = page;
+  }
+  
+  function toggleAutoScroll() {
+    const iframe = document.getElementById('previewIframe');
+    const iframeDoc = iframe.contentWindow || iframe.contentDocument;
+    
+    if (scrolling) {
+      clearInterval(scrollInterval);
+      scrolling = false;
+    } else {
+      scrolling = true;
+      let pos = 0;
+      scrollInterval = setInterval(() => {
+        pos += 2;
+        iframeDoc.scrollTo(0, pos);
+        if (pos > iframeDoc.document.body.scrollHeight - 600) {
+          pos = 0;
+        }
+      }, 30);
+    }
+  }
+</script>
+
+</body>
+</html>

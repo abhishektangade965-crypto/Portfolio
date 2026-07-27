@@ -8,11 +8,8 @@ class Lightning {
 
     this.canvas = canvas;
     
-    // Auto-detect accent hue if not specified
-    let defaultHue = 10; // Orange
-    const currentAccent = document.documentElement.getAttribute('data-accent');
-    if (currentAccent === 'green') defaultHue = 140;
-    else if (currentAccent === 'amber') defaultHue = 45;
+    // Locked default to premium blue hue (220 degrees) as per user request
+    let defaultHue = 220; 
 
     this.hue = options.hue !== undefined ? options.hue : defaultHue;
     this.xOffset = options.xOffset !== undefined ? options.xOffset : 0;
@@ -102,7 +99,7 @@ class Lightning {
       uniform float uIntensity;
       uniform float uSize;
       
-      #define OCTAVE_COUNT 5
+      #define OCTAVE_COUNT 10
 
       vec3 hsv2rgb(vec3 c) {
           vec3 rgb = clamp(abs(mod(c.x * 6.0 + vec3(0.0,4.0,2.0), 6.0) - 3.0) - 1.0, 0.0, 1.0);
@@ -242,7 +239,7 @@ class Lightning {
       const dt = now - this.lastScrollTime;
       if (dt > 0) {
         const speed = Math.abs(st - this.lastScrollTop) / dt;
-        this.scrollVelocity = Math.min(speed * 8.0, 3.5);
+        this.scrollVelocity = Math.min(speed * 4.0, 1.5);
       }
       this.lastScrollTop = st;
       this.lastScrollTime = now;
@@ -274,11 +271,7 @@ class Lightning {
           }
         }
         if (mutation.attributeName === 'data-accent') {
-          const accent = document.documentElement.getAttribute('data-accent');
-          let nextHue = 30;
-          if (accent === 'green') nextHue = 140;
-          else if (accent === 'amber') nextHue = 45;
-          this.triggerAccentFlash(nextHue);
+          this.triggerAccentFlash(220); // Keep WebGL background locked to premium blue
         }
       });
     });
@@ -328,8 +321,8 @@ class Lightning {
     this.xOffset += (this.targetXOffset - this.xOffset) * 0.06;
 
     // Compute interactive speed and intensity modifiers
-    const activeSpeed = this.speed * (1.0 + this.scrollVelocityTarget * 1.5);
-    const activeIntensity = this.intensity * (1.0 + this.scrollVelocityTarget * 0.8) + this.flashIntensity;
+    const activeSpeed = this.speed * (1.0 + this.scrollVelocityTarget * 0.5);
+    const activeIntensity = this.intensity * (1.0 + this.scrollVelocityTarget * 0.3) + this.flashIntensity;
 
     gl.uniform2f(this.iResolutionLocation, this.canvas.width, this.canvas.height);
     gl.uniform1f(this.iTimeLocation, elapsedTime);
@@ -774,10 +767,7 @@ window.ElectricBorder = ElectricBorder;
 // Auto-decorator bootstrapper routine
 document.addEventListener('DOMContentLoaded', () => {
   const CARD_SELECTORS = [
-    '#delivoos-card',
-    '#smartbank-card',
-    '#logistics-card',
-    '#tourism-card',
+    '.project-bento',
     '.hero-btn-primary',
     '#java-card'
   ];

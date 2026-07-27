@@ -44,61 +44,58 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ---------- Theme Switcher (Dark Mode Only Forced) ---------- */
+  /* ---------- Theme Switcher (Dark/Light) ---------- */
   const root = document.documentElement;
   const themeBtns = document.querySelectorAll('.theme-toggle');
+  const localTheme = localStorage.getItem('abhishek-theme') || 'dark';
   
-  root.setAttribute('data-theme', 'dark');
-  localStorage.setItem('abhishek-theme', 'dark');
+  function applyTheme(theme) {
+    root.setAttribute('data-theme', theme);
+    if (theme === 'light') {
+      root.classList.add('light-theme');
+      root.classList.remove('dark-theme');
+    } else {
+      root.classList.add('dark-theme');
+      root.classList.remove('light-theme');
+    }
+  }
+
+  applyTheme(localTheme);
   
   function updateThemeIcons() {
+    const isLight = root.getAttribute('data-theme') === 'light';
     themeBtns.forEach(btn => {
-      btn.innerHTML = '<i class="bi bi-sun"></i>';
+      btn.innerHTML = isLight ? '<i class="bi bi-moon-stars"></i>' : '<i class="bi bi-sun"></i>';
     });
   }
   updateThemeIcons();
 
   themeBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      // Bypassed: keep theme dark
-      root.setAttribute('data-theme', 'dark');
-      localStorage.setItem('abhishek-theme', 'dark');
+      const current = root.getAttribute('data-theme');
+      const next = current === 'light' ? 'dark' : 'light';
+      applyTheme(next);
+      localStorage.setItem('abhishek-theme', next);
       updateThemeIcons();
-      window.dispatchEvent(new CustomEvent('themechanged', { detail: 'dark' }));
+      // Dispatch custom theme change event for canvas constellation update
+      window.dispatchEvent(new CustomEvent('themechanged', { detail: next }));
     });
   });
 
-  /* ---------- Floating Navbar Show/Hide/Shrink on Scroll ---------- */
-  let lastScroll = window.scrollY;
+  /* ---------- Floating Navbar Show/Hide on Scroll ---------- */
+  let lastScrollY = window.scrollY;
   const navbar = document.querySelector('.navbar');
   window.addEventListener('scroll', () => {
-    const cur = window.scrollY;
+    const currentScrollY = window.scrollY;
     if (navbar) {
-      navbar.classList.toggle('shrink', cur > 80);
-      navbar.classList.toggle('hide-nav', cur > lastScroll && cur > 200);
-      
-      if (cur > lastScroll && cur > 200) {
+      if (currentScrollY > lastScrollY && currentScrollY > 150) {
         navbar.classList.add('hide');
       } else {
         navbar.classList.remove('hide');
       }
     }
-    lastScroll = cur;
+    lastScrollY = currentScrollY;
   });
-
-  /* ---------- Hero Cursor Spotlight Tracker ---------- */
-  const spotlight = document.getElementById('spotlight');
-  const heroSection = document.querySelector('.hero');
-  if (spotlight && heroSection) {
-    heroSection.addEventListener('pointermove', (e) => {
-      spotlight.style.left = e.clientX + 'px';
-      spotlight.style.top = e.clientY + 'px';
-      spotlight.style.opacity = '1';
-    });
-    heroSection.addEventListener('pointerleave', () => {
-      spotlight.style.opacity = '0';
-    });
-  }
 
   /* ---------- Hamburger Menu Overlay Drawer ---------- */
   const hamburger = document.querySelector('.hamburger');
@@ -142,50 +139,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const href = link.getAttribute('href');
     if (href === currentFileName || (currentFileName === '' && href === 'index.html')) {
       link.classList.add('active');
-    }
-  });
-
-  /* ---------- Global Keyboard Navigation Shortcuts ---------- */
-  window.addEventListener('keydown', (e) => {
-    const active = document.activeElement;
-    if (active && (
-      active.tagName === 'INPUT' || 
-      active.tagName === 'TEXTAREA' || 
-      active.isContentEditable
-    )) {
-      return;
-    }
-    if (e.ctrlKey || e.altKey || e.metaKey) {
-      return;
-    }
-    const cmdPalette = document.getElementById('cmdPalette');
-    if (cmdPalette && cmdPalette.classList.contains('show')) {
-      return;
-    }
-    const mobileDrawer = document.querySelector('.mobile-drawer');
-    if (mobileDrawer && mobileDrawer.classList.contains('open')) {
-      return;
-    }
-
-    const key = e.key.toLowerCase();
-    const shortcuts = {
-      'h': 'index.html',
-      'a': 'about.html',
-      's': 'skills.html',
-      'p': 'projects.html',
-      'r': 'resume.html',
-      'c': 'contact.html'
-    };
-
-    if (shortcuts[key]) {
-      e.preventDefault();
-      if (document.startViewTransition) {
-        document.startViewTransition(() => {
-          window.location.href = shortcuts[key];
-        });
-      } else {
-        window.location.href = shortcuts[key];
-      }
     }
   });
 
@@ -374,16 +327,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
     
-    // Toggle on Ctrl+K or badge button click
-    const triggerBtn = document.getElementById('cmdTriggerBtn');
-    if (triggerBtn) {
-      triggerBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const isOpen = cmdPalette.classList.contains('show');
-        togglePalette(!isOpen);
-      });
-    }
-
+    // Toggle on Ctrl+K
     window.addEventListener('keydown', (e) => {
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
         e.preventDefault();
@@ -499,10 +443,11 @@ document.addEventListener('DOMContentLoaded', () => {
   if (lightningCanvas && typeof window.Lightning !== 'undefined') {
     if (window.innerWidth >= 768) {
       new window.Lightning(lightningCanvas, {
-        xOffset: -0.2,
-        speed: 0.65,
-        intensity: 0.45,
-        size: 1.0
+        hue: 220,
+        xOffset: 0,
+        speed: 1.0,
+        intensity: 1.5,
+        size: 1.2
       });
     } else {
       lightningCanvas.remove();
@@ -519,6 +464,41 @@ document.addEventListener('DOMContentLoaded', () => {
       document.head.appendChild(l);
     });
   });
+
+  /* ---------- Role Line Typing Effect ---------- */
+  const typingEl = document.querySelector('[data-typing]');
+  if (typingEl) {
+    const roles = JSON.parse(typingEl.getAttribute('data-typing') || '[]');
+    let roleIdx = 0;
+    let charIdx = 0;
+    let isDeleting = false;
+    let delay = 100;
+
+    function type() {
+      const currentRole = roles[roleIdx] || '';
+      if (isDeleting) {
+        typingEl.textContent = currentRole.substring(0, charIdx - 1);
+        charIdx--;
+        delay = 40;
+      } else {
+        typingEl.textContent = currentRole.substring(0, charIdx + 1);
+        charIdx++;
+        delay = 100;
+      }
+
+      if (!isDeleting && charIdx === currentRole.length) {
+        isDeleting = true;
+        delay = 2000;
+      } else if (isDeleting && charIdx === 0) {
+        isDeleting = false;
+        roleIdx = (roleIdx + 1) % roles.length;
+        delay = 500;
+      }
+
+      setTimeout(type, delay);
+    }
+    setTimeout(type, 1000);
+  }
 
   /* ---------- Case Study Modal Interactivity ---------- */
   const caseButtons = document.querySelectorAll('[data-case]');
@@ -540,14 +520,19 @@ document.addEventListener('DOMContentLoaded', () => {
         if (activePanel) {
           activePanel.style.display = 'block';
           caseModal.style.display = 'flex';
-          document.body.style.overflow = 'hidden'; // prevent page scroll behind modal
+          document.body.style.overflow = 'hidden';
+          if (window.mermaid) {
+            setTimeout(() => {
+              try { window.mermaid.run(); } catch(err) {}
+            }, 50);
+          }
         }
       });
     });
 
     const closeModal = () => {
       caseModal.style.display = 'none';
-      document.body.style.overflow = ''; // restore scrolling
+      document.body.style.overflow = '';
     };
 
     if (closeBtn) closeBtn.addEventListener('click', closeModal);
@@ -562,5 +547,81 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  /* ---------- Global WebGL SplashCursor Background ---------- */
+  let splashCursorInstance = null;
+  
+  function initSplashCursor() {
+    if (splashCursorInstance) return;
+    if (window.innerWidth < 768) return;
+    const theme = document.documentElement.getAttribute('data-theme') || 'dark';
+    if (theme === 'light') return;
+    
+    if (typeof window.SplashCursor === 'undefined') return;
+    
+    const container = document.createElement('div');
+    container.id = 'splash-cursor-container';
+    container.style.position = 'fixed';
+    container.style.top = '0';
+    container.style.left = '0';
+    container.style.zIndex = '1';
+    container.style.pointerEvents = 'none';
+    container.style.width = '100%';
+    container.style.height = '100%';
+    
+    const canvas = document.createElement('canvas');
+    canvas.id = 'fluid';
+    canvas.style.width = '100vw';
+    canvas.style.height = '100vh';
+    canvas.style.display = 'block';
+    
+    container.appendChild(canvas);
+    document.body.appendChild(container);
+    
+    splashCursorInstance = new window.SplashCursor(canvas, {
+      SIM_RESOLUTION: 128,
+      DYE_RESOLUTION: 512,
+      BACK_COLOR: { r: 0, g: 0, b: 0 },
+      RAINBOW_MODE: false,
+      COLOR: '#a8a8a8',
+      CURL: 20,
+      SPLAT_FORCE: 5000,
+      DENSITY_DISSIPATION: 3.5
+    });
+  }
+  
+  function destroySplashCursor() {
+    if (!splashCursorInstance) return;
+    splashCursorInstance.destroy();
+    splashCursorInstance = null;
+    
+    const container = document.getElementById('splash-cursor-container');
+    if (container) container.remove();
+  }
+  
+  // Init on load
+  initSplashCursor();
+  
+  // React to theme changes
+  window.addEventListener('themechanged', (e) => {
+    const nextTheme = e.detail;
+    if (nextTheme === 'light') {
+      destroySplashCursor();
+    } else {
+      initSplashCursor();
+    }
+  });
+  
+  // React to viewport resizing
+  window.addEventListener('resize', () => {
+    if (window.innerWidth < 768) {
+      destroySplashCursor();
+    } else {
+      const theme = document.documentElement.getAttribute('data-theme') || 'dark';
+      if (theme !== 'light') {
+        initSplashCursor();
+      }
+    }
+  });
 
 });

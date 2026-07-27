@@ -11,131 +11,42 @@ document.addEventListener('DOMContentLoaded', () => {
   // Register ScrollTrigger plugin
   if (typeof ScrollTrigger !== 'undefined') {
     gsap.registerPlugin(ScrollTrigger);
-  }  /* ---------- Scroll Progress Bar Tracking ---------- */
-  window.addEventListener('scroll', () => {
-    const progress = document.getElementById('scrollProgress');
-    if (progress) {
-      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const percentage = totalHeight > 0 ? (window.scrollY / totalHeight) * 100 : 0;
-      progress.style.width = `${percentage}%`;
-    }
-  });
-  /* ---------- Page Load Hero Master Entrance Timeline ---------- */
+  }
+
+  /* ---------- Page Load Hero Entrance Timeline ---------- */
   const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-  // 1. Aurora fade-in
-  if (document.querySelector('.hero-aurora')) {
-    heroTl.fromTo('.hero-aurora', 
-      { scale: 0.8, opacity: 0 }, 
-      { scale: 1, opacity: 1, duration: 1.5, ease: 'power2.out' }
-    );
-  }
-
-  // 2. Navbar slide down
+  // Stagger logo & nav actions
   if (document.querySelector('.navbar')) {
-    const position = document.querySelector('.hero-aurora') ? '<=0.4' : '+=0';
-    heroTl.from('.navbar', { y: -40, opacity: 0, duration: 0.6 }, position);
-  }
-
-  // 3. Status kicker badge reveal
-  if (document.querySelector('.hero-kicker')) {
-    heroTl.from('.hero-kicker', { y: 20, opacity: 0, duration: 0.5 }, '-=0.3');
-  }
-
-  // 4. Hero title character-by-character stagger using Split-Type
-  const splitTitle = document.querySelector('.hero-title');
-  if (splitTitle && typeof SplitType !== 'undefined') {
-    const text = new SplitType(splitTitle, { types: 'chars' });
-    gsap.set(text.chars, { overflow: 'hidden' });
-    heroTl.from(text.chars, { y: 60, opacity: 0, stagger: 0.02, duration: 0.6 }, '-=0.2');
-  } else if (splitTitle) {
-    heroTl.from(splitTitle, { y: 40, opacity: 0, duration: 0.6 }, '-=0.2');
-  }
-
-  // 5. Role description line reveal
-  if (document.querySelector('.role-line')) {
-    heroTl.from('.role-line', { opacity: 0, duration: 0.4 }, '-=0.3');
-  }
-
-  // 6. Description paragraph fade-up
-  if (document.querySelector('.hero-text')) {
-    heroTl.from('.hero-text', { y: 20, opacity: 0, duration: 0.5 }, '-=0.2');
-  }
-
-  // 7. CTA buttons slide-up
-  if (document.querySelector('.hero-cta')) {
-    heroTl.from('.hero-cta .btn', { y: 20, opacity: 0, stagger: 0.1, duration: 0.4 }, '-=0.2');
-  }
-
-  // 8. Canvas centerpiece zoom entrance
-  if (document.getElementById('heroNetworkCanvas')) {
-    heroTl.from('#heroNetworkCanvas', { scale: 0.9, opacity: 0, duration: 0.8 }, '-=0.4');
-  }
-
-  // 9. Floating cards stagger reveal
-  if (document.querySelector('.float-card')) {
-    heroTl.from('.float-card', { y: 30, opacity: 0, stagger: 0.15, duration: 0.5 }, '-=0.4');
-  }
-
-  // 10. Metrics counter animations (sequential count up)
-  const metrics = document.querySelectorAll('.metric-val');
-  if (metrics.length) {
-    metrics.forEach((m, idx) => {
-      const target = parseInt(m.getAttribute('data-target'), 10);
-      let countVal = { val: 0 };
-      heroTl.to(countVal, {
-        val: target,
-        duration: 1.4,
-        ease: 'power3.out',
-        onUpdate: () => {
-          m.textContent = Math.floor(countVal.val);
-        }
-      }, `-=${idx === 0 ? 0.4 : 1.2}`);
-    });
-  }
-
-  // 11. Trust badges stagger reveal
-  if (document.querySelector('.hero-trust-badges')) {
-    heroTl.from('.hero-trust-badges', { opacity: 0, duration: 0.4 }, '-=0.6');
-    heroTl.from('.trust-badge', { y: 15, opacity: 0, duration: 0.5, stagger: 0.08 }, '-=0.4');
-  }
-
-  // 12. Counter cards stagger reveal
-  if (document.querySelector('.counter-card')) {
-    heroTl.from('.counter-card', { y: 30, opacity: 0, stagger: 0.1, duration: 0.4 }, '-=0.2');
-  }
-
-  // 13. Scroll indicator fade-in
-  if (document.querySelector('.scroll-indicator')) {
-    heroTl.fromTo('.scroll-indicator', 
-      { opacity: 0, y: 10 }, 
-      { opacity: 1, y: 0, duration: 0.8 },
-      '-=0.3'
+    heroTl.fromTo('.navbar', 
+      { y: -50, opacity: 0 }, 
+      { y: 0, opacity: 1, duration: 1, delay: 0.4 }
     );
   }
 
-  /* ---------- Magnetic Hover Action on Interactive Controls ---------- */
-  if (window.matchMedia('(hover: hover)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    const magneticElements = document.querySelectorAll('.social-btn, .btn, .theme-toggle, .hamburger, .cmd-trigger-badge, .trust-badge');
-    magneticElements.forEach(el => {
-      el.addEventListener('mousemove', (e) => {
-        const rect = el.getBoundingClientRect();
+  // Hero title and staggers are rendered flat with no transition animations as per user request
+
+  /* ---------- Magnetic Hover on Interactive Elements ---------- */
+  const magneticItems = document.querySelectorAll('.social-btn, .btn, .theme-toggle, .hamburger');
+  if (window.matchMedia('(hover: hover)').matches) {
+    magneticItems.forEach(item => {
+      item.classList.add('magnetic-item');
+      item.addEventListener('mousemove', (e) => {
+        const rect = item.getBoundingClientRect();
         const x = e.clientX - rect.left - rect.width / 2;
         const y = e.clientY - rect.top - rect.height / 2;
         
-        // pull factor based on element class
-        const pull = el.classList.contains('btn') ? 0.35 : 0.45;
-        gsap.to(el, {
-          x: x * pull,
-          y: y * pull,
-          scale: 1.04,
+        gsap.to(item, {
+          x: x * 0.35,
+          y: y * 0.35,
+          scale: 1.03,
           duration: 0.3,
           ease: 'power2.out'
         });
       });
 
-      el.addEventListener('mouseleave', () => {
-        gsap.to(el, {
+      item.addEventListener('mouseleave', () => {
+        gsap.to(item, {
           x: 0,
           y: 0,
           scale: 1,
@@ -146,87 +57,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ---------- 3D Mouse Parallax Tilt (rAF + Lerp) on Centerpiece ---------- */
-  const canvasWrapper = document.querySelector('.canvas-hero-wrapper');
-  if (canvasWrapper && window.matchMedia('(hover: hover)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    let mouseX = 0, mouseY = 0;
-    let currentX = 0, currentY = 0;
-    let isMouseActive = false;
-
-    window.addEventListener('mousemove', (e) => {
-      const centerX = window.innerWidth / 2;
-      const centerY = window.innerHeight / 2;
-      mouseX = (e.clientX - centerX) / centerX; // normalized -1 to 1
-      mouseY = (e.clientY - centerY) / centerY;
-      isMouseActive = true;
-    });
-
-    window.addEventListener('mouseleave', () => {
-      mouseX = 0;
-      mouseY = 0;
-      isMouseActive = false;
-    });
-
-    // Lerp-smoothed loop
-    (function renderTilt() {
-      if (document.visibilityState !== 'hidden') {
-        currentX += (mouseX - currentX) * 0.08;
-        currentY += (mouseY - currentY) * 0.08;
-
-        const maxRotate = 8.0; // limit degrees
-        const rotX = -currentY * maxRotate;
-        const rotY = currentX * maxRotate;
-
-        // Apply GPU-accelerated translate3d transforms
-        canvasWrapper.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) translate3d(${currentX * 10}px, ${currentY * 10}px, 0)`;
-      }
-      requestAnimationFrame(renderTilt);
-    })();
-  }
-
-  /* ---------- ScrollTrigger Hero pin and Spatial Zoom Timeline ---------- */
-  if (typeof ScrollTrigger !== 'undefined' && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    const heroPin = document.querySelector('.hero');
-    if (heroPin) {
-      const scrollTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: heroPin,
-          start: 'top top',
-          end: '+=130%',
-          scrub: true,
-          pin: true,
-          anticipatePin: 1
-        }
-      });
-
-      // Scale title slightly down
-      scrollTl.to('.hero-title', { scale: 0.88, opacity: 0.6, y: -20, ease: 'none' }, 0);
-      
-      // Spatial zoom network centerpiece toward camera
-      if (canvasWrapper) {
-        scrollTl.to(canvasWrapper, { scale: 1.15, z: 50, y: -10, opacity: 0.85, ease: 'none' }, 0);
-      }
-
-      // Shift background aurora position
-      if (document.querySelector('.hero-aurora')) {
-        scrollTl.to('.hero-aurora', { y: 200, scale: 1.25, opacity: 0.3, ease: 'none' }, 0);
-      }
-
-      // Fade out indicators
-      scrollTl.to('#heroScrollIndicator', { opacity: 0, ease: 'none' }, 0);
-
-      // Fade out console and text block
-      scrollTl.to('.hero-console-log', { opacity: 0, scale: 0.95, ease: 'none' }, 0.1);
-      scrollTl.to('.hero-text-block', { opacity: 0, y: -30, ease: 'none' }, 0.2);
-
-      // Smooth section fade to About section
-      scrollTl.to(heroPin, { opacity: 0, ease: 'none' }, 0.8);
-    }
-  }
-
   /* ---------- 3D Mouse Perspective Tilt on Mockups ---------- */
   const devices = document.querySelectorAll('.device-mockup');
-  if (window.matchMedia('(hover: hover)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  if (window.matchMedia('(hover: hover)').matches) {
     devices.forEach(dev => {
       dev.parentElement.classList.add('tilt-card-parent');
       dev.classList.add('tilt-card-child');
@@ -263,7 +96,8 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ---------- Section Reveal Animations on Scroll ---------- */
   if (typeof ScrollTrigger !== 'undefined') {
     // Fade reveal titles, subtitles, and general container elements
-    const fadeUps = document.querySelectorAll('.section-title, .section-sub, .card, .project-bento, .contact-wrapper');
+    const fadeUps = Array.from(document.querySelectorAll('.section-title, .section-sub, .card, .timeline-item, .project-bento, .contact-wrapper'))
+      .filter(el => !el.closest('#main'));
     fadeUps.forEach(el => {
       gsap.fromTo(el, 
         { y: 50, opacity: 0 },
@@ -271,6 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
           y: 0,
           opacity: 1,
           duration: 0.8,
+          ease: 'power3.out',
           scrollTrigger: {
             trigger: el,
             start: 'top 85%',
@@ -280,19 +115,21 @@ document.addEventListener('DOMContentLoaded', () => {
       );
     });
 
-    // Animate stats counter fields on ScrollTrigger
+    // Animate stats counter fields with suffix preservation (e.g. 8, 30+, 10K+, 45%)
     const countStats = document.querySelectorAll('[data-count]');
     countStats.forEach(stat => {
       const target = parseInt(stat.getAttribute('data-count'), 10);
-      const isPercent = stat.classList.contains('num') && stat.getAttribute('data-suffix') === '%';
+      const suffix = stat.getAttribute('data-suffix') || '';
       
       let countObj = { val: 0 };
       gsap.to(countObj, {
         val: target,
         duration: 1.5,
+        ease: 'power2.out',
         scrollTrigger: {
           trigger: stat,
-          start: 'top 90%'
+          start: 'top 90%',
+          once: true
         },
         onUpdate: () => {
           stat.textContent = Math.floor(countObj.val);
@@ -317,234 +154,77 @@ document.addEventListener('DOMContentLoaded', () => {
       );
     }
 
-    // Staggered alternating reveal animations for timeline items
-    gsap.utils.toArray('.timeline-item').forEach((item, i) => {
-      gsap.from(item, {
-        opacity: 0,
-        x: i % 2 === 0 ? -45 : 45,
-        duration: 0.8,
-        ease: 'power3.out',
+    // Parallax scrolling effect on hero & page headers
+    if (document.querySelector('.hero')) {
+      gsap.to('.hero', {
+        y: 60,
         scrollTrigger: {
-          trigger: item,
-          start: 'top 85%',
-          toggleActions: 'play none none none'
+          trigger: '.hero',
+          start: 'top top',
+          end: 'bottom center',
+          scrub: 1
         }
       });
+    }
+    document.querySelectorAll('.page-header').forEach(header => {
+      const h1 = header.querySelector('h1');
+      if (h1) {
+        gsap.to(h1, {
+          y: 40,
+          scrollTrigger: {
+            trigger: header,
+            start: 'top top',
+            end: 'bottom center',
+            scrub: 1
+          }
+        });
+      }
     });
   }
 
-  /* ---------- Interactive Backend Architecture Data Stream Graph ---------- */
-  const heroCanvas = document.getElementById('heroNetworkCanvas');
-  const consoleLog = document.querySelector('.hero-console-log');
-  
-  if (heroCanvas) {
-    const ctx = heroCanvas.getContext('2d');
-    let hw, hh;
-    
-    function resizeHeroCanvas() {
-      if (heroCanvas.offsetWidth === 0) return;
-      hw = heroCanvas.width = heroCanvas.offsetWidth;
-      hh = heroCanvas.height = heroCanvas.offsetHeight;
-    }
-    resizeHeroCanvas();
-    window.addEventListener('resize', resizeHeroCanvas);
-    
-    // Services node coordinates
-    let nodes = [
-      { name: 'Gateway', x: 0.15, y: 0.5, label: 'API GATEWAY', status: 'ONLINE', r: 12, targetR: 12, col: '#ff4d00' },
-      { name: 'Auth', x: 0.35, y: 0.25, label: 'SPRING SECURITY 6', status: 'JWT VALID', r: 10, targetR: 10, col: '#ff4d00' },
-      { name: 'Core', x: 0.5, y: 0.5, label: 'SPRING BOOT APP', status: 'RUNNING', r: 16, targetR: 16, col: '#ff4d00' },
-      { name: 'Kafka', x: 0.75, y: 0.25, label: 'KAFKA TOPIC', status: 'CONSUMING', r: 12, targetR: 12, col: '#ff4d00' },
-      { name: 'Redis', x: 0.7, y: 0.75, label: 'REDIS CACHE', status: 'INDEXED', r: 10, targetR: 10, col: '#ff4d00' },
-      { name: 'Database', x: 0.9, y: 0.5, label: 'MYSQL LEDGER', status: 'SYNCED', r: 14, targetR: 14, col: '#ff4d00' }
-    ];
-    
-    let connections = [
-      { from: 'Gateway', to: 'Auth' },
-      { from: 'Gateway', to: 'Core' },
-      { from: 'Auth', to: 'Core' },
-      { from: 'Core', to: 'Kafka' },
-      { from: 'Core', to: 'Redis' },
-      { from: 'Core', to: 'Database' }
-    ];
-    
-    let packets = [];
-    
-    const logs = [
-      'Route matching: GET /api/v1/orders',
-      'Authorize credentials: JWT token parsed',
-      'Context: Security context populated',
-      'Core: Dispatching order transaction saga',
-      'Kafka: Published event ORDER_PLACED to partitions',
-      'Redis: Checking lookup catalog cache',
-      'Redis: Cache hit ORDER_CATALOG_101',
-      'Database: Persisting financial ledger block',
-      'Database: Balance update commit OK'
-    ];
-    
-    function logMessage(msg) {
-      if (consoleLog) {
-        const line = document.createElement('div');
-        line.className = 'console-line';
-        line.textContent = `> [${new Date().toLocaleTimeString()}] ${msg}`;
-        consoleLog.appendChild(line);
-        consoleLog.scrollTop = consoleLog.scrollHeight;
-        if (consoleLog.children.length > 5) {
-          consoleLog.removeChild(consoleLog.firstChild);
+  /* ---------- Project Demo Modal Overlays Logic ---------- */
+  document.querySelectorAll('.project-bento').forEach(card => {
+    card.addEventListener('click', (e) => {
+      if (!e.target.closest('.overlay-close') && !e.target.closest('a')) {
+        const overlay = card.querySelector('.project-overlay');
+        if (overlay) {
+          overlay.classList.add('active');
+          document.body.style.overflow = 'hidden';
         }
       }
-    }
-    
-    // Automated periodic packets
-    setInterval(() => {
-      if (heroCanvas.offsetWidth === 0) return;
-      packets.push({
-        x: nodes[0].x * hw,
-        y: nodes[0].y * hh,
-        t: 0,
-        speed: 0.015,
-        from: nodes[0],
-        to: nodes[2],
-        trail: []
-      });
-      logMessage(logs[Math.floor(Math.random() * 3)]);
-    }, 3200);
-    
-    function drawHeroNetwork() {
-      if (heroCanvas.offsetWidth === 0) return;
-      ctx.clearRect(0, 0, hw, hh);
-      
-      const theme = document.documentElement.getAttribute('data-theme') || 'dark';
-      const lineColor = theme === 'light' ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.08)';
-      const nodeFill = theme === 'light' ? '#ffffff' : '#121212';
-      const textColor = theme === 'light' ? '#000000' : '#ffffff';
-      const textMuted = theme === 'light' ? '#6b6b6b' : '#a8a8a7';
-      
-      // connections
-      connections.forEach(conn => {
-        const nodeA = nodes.find(n => n.name === conn.from);
-        const nodeB = nodes.find(n => n.name === conn.to);
-        if (nodeA && nodeB) {
-          ctx.beginPath();
-          ctx.moveTo(nodeA.x * hw, nodeA.y * hh);
-          ctx.lineTo(nodeB.x * hw, nodeB.y * hh);
-          ctx.strokeStyle = lineColor;
-          ctx.lineWidth = 2;
-          ctx.stroke();
-        }
-      });
-      
-      // nodes
-      nodes.forEach(n => {
-        const ax = n.x * hw;
-        const ay = n.y * hh;
-        
-        n.r = n.r + (n.targetR - n.r) * 0.15;
-        
-        ctx.save();
-        ctx.beginPath();
-        ctx.arc(ax, ay, n.r, 0, Math.PI * 2);
-        ctx.fillStyle = nodeFill;
-        ctx.strokeStyle = n.col;
-        ctx.lineWidth = n.r > n.targetR ? 3 : 2;
-        ctx.shadowBlur = n.r > n.targetR ? 12 : 4;
-        ctx.shadowColor = n.col;
-        ctx.fill();
-        ctx.stroke();
-        ctx.restore();
-        
-        ctx.fillStyle = textColor;
-        ctx.font = '700 9px JetBrains Mono';
-        ctx.textAlign = 'center';
-        ctx.fillText(n.label, ax, ay - n.r - 10);
-        
-        ctx.fillStyle = textMuted;
-        ctx.font = '500 8px Inter';
-        ctx.fillText(n.status, ax, ay + n.r + 14);
-      });
-      
-      // packets
-      for (let i = packets.length - 1; i >= 0; i--) {
-        const p = packets[i];
-        p.t += p.speed;
-        
-        const startX = p.from.x * hw;
-        const startY = p.from.y * hh;
-        const endX = p.to.x * hw;
-        const endY = p.to.y * hh;
-        
-        p.x = startX + (endX - startX) * p.t;
-        p.y = startY + (endY - startY) * p.t;
-        
-        p.trail.push({ x: p.x, y: p.y });
-        if (p.trail.length > 8) p.trail.shift();
-        
-        ctx.beginPath();
-        p.trail.forEach((pt) => {
-          ctx.lineTo(pt.x, pt.y);
-        });
-        ctx.strokeStyle = 'rgba(255, 77, 0, 0.35)';
-        ctx.lineWidth = 3;
-        ctx.stroke();
-        
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, 4, 0, Math.PI * 2);
-        ctx.fillStyle = '#ff4d00';
-        ctx.shadowBlur = 8;
-        ctx.shadowColor = '#ff4d00';
-        ctx.fill();
-        
-        if (p.t >= 1) {
-          if (p.to.name === 'Core') {
-            const destinations = ['Kafka', 'Redis', 'Database'];
-            destinations.forEach(destName => {
-              const targetNode = nodes.find(n => n.name === destName);
-              packets.push({
-                x: endX, y: endY, t: 0, speed: 0.02, from: p.to, to: targetNode, trail: []
-              });
-            });
-            logMessage(logs[Math.floor(Math.random() * 6) + 3]);
-          } else {
-            p.to.r = p.to.targetR * 1.4;
-          }
-          packets.splice(i, 1);
-        }
-      }
-      
-      requestAnimationFrame(drawHeroNetwork);
-    }
-    
-    // Wait slightly to guarantee element sizes are resolved on load
-    setTimeout(() => {
-      resizeHeroCanvas();
-      drawHeroNetwork();
-    }, 100);
-    
-    // Interactive mouse clicks
-    heroCanvas.addEventListener('click', (e) => {
-      const rect = heroCanvas.getBoundingClientRect();
-      const clickX = e.clientX - rect.left;
-      const clickY = e.clientY - rect.top;
-      
-      nodes.forEach(n => {
-        const ax = n.x * hw;
-        const ay = n.y * hh;
-        const dist = Math.hypot(clickX - ax, clickY - ay);
-        if (dist < n.r * 2) {
-          n.r = n.targetR * 1.6;
-          logMessage(`Manual audit trace triggered: ${n.name}`);
-          
-          connections.forEach(conn => {
-            if (conn.from === n.name) {
-              const target = nodes.find(t => t.name === conn.to);
-              packets.push({
-                x: ax, y: ay, t: 0, speed: 0.025, from: n, to: target, trail: []
-              });
-            }
-          });
-        }
-      });
     });
-  }
+
+    const closeBtn = card.querySelector('.overlay-close');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const overlay = card.querySelector('.project-overlay');
+        if (overlay) {
+          overlay.classList.remove('active');
+          document.body.style.overflow = 'auto';
+        }
+      });
+    }
+
+    const overlay = card.querySelector('.project-overlay');
+    if (overlay) {
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+          overlay.classList.remove('active');
+          document.body.style.overflow = 'auto';
+        }
+      });
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.project-overlay.active').forEach(overlay => {
+        overlay.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      });
+    }
+  });
 
 });
+

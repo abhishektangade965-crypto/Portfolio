@@ -8,9 +8,9 @@
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://abhishektangade-portfolio.netlify.app/skills.html">
 
-<!-- Favicon -->
-<link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
-<link rel="alternate icon" href="favicon.ico">
+<!-- Premium AT Favicon -->
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
 
 <!-- Fonts & Libraries -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 
-<style>html,body{background:#0D0D0D;margin:0;}</style>
+<style>html,body{background:var(--bg);margin:0;}</style>
 
 <style>
 @view-transition { navigation: auto; }
@@ -32,6 +32,14 @@
 <link rel="stylesheet" href="assets/css/animations.css?v=8">
 </head>
 <body>
+
+<!-- Light Theme Background Video & Fallback (Dark Theme Untouched) -->
+<video id="silkBackground" class="silk-bg-video" autoplay muted loop playsinline preload="none">
+  <source src="assets/videos/silk-fabric-light-loop.webm" type="video/webm">
+  <source src="assets/videos/silk-fabric-light-loop.mp4" type="video/mp4">
+</video>
+<div id="silkBackdropFallback" class="silk-bg-fallback"></div>
+
 
 <div class="scroll-progress-bar" id="scrollProgress"></div>
 
@@ -116,6 +124,7 @@
   </ul>
   <div class="nav-actions">
     <button class="cmd-trigger-badge" aria-label="Open Commands" id="cmdTriggerBtn">⌘K</button>
+    <button class="cmd-trigger-btn" id="cmdTrigger" aria-label="Open Command Palette" title="Open Command Palette (⌘K)"><i class="fa-solid fa-terminal"></i><span class="cmd-shortcut">⌘K</span></button>
     <button class="theme-toggle" aria-label="Toggle theme"><i class="bi bi-sun"></i></button>
     <a href="contact.html" class="btn btn-primary btn-sm">Hire Me</a>
     <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -134,16 +143,16 @@
   </div>
 </div>
 
-<div class="page-header" id="main" style="padding-top: 140px; padding-bottom: 40px;">
+<div class="page-header" id="main" style="padding-top: 95px; padding-bottom: 40px; position: relative;">
   <div class="container">
     <span class="eyebrow"><span class="dot"></span> Technical Toolbox</span>
-    <h1 class="section-title">My Skills, mapped in space.</h1>
+    <h1 class="section-title"><span class="gradient-text">My Skills, mapped in space.</span></h1>
     <p class="section-sub">Hover nodes to inspect details and highlights of my backend system architecture capabilities.</p>
   </div>
 </div>
 
 <!-- Bento Skills Section -->
-<section style="padding-top:0;">
+<section style="padding-top:0; position: relative;">
   <div class="container">
     
     <!-- Skills Intro Stats Banner -->
@@ -171,12 +180,12 @@
       <!-- Card 1: Java -->
       <div class="bento-card-skill bento-span-6" id="java-card" tabindex="0">
         <div class="bento-skill-media">
-          <img src="assets/images/skills/skill_1.png" alt="Java 3D Icon" class="bento-skill-3d" loading="lazy">
+          <img src="assets/images/skills/java.png" alt="Java 3D Icon" class="bento-skill-3d" loading="lazy">
         </div>
         <div>
           <div class="bento-skill-meta">
             <span class="badge-cat">Languages</span>
-            <span>Expert · 3 Yrs</span>
+            <span>Expert</span>
           </div>
           <h3 class="bento-skill-title">Java 21</h3>
           <p class="bento-skill-desc">Object-oriented programming, concurrent systems, Stream API, JVM performance tuning.</p>
@@ -192,12 +201,12 @@
       <!-- Card 2: Spring Boot -->
       <div class="bento-card-skill bento-span-6" tabindex="0">
         <div class="bento-skill-media">
-          <img src="assets/images/skills/skill_2.png" alt="Spring Boot 3D Icon" class="bento-skill-3d" loading="lazy">
+          <img src="assets/images/skills/springboot.png" alt="Spring Boot 3D Icon" class="bento-skill-3d" loading="lazy">
         </div>
         <div>
           <div class="bento-skill-meta">
             <span class="badge-cat">Frameworks</span>
-            <span>Expert · 2 Yrs</span>
+            <span>Expert</span>
           </div>
           <h3 class="bento-skill-title">Spring Boot</h3>
           <p class="bento-skill-desc">Application bootstrap, dependency injection (IoC), embedded server configuration.</p>
@@ -213,12 +222,12 @@
       <!-- Card 3: Spring Security 6 -->
       <div class="bento-card-skill bento-span-4" tabindex="0">
         <div class="bento-skill-media">
-          <img src="assets/images/skills/skill_3.png" alt="Spring Security 6 3D Icon" class="bento-skill-3d" loading="lazy">
+          <img src="assets/images/skills/springsecurity.png" alt="Spring Security 6 3D Icon" class="bento-skill-3d" loading="lazy">
         </div>
         <div>
           <div class="bento-skill-meta">
             <span class="badge-cat">Security</span>
-            <span>Advanced · 2 Yrs</span>
+            <span>Advanced</span>
           </div>
           <h3 class="bento-skill-title">Spring Security 6</h3>
           <p class="bento-skill-desc">Filter chain authorization, user authentication, security endpoint protection.</p>
@@ -234,12 +243,12 @@
       <!-- Card 4: Spring Data JPA -->
       <div class="bento-card-skill bento-span-4" tabindex="0">
         <div class="bento-skill-media">
-          <img src="assets/images/skills/skill_4.png" alt="Spring Data JPA 3D Icon" class="bento-skill-3d" loading="lazy">
+          <img src="assets/images/skills/jpa.png" alt="Spring Data JPA 3D Icon" class="bento-skill-3d" loading="lazy">
         </div>
         <div>
           <div class="bento-skill-meta">
             <span class="badge-cat">Frameworks</span>
-            <span>Advanced · 2 Yrs</span>
+            <span>Advanced</span>
           </div>
           <h3 class="bento-skill-title">Spring Data JPA</h3>
           <p class="bento-skill-desc">Database access abstraction, entity object-relational mapping, custom repository interfaces.</p>
@@ -255,12 +264,12 @@
       <!-- Card 5: Hibernate -->
       <div class="bento-card-skill bento-span-4" tabindex="0">
         <div class="bento-skill-media">
-          <img src="assets/images/skills/skill_5.png" alt="Hibernate 3D Icon" class="bento-skill-3d" loading="lazy">
+          <img src="assets/images/skills/hibernate.png" alt="Hibernate 3D Icon" class="bento-skill-3d" loading="lazy">
         </div>
         <div>
           <div class="bento-skill-meta">
             <span class="badge-cat">Frameworks</span>
-            <span>Advanced · 2 Yrs</span>
+            <span>Advanced</span>
           </div>
           <h3 class="bento-skill-title">Hibernate</h3>
           <p class="bento-skill-desc">Relational persistence contexts, lazy fetching settings, database cache control.</p>
@@ -276,12 +285,12 @@
       <!-- Card 6: Microservices -->
       <div class="bento-card-skill bento-span-8" tabindex="0">
         <div class="bento-skill-media">
-          <img src="assets/images/skills/skill_6.png" alt="Microservices 3D Icon" class="bento-skill-3d" loading="lazy">
+          <img src="assets/images/skills/microservices.png" alt="Microservices 3D Icon" class="bento-skill-3d" loading="lazy">
         </div>
         <div>
           <div class="bento-skill-meta">
             <span class="badge-cat">Backend</span>
-            <span>Advanced · 2 Yrs</span>
+            <span>Advanced</span>
           </div>
           <h3 class="bento-skill-title">Microservices</h3>
           <p class="bento-skill-desc">Distributed Eureka registry, gateway path routing, Saga transactional flows.</p>
@@ -297,12 +306,12 @@
       <!-- Card 7: REST APIs -->
       <div class="bento-card-skill bento-span-4" tabindex="0">
         <div class="bento-skill-media">
-          <img src="assets/images/skills/skill_7.png" alt="REST APIs 3D Icon" class="bento-skill-3d" loading="lazy">
+          <img src="assets/images/skills/restapi.png" alt="REST APIs 3D Icon" class="bento-skill-3d" loading="lazy">
         </div>
         <div>
           <div class="bento-skill-meta">
             <span class="badge-cat">Backend</span>
-            <span>Expert · 2.5 Yrs</span>
+            <span>Expert</span>
           </div>
           <h3 class="bento-skill-title">REST APIs</h3>
           <p class="bento-skill-desc">JSON data structures, path route mappings, HTTP status code validations.</p>
@@ -318,12 +327,12 @@
       <!-- Card 8: Kafka -->
       <div class="bento-card-skill bento-span-8" tabindex="0">
         <div class="bento-skill-media">
-          <img src="assets/images/skills/skill_8.png" alt="Kafka 3D Icon" class="bento-skill-3d" loading="lazy">
+          <img src="assets/images/skills/kafka.png" alt="Kafka 3D Icon" class="bento-skill-3d" loading="lazy">
         </div>
         <div>
           <div class="bento-skill-meta">
             <span class="badge-cat">Messaging</span>
-            <span>Advanced · 1.5 Yrs</span>
+            <span>Advanced</span>
           </div>
           <h3 class="bento-skill-title">Kafka</h3>
           <p class="bento-skill-desc">Message queues, event streaming pipelines, publisher-consumer synchronization.</p>
@@ -339,7 +348,7 @@
       <!-- Card 9: Redis (Basic) -->
       <div class="bento-card-skill bento-span-4" tabindex="0">
         <div class="bento-skill-media">
-          <img src="assets/images/skills/skill_9.png" alt="Redis 3D Icon" class="bento-skill-3d" loading="lazy">
+          <img src="assets/images/skills/redis.png" alt="Redis 3D Icon" class="bento-skill-3d" loading="lazy">
         </div>
         <div>
           <div class="bento-skill-meta">
@@ -360,12 +369,12 @@
       <!-- Card 10: MySQL -->
       <div class="bento-card-skill bento-span-4" tabindex="0">
         <div class="bento-skill-media">
-          <img src="assets/images/skills/skill_10.png" alt="MySQL 3D Icon" class="bento-skill-3d" loading="lazy">
+          <img src="assets/images/skills/mysql.png" alt="MySQL 3D Icon" class="bento-skill-3d" loading="lazy">
         </div>
         <div>
           <div class="bento-skill-meta">
             <span class="badge-cat">Database</span>
-            <span>Advanced · 2 Yrs</span>
+            <span>Advanced</span>
           </div>
           <h3 class="bento-skill-title">MySQL</h3>
           <p class="bento-skill-desc">Relational databases, transactions ACID checks, indexing optimization.</p>
@@ -381,12 +390,12 @@
       <!-- Card 11: Oracle SQL -->
       <div class="bento-card-skill bento-span-4" tabindex="0">
         <div class="bento-skill-media">
-          <img src="assets/images/skills/skill_11.png" alt="Oracle SQL 3D Icon" class="bento-skill-3d" loading="lazy">
+          <img src="assets/images/skills/oracle.png" alt="Oracle SQL 3D Icon" class="bento-skill-3d" loading="lazy">
         </div>
         <div>
           <div class="bento-skill-meta">
             <span class="badge-cat">Database</span>
-            <span>Advanced · 2 Yrs</span>
+            <span>Advanced</span>
           </div>
           <h3 class="bento-skill-title">Oracle SQL</h3>
           <p class="bento-skill-desc">Relational schemas, query optimization, view declarations.</p>
@@ -402,7 +411,7 @@
       <!-- Card 12: MongoDB -->
       <div class="bento-card-skill bento-span-4" tabindex="0">
         <div class="bento-skill-media">
-          <img src="assets/images/skills/skill_12.png" alt="MongoDB 3D Icon" class="bento-skill-3d" loading="lazy">
+          <img src="assets/images/skills/mongodb.png" alt="MongoDB 3D Icon" class="bento-skill-3d" loading="lazy">
         </div>
         <div>
           <div class="bento-skill-meta">
@@ -423,12 +432,12 @@
       <!-- Card 13: Git & GitHub -->
       <div class="bento-card-skill bento-span-6" tabindex="0">
         <div class="bento-skill-media">
-          <img src="assets/images/skills/skill_13.png" alt="Git 3D Icon" class="bento-skill-3d" loading="lazy">
+          <img src="assets/images/skills/github.png" alt="Git 3D Icon" class="bento-skill-3d" loading="lazy">
         </div>
         <div>
           <div class="bento-skill-meta">
             <span class="badge-cat">Tools</span>
-            <span>Advanced · 2 Yrs</span>
+            <span>Advanced</span>
           </div>
           <h3 class="bento-skill-title">Git &amp; GitHub</h3>
           <p class="bento-skill-desc">Branch lifecycle controls, conflict merges, PR feedback workflows.</p>
@@ -444,12 +453,12 @@
       <!-- Card 14: Maven & Gradle -->
       <div class="bento-card-skill bento-span-6" tabindex="0">
         <div class="bento-skill-media">
-          <img src="assets/images/skills/skill_14.png" alt="Maven 3D Icon" class="bento-skill-3d" loading="lazy">
+          <img src="assets/images/skills/maven.png" alt="Maven 3D Icon" class="bento-skill-3d" loading="lazy">
         </div>
         <div>
           <div class="bento-skill-meta">
             <span class="badge-cat">Tools</span>
-            <span>Advanced · 2 Yrs</span>
+            <span>Advanced</span>
           </div>
           <h3 class="bento-skill-title">Maven &amp; Gradle</h3>
           <p class="bento-skill-desc">Build automation systems, dependency declarations, build output generation.</p>
@@ -465,12 +474,12 @@
       <!-- Card 15: Apache Tomcat -->
       <div class="bento-card-skill bento-span-4" tabindex="0">
         <div class="bento-skill-media">
-          <img src="assets/images/skills/skill_15.png" alt="Tomcat 3D Icon" class="bento-skill-3d" loading="lazy">
+          <img src="assets/images/skills/tomcat.png" alt="Tomcat 3D Icon" class="bento-skill-3d" loading="lazy">
         </div>
         <div>
           <div class="bento-skill-meta">
             <span class="badge-cat">DevOps</span>
-            <span>Intermediate · 1.5 Yrs</span>
+            <span>Intermediate</span>
           </div>
           <h3 class="bento-skill-title">Apache Tomcat</h3>
           <p class="bento-skill-desc">Application servlet container, web server deployments, configuration tuning.</p>
@@ -486,12 +495,12 @@
       <!-- Card 16: Eclipse -->
       <div class="bento-card-skill bento-span-4" tabindex="0">
         <div class="bento-skill-media">
-          <img src="assets/images/skills/skill_16.png" alt="IDE 3D Icon" class="bento-skill-3d" loading="lazy">
+          <img src="assets/images/skills/eclipse.png" alt="IDE 3D Icon" class="bento-skill-3d" loading="lazy">
         </div>
         <div>
           <div class="bento-skill-meta">
             <span class="badge-cat">Tools</span>
-            <span>Expert · 3 Yrs</span>
+            <span>Expert</span>
           </div>
           <h3 class="bento-skill-title">Eclipse</h3>
           <p class="bento-skill-desc">Environment customization, compiler tracing, codebase diagnostics tools.</p>
@@ -507,12 +516,12 @@
       <!-- Card 17: HTML/CSS -->
       <div class="bento-card-skill bento-span-4" tabindex="0">
         <div class="bento-skill-media">
-          <img src="assets/images/skills/skill_17.png" alt="HTML5 3D Icon" class="bento-skill-3d" loading="lazy">
+          <img src="assets/images/skills/html5.png" alt="HTML5 3D Icon" class="bento-skill-3d" loading="lazy">
         </div>
         <div>
           <div class="bento-skill-meta">
             <span class="badge-cat">Frontend</span>
-            <span>Intermediate · 2 Yrs</span>
+            <span>Intermediate</span>
           </div>
           <h3 class="bento-skill-title">HTML/CSS</h3>
           <p class="bento-skill-desc">Clean semantic DOM tree nodes, responsive layout configurations, styles bindings.</p>
@@ -525,17 +534,17 @@
         </div>
       </div>
 
-      <!-- Card 18: JavaScript -->
+      <!-- Card 18: JavaScript (Basic) -->
       <div class="bento-card-skill bento-span-4" tabindex="0">
         <div class="bento-skill-media">
-          <img src="assets/images/skills/skill_18.png" alt="JavaScript 3D Icon" class="bento-skill-3d" loading="lazy">
+          <img src="assets/images/skills/javascript.png" alt="JavaScript (Basic) 3D Icon" class="bento-skill-3d" loading="lazy">
         </div>
         <div>
           <div class="bento-skill-meta">
             <span class="badge-cat">Frontend</span>
-            <span>Intermediate · 1.5 Yrs</span>
+            <span>Basic</span>
           </div>
-          <h3 class="bento-skill-title">JavaScript</h3>
+          <h3 class="bento-skill-title">JavaScript (Basic)</h3>
           <p class="bento-skill-desc">Asynchronous routines, REST client API fetching logic, browser adjustments.</p>
         </div>
         <div class="bento-skill-progress-container">
@@ -549,12 +558,12 @@
       <!-- Card 19: PL/SQL -->
       <div class="bento-card-skill bento-span-4" tabindex="0">
         <div class="bento-skill-media">
-          <img src="assets/images/skills/skill_19.png" alt="PL/SQL 3D Icon" class="bento-skill-3d" loading="lazy">
+          <img src="assets/images/skills/plsql.png" alt="PL/SQL 3D Icon" class="bento-skill-3d" loading="lazy">
         </div>
         <div>
           <div class="bento-skill-meta">
             <span class="badge-cat">Languages</span>
-            <span>Advanced · 1.5 Yrs</span>
+            <span>Advanced</span>
           </div>
           <h3 class="bento-skill-title">PL/SQL</h3>
           <p class="bento-skill-desc">Stored procedures, database triggers, execution block algorithms.</p>
@@ -570,12 +579,12 @@
       <!-- Card 20: JWT -->
       <div class="bento-card-skill bento-span-4" tabindex="0">
         <div class="bento-skill-media">
-          <img src="assets/images/skills/skill_21.png" alt="JWT 3D Icon" class="bento-skill-3d" loading="lazy">
+          <img src="assets/images/skills/jwt.png" alt="JWT 3D Icon" class="bento-skill-3d" loading="lazy">
         </div>
         <div>
           <div class="bento-skill-meta">
             <span class="badge-cat">Security</span>
-            <span>Advanced · 2 Yrs</span>
+            <span>Advanced</span>
           </div>
           <h3 class="bento-skill-title">JWT</h3>
           <p class="bento-skill-desc">Sessionless authorization token strings, payload validations, security.</p>
@@ -591,12 +600,12 @@
       <!-- Card 21: SQL -->
       <div class="bento-card-skill bento-span-4" tabindex="0">
         <div class="bento-skill-media">
-          <img src="assets/images/skills/skill_10.png" alt="SQL 3D Icon" class="bento-skill-3d" loading="lazy">
+          <img src="assets/images/skills/sql.png" alt="SQL 3D Icon" class="bento-skill-3d" loading="lazy">
         </div>
         <div>
           <div class="bento-skill-meta">
             <span class="badge-cat">Languages</span>
-            <span>Advanced · 2.5 Yrs</span>
+            <span>Advanced</span>
           </div>
           <h3 class="bento-skill-title">SQL</h3>
           <p class="bento-skill-desc">Relational queries logic, complex join operations, schema constraints.</p>
@@ -617,7 +626,7 @@
 <footer>
   <div class="container">
     <div class="footer-cta-box">
-      <h2>Ready to build something reliable?</h2>
+      <h2 class="section-title"><span class="gradient-text">Ready to build something reliable?</span></h2>
       <p>I am looking for Java Backend Developer roles. Let's discuss how I can contribute to your development team.</p>
       <a href="contact.html" class="btn btn-primary">Contact Me <i class="fa-solid fa-paper-plane"></i></a>
     </div>
@@ -636,6 +645,7 @@
 
 <!-- Scripts -->
 <script src="assets/js/lightning.js?v=4" defer></script>
+<script src="assets/js/splash-cursor.js" defer></script>
 <script src="assets/js/main.js?v=4" defer></script>
 <script src="assets/js/animations.js?v=4" defer></script>
 <script src="assets/js/skills-visualization.js?v=4" defer></script>

@@ -13,18 +13,18 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Abhishek Tangade | Java Backend Developer">
 <meta property="og:description" content="Personal portfolio of Abhishek Tangade, a Java Backend Developer specializing in Spring Boot, Spring Security 6, Microservices, Kafka, Redis, and MySQL.">
-<meta property="og:image" content="assets/images/og-cover.png">
+<meta property="og:image" content="assets/images/portfolio-showcase.jpg">
 <meta property="og:url" content="https://abhishektangade-portfolio.netlify.app/index.html">
 
 <!-- Twitter Cards -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Abhishek Tangade | Java Backend Developer">
 <meta name="twitter:description" content="Personal portfolio of Abhishek Tangade, a Java Backend Developer.">
-<meta name="twitter:image" content="assets/images/og-cover.png">
+<meta name="twitter:image" content="assets/images/portfolio-showcase.jpg">
 
-<!-- Favicon -->
-<link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
-<link rel="alternate icon" href="favicon.ico">
+<!-- Premium AT Favicon -->
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
 
 <!-- Fonts & Libraries -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,7 +32,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 
-<style>html,body{background:#0D0D0D;margin:0;}</style>
+<style>html,body{background:var(--bg);margin:0;}</style>
 
 <style>
 @view-transition { navigation: auto; }
@@ -70,7 +70,13 @@
 </head>
 <body>
 
-<div class="scroll-progress-bar" id="scrollProgress"></div>
+<!-- Light Theme Background Video & Fallback (Dark Theme Untouched) -->
+<video id="silkBackground" class="silk-bg-video" autoplay muted loop playsinline preload="none">
+  <source src="assets/videos/silk-fabric-light-loop.webm" type="video/webm">
+  <source src="assets/videos/silk-fabric-light-loop.mp4" type="video/mp4">
+</video>
+<div id="silkBackdropFallback" class="silk-bg-fallback"></div>
+
 
 <!-- Skip link for keyboard accessibility -->
 <a href="#main" class="skip-link">Skip to main content</a>
@@ -101,7 +107,7 @@
         <span class="cmd-shortcut">S</span>
       </div>
       <div class="cmd-item" data-action="nav" data-value="projects.html">
-        <div class="cmd-item-left"><i class="fa-solid fa-briefcase"></i><span>Navigate to Projects</span></div>
+        <div class="cmd-item-left"><i class="fa-solid fa-laptop-code"></i><span>Navigate to Projects</span></div>
         <span class="cmd-shortcut">P</span>
       </div>
       <div class="cmd-item" data-action="nav" data-value="resume.html">
@@ -153,7 +159,7 @@
     <li><a href="contact.html">Contact</a></li>
   </ul>
   <div class="nav-actions">
-    <button class="cmd-trigger-badge" aria-label="Open Commands" id="cmdTriggerBtn">⌘K</button>
+    <button class="cmd-trigger-btn" id="cmdTrigger" aria-label="Open Command Palette" title="Open Command Palette (⌘K)"><i class="fa-solid fa-terminal"></i><span class="cmd-shortcut">⌘K</span></button>
     <button class="theme-toggle" aria-label="Toggle theme"><i class="bi bi-sun"></i></button>
     <a href="contact.html" class="btn btn-primary btn-sm">Hire Me</a>
     <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -174,136 +180,141 @@
 
 <!-- Fullscreen Hero Showcase -->
 <header class="hero" id="main">
-  <div class="hero-aurora"></div>
-  <div class="cursor-spotlight" id="spotlight"></div>
-  <div class="container hero-grid">
-    <div class="hero-text-block">
-      <div class="hero-kicker float-badge">
-        <span class="dot"></span> Open to opportunities <span class="badge-divider">|</span> Beed, MH
-      </div>
-      <h1 class="hero-title">Hi, I'm <span class="gradient-text">Abhishek</span> Tangade</h1>
-      <div class="role-line">
-        <span data-typing='["Java Backend Developer", "Spring Boot Engineer", "Microservices Developer", "Fresh Graduate, Ready to Ship"]'></span><span class="cursor-blink">&nbsp;</span>
-      </div>
-      <p class="hero-text">
-        Building scalable, secure, and event-driven backend systems. Specializing in high-performance Java architectures, distributed message orchestration, and REST API services.
-      </p>
-      
-      <div class="hero-cta">
-        <a href="assets/resume/Abhishek_Tangade_Resume.pdf" class="btn btn-primary hero-btn-primary" download>
-          <i class="fa-solid fa-download"></i> Download Resume
-        </a>
-        <a href="projects.html" class="btn btn-outline">
-          View Projects <i class="fa-solid fa-arrow-right"></i>
-        </a>
-        <a href="contact.html" class="btn btn-ghost">
-          Get In Touch
-        </a>
-      </div>
+  <div class="container">
+    <div class="hero-split-grid">
+      <!-- Left Column: Content & Actions -->
+      <div class="hero-text-col">
+        <div class="hero-kicker float-badge">
+          <span class="dot"></span> Open to Java Backend opportunities
+        </div>
+        
+        <h1 class="hero-title">
+          <span class="gradient-text">Abhishek Tangade</span>
+        </h1>
+        
+        <div class="role-line">
+          Java Backend Developer
+        </div>
+        
+        <p class="hero-text">
+          Building scalable, event-driven backend systems and high-throughput Spring Boot microservices with zero-trust API security.
+        </p>
+        
+        <div class="hero-cta">
+          <a href="assets/resume/Abhishek_Tangade_Resume.pdf" class="btn btn-primary hero-btn-primary" download>
+            <i class="fa-solid fa-download"></i> Download Resume
+          </a>
+          <a href="projects.html" class="btn btn-outline">
+            <i class="fa-solid fa-diagram-project"></i> View Projects
+          </a>
+        </div>
 
-      <div class="hero-socials">
-        <a class="social-btn" href="https://github.com/abhishektangade965-crypto" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-        <a class="social-btn" href="https://linkedin.com/in/abhishek-tangade" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-        <a class="social-btn" href="mailto:abhishektangade965@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
-        <a class="social-btn" href="tel:+919834397528" aria-label="Phone"><i class="fa-solid fa-phone"></i></a>
-      </div>
-
-      <div class="hero-trust-badges">
-        <span class="trust-title">CORE STACK</span>
-        <div class="trust-list">
-          <span class="trust-badge"><i class="fa-brands fa-java"></i> Java</span>
-          <span class="trust-badge"><i class="fa-solid fa-leaf"></i> Spring Boot</span>
-          <span class="trust-badge"><i class="fa-solid fa-network-wired"></i> Kafka</span>
-          <span class="trust-badge"><i class="fa-solid fa-database"></i> Redis</span>
+        <div class="hero-socials">
+          <a class="social-btn" href="https://github.com/abhishektangade965-crypto" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a class="social-btn" href="https://linkedin.com/in/abhishek-tangade" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a class="social-btn" href="mailto:abhishektangade965@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+          <a class="social-btn" href="tel:+919834397528" aria-label="Phone"><i class="fa-solid fa-phone"></i></a>
         </div>
       </div>
 
-      <div class="hero-metrics">
-        <div class="metric-item">
-          <div class="metric-num-wrapper">
-            <span class="metric-val" data-target="4">0</span>
+      <!-- Right Column: Premium Studio Portrait Card (Stripe/Linear Editorial Style) -->
+      <div class="hero-portrait-col">
+        <div class="hero-portrait-card card-glass">
+          <div class="hero-portrait-inner">
+            <img src="assets/images/abhishek-hero-portrait.jpg" alt="Abhishek Tangade — Java Backend Developer Studio Portrait">
           </div>
-          <span class="metric-lbl">Projects</span>
-        </div>
-        <div class="metric-item">
-          <div class="metric-num-wrapper">
-            <span class="metric-val" data-target="30">0</span><span class="metric-val-suffix">+</span>
+          <div class="hero-portrait-badge">
+            <span class="dot"></span>
+            <div>
+              <strong>Abhishek Tangade</strong>
+              <small>Java Backend Engineer</small>
+            </div>
           </div>
-          <span class="metric-lbl">REST APIs</span>
-        </div>
-        <div class="metric-item">
-          <div class="metric-num-wrapper">
-            <span class="metric-val" data-target="10">0</span><span class="metric-val-suffix">K+</span>
-          </div>
-          <span class="metric-lbl">Simulated Tx</span>
-        </div>
-        <div class="metric-item">
-          <div class="metric-num-wrapper">
-            <span class="metric-val" data-target="75">0</span><span class="metric-val-suffix">%</span>
-          </div>
-          <span class="metric-lbl">BCA Grade</span>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="hero-media">
-      <div class="canvas-hero-wrapper" style="width: 100%; height: 420px; position: relative;">
-        <canvas id="heroNetworkCanvas" style="width: 100%; height: 100%; cursor: pointer;"></canvas>
-        <div class="float-card card-glass" style="top: 5%; left: -10%;">
-          <span class="float-card-lbl">JWT VALID</span>
-          <span class="float-card-val">99.98%</span>
-        </div>
-        <div class="float-card card-glass" style="top: 5%; right: -10%;">
-          <span class="float-card-lbl">Kafka</span>
-          <span class="float-card-val">125 msg/s</span>
-        </div>
-        <div class="float-card card-glass" style="top: 55%; left: -12%;">
-          <span class="float-card-lbl">Redis</span>
-          <span class="float-card-val">3ms</span>
-        </div>
-        <div class="hero-console-log card-glass" style="position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); width: 90%; padding: 12px 18px; font-family: var(--font-mono); font-size: 0.72rem; color: #32d74b; text-align: left; max-height: 84px; overflow-y: hidden; pointer-events: none; opacity: 0.85;">
-          <div class="console-line">> [INFO] System Initialized. Awaiting packet stream...</div>
         </div>
       </div>
     </div>
   </div>
   
-  <div class="scroll-indicator" id="heroScrollIndicator">
-    <span>SCROLL DOWN</span>
-    <div class="mouse-icon">
-      <div class="wheel"></div>
-    </div>
+  <div class="scroll-indicator">
+    <span>SCROLL</span>
+    <div class="scroll-line"></div>
   </div>
 </header>
 
+<!-- Asymmetric Statistics Strip -->
+<section style="background: var(--bg-soft); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+  <div class="container">
+    <div class="counter-strip">
+      <div class="card card-glass counter-card">
+        <div class="num" data-count="8">0</div>
+        <div class="lbl">Microservices Built</div>
+      </div>
+      <div class="card card-glass counter-card">
+        <div class="num" data-count="30" data-suffix="+">0</div>
+        <div class="lbl">REST APIs Built</div>
+      </div>
+      <div class="card card-glass counter-card">
+        <div class="num" data-count="10" data-suffix="K+">0</div>
+        <div class="lbl">Simulated Tx Loads</div>
+      </div>
+      <div class="card card-glass counter-card">
+        <div class="num" data-count="45" data-suffix="%">0</div>
+        <div class="lbl">API Latency Gain</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Featured Projects Bento Showcase -->
-<section>
+<section id="work">
   <div class="container">
     <span class="eyebrow"><span class="dot"></span> Highlighted Work</span>
-    <h2 class="section-title">A selection of backend systems.</h2>
-    <p class="section-sub">Event-driven saga orchestration, security endpoints, caching, and clean schema architectures.</p>
+    <h2 class="section-title"><span class="gradient-text">Selected backend systems.</span></h2>
+    <p class="section-sub">Distributed Saga coordination, transactional endpoints, and high-velocity schema architectures.</p>
 
     <div class="project-list">
-      <!-- Project 1: Delivoos -->
+      <!-- Project 1: Delivo OS -->
       <div class="project-bento">
+        <div class="project-overlay">
+          <span class="overlay-close">&times;</span>
+          <div class="overlay-content">
+            <h2 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 12px; color: var(--text);">Delivo OS — Food Delivery Enterprise</h2>
+            <div style="margin-bottom: 16px;">
+              <span class="overlay-badge">Spring Boot</span>
+              <span class="overlay-badge">Apache Kafka</span>
+              <span class="overlay-badge">Redis Cache</span>
+              <span class="overlay-badge">API Gateway</span>
+            </div>
+            <h3 style="color: var(--accent); font-size: 1rem; font-weight: 700; margin-top: 16px;">Problem Statement</h3>
+            <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.6; margin-bottom: 16px;">Coordinating asynchronous order placement, courier dispatch, and billing status updates across isolated database schemas without concurrency locks or packet loss under load.</p>
+            <h3 style="color: var(--accent); font-size: 1rem; font-weight: 700;">Architectural Solution</h3>
+            <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.6; margin-bottom: 20px;">Orchestrated 8 Spring Boot microservices asynchronously via Apache Kafka. Managed transaction boundaries using Saga design patterns, eliminating standard SQL locks and resulting in a verified 45% API latency response gain.</p>
+            <div style="display: flex; gap: 12px; margin-top: 20px;">
+              <a href="https://github.com/abhishektangade965-crypto/Food-Delivery-Enterprise-System" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm"><i class="fa-brands fa-github"></i> Repository Code</a>
+              <a href="projects.html" class="btn btn-outline btn-sm">Full Case Study</a>
+            </div>
+          </div>
+        </div>
         <div class="mockup-container">
           <div class="device-mockup">
             <div class="device-screen">
-              <img src="assets/images/delivoos/home.png" alt="Delivoos food delivery platform dashboard" loading="lazy">
+              <img src="assets/images/delivoos/home.png" alt="Delivo OS platform mockup" loading="lazy">
             </div>
           </div>
         </div>
         <div class="project-details">
-          <h3>Delivoos — Food Delivery Enterprise</h3>
+          <h3>Delivo OS — Food Delivery Enterprise</h3>
           <span class="tagline">Event-Driven Saga Orchestration &amp; Microservices</span>
           <p class="paragraph">
-            A distributed backend architecture designed to coordinate <strong>8 Spring Boot microservices</strong>. Leveraged Apache Kafka to orchestrate transactional order flows asynchronously, eliminating database locking issues.
+            <strong>Problem:</strong> Coordinating asynchronous order placement, courier dispatch, and billing status updates across isolated database schemas without concurrency locks or packet loss under load.
+          </p>
+          <p class="paragraph">
+            <strong>Solution:</strong> Orchestrated 8 Spring Boot microservices asynchronously via Apache Kafka. Managed transaction boundaries using Saga design patterns, eliminating standard SQL locks.
           </p>
           <div class="project-metrics">
             <div class="metric-box">
               <span class="metric-num">45%</span>
-              <span class="metric-label">API Response Gain</span>
+              <span class="metric-label">API response gain</span>
             </div>
             <div class="metric-box">
               <span class="metric-num">8</span>
@@ -316,7 +327,7 @@
             <span class="badge">Redis</span>
             <span class="badge">API Gateway</span>
           </div>
-          <div class="hero-cta" style="margin-bottom:0;">
+          <div class="hero-cta" style="margin-bottom:0; margin-top: 16px;">
             <a href="https://github.com/abhishektangade965-crypto/Food-Delivery-Enterprise-System" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm"><i class="fa-brands fa-github"></i> GitHub</a>
             <a href="projects.html#project-1" class="btn btn-outline btn-sm">Case Study</a>
           </div>
@@ -325,11 +336,34 @@
 
       <!-- Project 2: SmartBank -->
       <div class="project-bento reverse">
+        <div class="project-overlay">
+          <span class="overlay-close">&times;</span>
+          <div class="overlay-content">
+            <h2 style="font-size: 1.6rem; font-weight: 800; margin-bottom: 12px; color: var(--text);">SmartBank — Enterprise Banking</h2>
+            <div style="margin-bottom: 16px;">
+              <span class="overlay-badge">Spring Boot</span>
+              <span class="overlay-badge">Spring Security 6</span>
+              <span class="overlay-badge">JWT Auth</span>
+              <span class="overlay-badge">MySQL</span>
+            </div>
+            <h3 style="color: var(--accent); font-size: 1rem; font-weight: 700; margin-top: 16px;">Problem Statement</h3>
+            <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.6; margin-bottom: 16px;">Managing high-velocity balance transfers and deposit operations securely while ensuring transactional consistency under concurrent transfers.</p>
+            <h3 style="color: var(--accent); font-size: 1rem; font-weight: 700;">Architectural Solution</h3>
+            <p style="color: var(--text-muted); font-size: 0.92rem; line-height: 1.6; margin-bottom: 20px;">Developed 30+ REST APIs executing secure transactions. Configured role-based access controls using Spring Security 6 and stateless JWT token exchanges.</p>
+            <div style="display: flex; gap: 12px; margin-top: 20px;">
+              <a href="https://github.com/abhishektangade965-crypto/Smart-Banking-Enterprise-System" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm"><i class="fa-brands fa-github"></i> Repository Code</a>
+              <a href="projects.html" class="btn btn-outline btn-sm">Full Case Study</a>
+            </div>
+          </div>
+        </div>
         <div class="project-details">
           <h3>SmartBank — Enterprise Banking</h3>
           <span class="tagline">Stateless JWT Security &amp; Ledger Consistency</span>
           <p class="paragraph">
-            A digital banking system designed with atomic transactional controls. Built and benchmarked <strong>30+ secure REST APIs</strong> with role-based isolation, handling high-velocity deposit transactions smoothly.
+            <strong>Problem:</strong> Managing high-velocity balance transfers and deposit operations securely while ensuring transactional consistency under concurrent transfers.
+          </p>
+          <p class="paragraph">
+            <strong>Solution:</strong> Developed 30+ REST APIs executing secure transactions. Configured role-based access controls using Spring Security 6 and stateless JWT token exchanges.
           </p>
           <div class="project-metrics">
             <div class="metric-box">
@@ -347,7 +381,7 @@
             <span class="badge">JWT</span>
             <span class="badge">MySQL</span>
           </div>
-          <div class="hero-cta" style="margin-bottom:0;">
+          <div class="hero-cta" style="margin-bottom:0; margin-top: 16px;">
             <a href="https://github.com/abhishektangade965-crypto/Smart-Banking-Enterprise-System" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm"><i class="fa-brands fa-github"></i> GitHub</a>
             <a href="projects.html#project-2" class="btn btn-outline btn-sm">Case Study</a>
           </div>
@@ -361,6 +395,281 @@
         </div>
       </div>
     </div>
+    
+    <div style="text-align: center; margin-top: 48px;">
+      <a href="projects.html" class="btn btn-outline" style="display: inline-flex; align-items: center; gap: 8px;">
+        View All Projects <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Section 1: Engineering Process / Methodology -->
+<section id="process-section">
+  <div class="container">
+    <div style="text-align: center;">
+      <span class="glass-pill-eyebrow"><span class="dot"></span> Methodology</span>
+      <h2 class="section-title process-title" style="margin-left: auto; margin-right: auto; text-align: center;"><span class="gradient-text">How I Engineer Scalable Systems</span></h2>
+      <p class="section-sub" style="margin-left: auto; margin-right: auto; text-align: center;">Adhering to strict backend engineering cycles from DB normalization to production deployment.</p>
+    </div>
+
+    <div class="process-grid-container">
+      <div class="process-grid">
+        <!-- Step 01: DESIGN -->
+        <div class="card card-glass process-card-2" tabindex="0">
+          <span class="watermark-num">01</span>
+          <i class="fa-solid fa-compass-drafting step-icon-64"></i>
+          <span class="step-num" style="display: block; font-family: var(--font-mono); color: var(--accent); font-size: 0.82rem; margin-bottom: 8px;">01 / DESIGN</span>
+          <h3 style="font-family: var(--font-display); font-size: 1.25rem; font-weight: 800; margin-bottom: 12px; color: var(--text);">Architect &amp; Model</h3>
+          <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; margin: 0;">Designing optimal DB schemas (MySQL/Oracle), mapping entities with JPA/Hibernate, and drafting RESTful specs.</p>
+        </div>
+
+        <!-- Step 02: BUILD -->
+        <div class="card card-glass process-card-2" tabindex="0">
+          <span class="watermark-num">02</span>
+          <i class="fa-solid fa-code step-icon-64"></i>
+          <span class="step-num" style="display: block; font-family: var(--font-mono); color: var(--accent); font-size: 0.82rem; margin-bottom: 8px;">02 / BUILD</span>
+          <h3 style="font-family: var(--font-display); font-size: 1.25rem; font-weight: 800; margin-bottom: 12px; color: var(--text);">Develop &amp; Integrate</h3>
+          <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; margin: 0;">Coding scalable microservices, configuring Spring Boot controllers, and establishing async Kafka event pipelines.</p>
+        </div>
+
+        <!-- Step 03: TEST -->
+        <div class="card card-glass process-card-2" tabindex="0">
+          <span class="watermark-num">03</span>
+          <i class="fa-solid fa-vial step-icon-64"></i>
+          <span class="step-num" style="display: block; font-family: var(--font-mono); color: var(--accent); font-size: 0.82rem; margin-bottom: 8px;">03 / TEST</span>
+          <h3 style="font-family: var(--font-display); font-size: 1.25rem; font-weight: 800; margin-bottom: 12px; color: var(--text);">Validate &amp; Benchmark</h3>
+          <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; margin: 0;">Running integration tests, automating assertions via Postman collections, and checking transaction boundaries.</p>
+        </div>
+
+        <!-- Step 04: SHIP -->
+        <div class="card card-glass process-card-2" tabindex="0">
+          <span class="watermark-num">04</span>
+          <i class="fa-solid fa-rocket step-icon-64"></i>
+          <span class="step-num" style="display: block; font-family: var(--font-mono); color: var(--accent); font-size: 0.82rem; margin-bottom: 8px;">04 / SHIP</span>
+          <h3 style="font-family: var(--font-display); font-size: 1.25rem; font-weight: 800; margin-bottom: 12px; color: var(--text);">Optimize &amp; Deploy</h3>
+          <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; margin: 0;">Setting up Redis cache bounds, tweaking logging properties, and preparing print-ready container artifacts.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Button after cards -->
+    <div style="text-align: center; margin-top: 40px;">
+      <a href="about.html#process" class="process-cta">View Engineering Process <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+
+    <!-- Verified Metrics Strip -->
+    <div class="process-metrics-strip">
+      <div class="metric-item">
+        <span class="metric-val">8</span>
+        <span class="metric-lbl">Microservices Built</span>
+      </div>
+      <div class="metric-item">
+        <span class="metric-val">30+</span>
+        <span class="metric-lbl">REST APIs</span>
+      </div>
+      <div class="metric-item">
+        <span class="metric-val">10K+</span>
+        <span class="metric-lbl">Simulated Trans.</span>
+      </div>
+      <div class="metric-item">
+        <span class="metric-val">45%</span>
+        <span class="metric-lbl">API Latency Gain</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 2: Technical Capabilities -->
+<section id="tech-capabilities-section" style="background: var(--bg-soft); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+  <div class="container">
+    <div style="text-align: center;">
+      <span class="glass-pill-eyebrow"><span class="dot"></span> Tech Stack</span>
+      <h2 class="section-title" style="margin-left: auto; margin-right: auto; text-align: center;"><span class="gradient-text">Technical Capabilities</span></h2>
+      <p class="section-sub" style="margin-left: auto; margin-right: auto; text-align: center;">A categorized snapshot of the verified backend technologies, tools, and frameworks I work with.</p>
+    </div>
+
+    <div class="skills-panel-grid">
+      <!-- Category 1: Core Language -->
+      <div class="card card-glass skill-panel-card" tabindex="0">
+        <i class="fa-solid fa-code panel-icon-64"></i>
+        <h3 class="panel-title-large">Core Language</h3>
+        <div class="chip-wrapper">
+          <span class="tech-chip" tabindex="0" data-tooltip="Object-Oriented Programming Patterns">Java (OOPs)</span>
+          <span class="tech-chip" tabindex="0" data-tooltip="List, Map, Set Data Structures">Collections API</span>
+          <span class="tech-chip" tabindex="0" data-tooltip="Functional Processing &amp; Filters">Java Streams</span>
+        </div>
+      </div>
+
+      <!-- Category 2: Spring Ecosystem -->
+      <div class="card card-glass skill-panel-card" tabindex="0">
+        <i class="fa-solid fa-leaf panel-icon-64"></i>
+        <h3 class="panel-title-large">Spring Ecosystem</h3>
+        <div class="chip-wrapper">
+          <span class="tech-chip" tabindex="0" data-tooltip="Microservice Controllers &amp; IoC">Spring Boot</span>
+          <span class="tech-chip" tabindex="0" data-tooltip="Stateless Auth &amp; Endpoint Protection">Spring Security 6</span>
+          <span class="tech-chip" tabindex="0" data-tooltip="Repository Abstractions &amp; ORM">Spring Data JPA</span>
+          <span class="tech-chip" tabindex="0" data-tooltip="Cryptographic Bearer Validation">JWT Auth</span>
+        </div>
+      </div>
+
+      <!-- Category 3: Data Layer -->
+      <div class="card card-glass skill-panel-card" tabindex="0">
+        <i class="fa-solid fa-database panel-icon-64"></i>
+        <h3 class="panel-title-large">Data Layer</h3>
+        <div class="chip-wrapper">
+          <span class="tech-chip" tabindex="0" data-tooltip="Relational Schema Normalization">MySQL</span>
+          <span class="tech-chip" tabindex="0" data-tooltip="Enterprise SQL Queries &amp; Joins">Oracle SQL</span>
+          <span class="tech-chip" tabindex="0" data-tooltip="Entity Relationships &amp; Mapping">Hibernate ORM</span>
+          <span class="tech-chip" tabindex="0" data-tooltip="Document Store Fundamentals">MongoDB</span>
+        </div>
+      </div>
+
+      <!-- Category 4: Messaging & Cache -->
+      <div class="card card-glass skill-panel-card" tabindex="0">
+        <i class="fa-solid fa-network-wired panel-icon-64"></i>
+        <h3 class="panel-title-large">Messaging &amp; Cache</h3>
+        <div class="chip-wrapper">
+          <span class="tech-chip" tabindex="0" data-tooltip="Distributed Event Streams &amp; Saga Topics">Apache Kafka</span>
+          <span class="tech-chip" tabindex="0" data-tooltip="In-Memory Caching &amp; Key-Value Store">Redis (Basic)</span>
+        </div>
+      </div>
+
+      <!-- Category 5: Workflow & Tools -->
+      <div class="card card-glass skill-panel-card" tabindex="0">
+        <i class="fa-solid fa-toolbox panel-icon-64"></i>
+        <h3 class="panel-title-large">Workflow &amp; Tools</h3>
+        <div class="chip-wrapper">
+          <span class="tech-chip" tabindex="0" data-tooltip="Version Control &amp; Repository Branching">Git &amp; GitHub</span>
+          <span class="tech-chip" tabindex="0" data-tooltip="Dependency Resolution &amp; Builds">Maven &amp; Gradle</span>
+          <span class="tech-chip" tabindex="0" data-tooltip="RESTful Endpoint Testing &amp; Suites">Postman API</span>
+          <span class="tech-chip" tabindex="0" data-tooltip="Java IDE Workspaces">Eclipse / IntelliJ</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 44px;">
+      <a href="skills.html" class="process-cta">Explore Technical Stack <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- Section 3: Architecture Highlight (SVG Saga Flow Diagram) -->
+<section id="architecture-section">
+  <div class="container">
+    <div style="text-align: center;">
+      <span class="glass-pill-eyebrow"><span class="dot"></span> Saga Orchestration</span>
+      <h2 class="section-title" style="margin-left: auto; margin-right: auto; text-align: center;"><span class="gradient-text">System Architecture</span></h2>
+      <p class="section-sub" style="margin-left: auto; margin-right: auto; text-align: center;">Visualizing the asynchronous transaction choreography of Delivo OS across Spring Boot microservices.</p>
+      
+      <div style="margin-top: 8px;">
+        <span class="simulated-label-pill"><i class="fa-solid fa-circle-info" style="color: var(--accent);"></i> Simulated Performance Metrics &amp; Illustrative Flow</span>
+      </div>
+    </div>
+
+    <div class="card architecture-container-card">
+      <!-- Floating Glass Pill Legend in Top-Right -->
+      <div class="floating-legend-pill">
+        <span class="legend-item"><span class="status-dot flow-pulse" style="width: 8px; height: 8px; border-radius: 50%;"></span> REST / HTTP Entry</span>
+        <span class="legend-item"><span class="status-dot accent-pulse" style="width: 8px; height: 8px; border-radius: 50%;"></span> Kafka Event Bus</span>
+        <span class="legend-item"><span class="status-dot success-pulse" style="width: 8px; height: 8px; border-radius: 50%;"></span> Microservices</span>
+      </div>
+
+      <div class="architecture-canvas">
+        <svg class="architecture-svg-canvas" viewBox="0 0 900 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Connector Lines with animated packet dash offsets -->
+          <!-- Gateway -> Order -->
+          <path d="M195 260 H280" stroke="var(--border-strong)" stroke-width="2" />
+          <path class="dash-flow-line" d="M195 260 H280" stroke="#3B82F6" stroke-width="3" />
+          
+          <!-- Order -> Kafka Hero -->
+          <path d="M455 260 H520" stroke="var(--border-strong)" stroke-width="2" />
+          <path class="dash-flow-line" d="M455 260 H520" stroke="#3B82F6" stroke-width="3" />
+          
+          <!-- Kafka Hero -> Payment (Top Right) -->
+          <path d="M620 230 V115 H710" stroke="var(--border-strong)" stroke-width="2" />
+          <path class="dash-flow-line" d="M620 230 V115 H710" stroke="var(--accent)" stroke-width="3" />
+          
+          <!-- Kafka Hero -> Delivery (Bottom Right) -->
+          <path d="M620 290 V405 H710" stroke="var(--border-strong)" stroke-width="2" />
+          <path class="dash-flow-line" d="M620 290 V405 H710" stroke="var(--accent)" stroke-width="3" />
+        </svg>
+
+        <!-- Node 1: API Gateway (width 175px, height 115px) -->
+        <div class="node-glass std-arch-node" style="left: 20px; top: 202px;" tabindex="0" title="API Gateway: Ingress Routing &amp; JWT Validation">
+          <span class="status-dot flow-pulse" style="position: absolute; top: 12px; left: 12px;"></span>
+          <i class="fa-solid fa-door-open" style="font-size: 1.4rem; color: #3B82F6;"></i>
+          <span class="node-main-title">API Gateway</span>
+          <span class="node-sub-title">HTTP Ingress · Port 8080</span>
+        </div>
+
+        <!-- Node 2: Order Service (width 175px, height 115px) -->
+        <div class="node-glass std-arch-node" style="left: 280px; top: 202px;" tabindex="0" title="Order Service: Saga Orchestrator &amp; Transaction Bounds">
+          <span class="status-dot flow-pulse" style="position: absolute; top: 12px; left: 12px;"></span>
+          <i class="fa-solid fa-diagram-project" style="font-size: 1.4rem; color: #3B82F6;"></i>
+          <span class="node-main-title">Order Service</span>
+          <span class="node-sub-title">Saga Coordinator</span>
+        </div>
+
+        <!-- Node 3: Kafka Hero Node (width 200px, height 135px) -->
+        <div class="node-glass std-arch-node hero-kafka-node" style="left: 520px; top: 192px;" tabindex="0" title="Apache Kafka: Distributed Event Streaming Bus">
+          <span class="status-dot accent-pulse" style="position: absolute; top: 12px; left: 12px;"></span>
+          <i class="fa-solid fa-network-wired" style="font-size: 1.8rem; color: var(--accent);"></i>
+          <span class="node-main-title" style="font-size: 19px; color: var(--accent); letter-spacing: 0.05em;">KAFKA BUS</span>
+          <span class="node-sub-title" style="color: var(--text);">Event Streams &amp; Topics</span>
+        </div>
+
+        <!-- Node 4: Payment Service (width 175px, height 115px) -->
+        <div class="node-glass std-arch-node" style="left: 710px; top: 57px;" tabindex="0" title="Payment Service: Balance Checks &amp; Settlement">
+          <span class="status-dot success-pulse" style="position: absolute; top: 12px; left: 12px;"></span>
+          <i class="fa-solid fa-credit-card" style="font-size: 1.4rem; color: #10B981;"></i>
+          <span class="node-main-title">Payment Service</span>
+          <span class="node-sub-title">ACID Settlement</span>
+        </div>
+
+        <!-- Node 5: Delivery Service (width 175px, height 115px) -->
+        <div class="node-glass std-arch-node" style="left: 710px; top: 347px;" tabindex="0" title="Delivery Service: Dispatcher &amp; Tracking">
+          <span class="status-dot success-pulse" style="position: absolute; top: 12px; left: 12px;"></span>
+          <i class="fa-solid fa-truck-fast" style="font-size: 1.4rem; color: #10B981;"></i>
+          <span class="node-main-title">Delivery Service</span>
+          <span class="node-sub-title">Courier Dispatcher</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 7: Timeline / Verified Milestones -->
+<section>
+  <div class="container">
+    <span class="eyebrow"><span class="dot"></span> Chronology</span>
+    <h2 class="section-title"><span class="gradient-text">Milestones &amp; Credentials</span></h2>
+    <p class="section-sub">A verified record of my academic credentials, certifications, and technical milestones.</p>
+
+    <div class="timeline-container" style="margin-top: 48px;">
+      <div class="timeline-line"></div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">2022 – 2025</div>
+        <h3 class="timeline-title">Bachelor of Computer Application (BCA)</h3>
+        <p class="timeline-subtitle">R B Attal College, Georai — Dr. Babasaheb Ambedkar Marathwada University</p>
+        <p class="paragraph">Graduated with a final score of <strong>75%</strong>, establishing strong core foundations in data structures, SQL databases, and Object-Oriented Programming.</p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">2025</div>
+        <h3 class="timeline-title">Udemy Technical Certifications</h3>
+        <p class="timeline-subtitle">Java Programming Masterclass &amp; SQL Query Optimization</p>
+        <p class="paragraph">Completed comprehensive training on advanced core Java, multi-threading, database normalization, and query plan indexing optimization sweeps.</p>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-year">2026</div>
+        <h3 class="timeline-title">Distributed System Milestones</h3>
+        <p class="timeline-subtitle">Delivo OS &amp; SmartBank Project Implementations</p>
+        <p class="paragraph">Built and integrated event-driven Saga transactional boundaries using Kafka streams and secure endpoints configured via Spring Security 6 and stateless JWT token models.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -368,7 +677,7 @@
 <footer>
   <div class="container">
     <div class="footer-cta-box">
-      <h2>Ready to build something reliable?</h2>
+      <h2 class="section-title"><span class="gradient-text">Ready to build something reliable?</span></h2>
       <p>I am looking for Java Backend Developer roles. Let's discuss how I can contribute to your development team.</p>
       <a href="contact.html" class="btn btn-primary">Contact Me <i class="fa-solid fa-paper-plane"></i></a>
     </div>
@@ -384,10 +693,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
-<script src="https://unpkg.com/split-type" defer></script>
-
 <!-- Scripts -->
 <script src="assets/js/lightning.js?v=4" defer></script>
+<script src="assets/js/splash-cursor.js" defer></script>
 <script src="assets/js/main.js?v=4" defer></script>
 <script src="assets/js/animations.js?v=4" defer></script>
 </body>

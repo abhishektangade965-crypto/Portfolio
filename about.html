@@ -8,9 +8,9 @@
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://abhishektangade-portfolio.netlify.app/about.html">
 
-<!-- Favicon -->
-<link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
-<link rel="alternate icon" href="favicon.ico">
+<!-- Premium AT Favicon -->
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
 
 <!-- Fonts & Libraries -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 
-<style>html,body{background:#0D0D0D;margin:0;}</style>
+<style>html,body{background:var(--bg);margin:0;}</style>
 
 <style>
 @view-transition { navigation: auto; }
@@ -32,6 +32,14 @@
 <link rel="stylesheet" href="assets/css/animations.css?v=8">
 </head>
 <body>
+
+<!-- Light Theme Background Video & Fallback (Dark Theme Untouched) -->
+<video id="silkBackground" class="silk-bg-video" autoplay muted loop playsinline preload="none">
+  <source src="assets/videos/silk-fabric-light-loop.webm" type="video/webm">
+  <source src="assets/videos/silk-fabric-light-loop.mp4" type="video/mp4">
+</video>
+<div id="silkBackdropFallback" class="silk-bg-fallback"></div>
+
 
 <div class="scroll-progress-bar" id="scrollProgress"></div>
 
@@ -116,6 +124,7 @@
   </ul>
   <div class="nav-actions">
     <button class="cmd-trigger-badge" aria-label="Open Commands" id="cmdTriggerBtn">⌘K</button>
+    <button class="cmd-trigger-btn" id="cmdTrigger" aria-label="Open Command Palette" title="Open Command Palette (⌘K)"><i class="fa-solid fa-terminal"></i><span class="cmd-shortcut">⌘K</span></button>
     <button class="theme-toggle" aria-label="Toggle theme"><i class="bi bi-sun"></i></button>
     <a href="contact.html" class="btn btn-primary btn-sm">Hire Me</a>
     <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -134,87 +143,173 @@
   </div>
 </div>
 
-<div class="page-header" id="main" style="padding-top: 140px; padding-bottom: 40px; position: relative; overflow: hidden;">
-  <div class="hero-aurora" style="opacity: 0.4;"></div>
+<div class="page-header" id="main" style="padding-top: 95px; padding-bottom: 40px; position: relative;">
   <div class="container">
-    <span class="eyebrow"><span class="dot"></span> My Story</span>
-    <h1 class="section-title">The developer behind the logs.</h1>
-    <p class="section-sub">A background in computer applications combined with an interest in distributed backend architectures.</p>
+    <span class="glass-pill-eyebrow"><span class="dot"></span> My Story</span>
+    <h1 class="section-title"><span class="gradient-text">The developer behind the logs.</span></h1>
+    <p class="section-sub">Designing resilient distributed microservices, transactional data integrity, and high-throughput event-driven architectures.</p>
+    
+    <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: -24px; margin-bottom: 32px;">
+      <span class="tech-chip" tabindex="0"><i class="fa-brands fa-java" style="color: var(--accent);"></i> Java 21</span>
+      <span class="tech-chip" tabindex="0"><i class="fa-solid fa-leaf" style="color: #3FB950;"></i> Spring Boot 3.x</span>
+      <span class="tech-chip" tabindex="0"><i class="fa-solid fa-network-wired" style="color: #00d4ff;"></i> Apache Kafka</span>
+      <span class="tech-chip" tabindex="0"><i class="fa-solid fa-bolt" style="color: #FFD700;"></i> Redis Cache</span>
+      <span class="tech-chip" tabindex="0"><i class="fa-solid fa-database" style="color: #FF4D00;"></i> MySQL 8</span>
+    </div>
   </div>
 </div>
 
-<!-- Bio & Education Section -->
-<section style="padding-top:0;">
-  <div class="container grid-2">
-    <div>
-      <h2 class="bio-heading">Java-First Engineering</h2>
-      <p class="bio-para">
-        I am a fresh Java Backend Developer holding a Bachelor of Computer Application (BCA). During my studies, I focused on core computer science foundations, relational schemas, database index tuning, and OOP methodologies.
-      </p>
-      <p class="bio-para">
-        Rather than building simple CRUD apps, I build distributed microservices. On <span class="text-accent">Delivoos</span>, I resolved a <span class="text-accent">Kafka consumer-lag issue</span> during order-spike testing by tuning partition count and batch size — cutting processing delays by 45%. I focus on Spring Boot configurations, <span class="text-accent">JWT token validation</span>, SQL database query indexes tuning, and Redis caching layers.
-      </p>
+<!-- Bio & Education Bento Section -->
+<section style="padding-top:0; position: relative;">
+  <div class="container grid-2" style="align-items: stretch; margin-bottom: 24px;">
+    
+    <!-- Left Card: Engineering Story -->
+    <div class="card card-glass process-card-2" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+          <div style="width: 48px; height: 48px; border-radius: 14px; background: rgba(255, 77, 0, 0.12); border: 1px solid rgba(255, 77, 0, 0.3); display: flex; align-items: center; justify-content: center; color: var(--accent); font-size: 1.3rem;">
+            <i class="fa-solid fa-code"></i>
+          </div>
+          <div>
+            <h2 style="font-size: 1.5rem; font-weight: 800; margin: 0; color: var(--text);">Java-First Engineering</h2>
+            <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent);">Backend Architecture &amp; Fundamentals</span>
+          </div>
+        </div>
+
+        <p style="color: var(--text-muted); font-size: 0.96rem; line-height: 1.75; margin-bottom: 16px;">
+          I am a fresh Java Backend Developer holding a Bachelor of Computer Application (BCA). During my studies, I focused heavily on core computer science foundations, relational schemas, database index tuning, and Object-Oriented Programming (OOP) methodologies.
+        </p>
+
+        <p style="color: var(--text-muted); font-size: 0.96rem; line-height: 1.75; margin-bottom: 24px;">
+          Rather than building simple CRUD apps, I challenge myself with distributed microservices, event streaming using Kafka, JWT tokens validation, and multi-tier Redis caching. In my <strong>Delivo OS</strong> project, I successfully implemented asynchronous Kafka Saga orchestration patterns to manage order workflow consistency across 8 Spring Boot microservices, rather than relying on monolithic database locks.
+        </p>
+      </div>
+
+      <div style="display: flex; gap: 8px; flex-wrap: wrap; border-top: 1px solid var(--border); padding-top: 16px;">
+        <span class="overlay-badge">Saga Pattern</span>
+        <span class="overlay-badge">ACID Transactions</span>
+        <span class="overlay-badge">Stateless JWT</span>
+        <span class="overlay-badge">Cache Failover</span>
+      </div>
     </div>
 
-    <div>
-      <div class="card card-glass edu-card" id="education">
-        <span class="eyebrow" style="margin-bottom: 12px;"><i class="fa-solid fa-graduation-cap"></i> Education Detail</span>
-        <h3 class="edu-title">Bachelor of Computer Application (BCA)</h3>
-        <p class="edu-duration">Graduated: 2022 - 2025</p>
-        <p class="edu-school">
-          R B Attal College, Georai — Dr. Babasaheb Ambedkar Marathwada University.
-        </p>
-        <div class="edu-grade-row">
-          <span class="edu-grade-label">Cumulative Grade</span>
-          <span class="edu-grade-val">75% Marks</span>
+    <!-- Right Card: Cinematic Environment Workspace Photo Card -->
+    <div class="card card-glass process-card-2" style="padding: 0; overflow: hidden; display: flex; flex-direction: column; position: relative; min-height: 380px; border: 1px solid var(--border);">
+      <div style="position: relative; width: 100%; height: 100%; min-height: 320px; overflow: hidden;">
+        <img src="assets/images/abhishek-about-workspace.jpg" alt="Abhishek Tangade — Engineering at workspace setup" style="width: 100%; height: 100%; object-fit: cover; object-position: center center; filter: brightness(0.95) contrast(1.05); transition: transform 0.6s var(--ease);">
+        <div style="position: absolute; bottom: 0; left: 0; width: 100%; padding: 28px; background: linear-gradient(to top, rgba(13,13,13,0.96) 0%, rgba(13,13,13,0.65) 65%, transparent 100%);">
+          <span class="glass-pill-eyebrow" style="margin-bottom: 8px; font-size: 0.72rem;"><i class="fa-solid fa-laptop-code" style="color: var(--accent);"></i> Engineering Workspace</span>
+          <h3 style="font-size: 1.25rem; font-weight: 800; color: #FFFFFF; margin: 0;">Architecting Resilient Backend Systems</h3>
+          <p style="font-size: 0.85rem; color: rgba(255,255,255,0.75); margin-top: 6px; margin-bottom: 0; line-height: 1.5;">Focused on high-throughput microservices, clean code principles, and zero-trust API security.</p>
         </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Education Full Row Bento Card -->
+  <div class="container">
+    <div class="card card-glass process-card-2" id="education" style="border-left: 4px solid var(--accent); display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+          <span class="glass-pill-eyebrow" style="margin: 0;"><i class="fa-solid fa-graduation-cap"></i> Education Detail</span>
+          <span class="status-dot success-pulse"></span>
+        </div>
+
+        <h3 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 8px; color: var(--text);">Bachelor of Computer Application (BCA)</h3>
+        <p style="font-size: 0.92rem; font-family: var(--font-mono); color: var(--accent); margin-bottom: 16px;">Graduated: 2022 – 2025</p>
+
+        <div style="background: var(--glass); border: 1px solid var(--border); border-radius: 14px; padding: 16px; margin-bottom: 20px;">
+          <p style="color: var(--text); font-weight: 600; font-size: 0.95rem; margin-bottom: 4px;">
+            R B Attal College, Georai
+          </p>
+          <p style="color: var(--text-muted); font-size: 0.88rem; margin: 0;">
+            Dr. Babasaheb Ambedkar Marathwada University
+          </p>
+        </div>
+
+        <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.65; margin-bottom: 20px;">
+          Core Coursework: Data Structures &amp; Algorithms, Relational Database Management Systems (RDBMS), Object-Oriented Software Engineering, and Computer Networks.
+        </p>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding-top: 16px;">
+        <span style="font-size: 0.9rem; color: var(--text-muted); font-weight: 500;">Cumulative Grade</span>
+        <span style="font-family: var(--font-mono); font-size: 1.15rem; font-weight: 800; color: var(--accent); background: rgba(255, 77, 0, 0.12); border: 1px solid rgba(255, 77, 0, 0.3); padding: 6px 16px; border-radius: 10px; box-shadow: 0 4px 14px rgba(255, 77, 0, 0.15);">75% Marks (3.0/4.0 GPA)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Core Engineering Mindset Cards Grid -->
+<section style="padding-top: 40px; position: relative;">
+  <div class="container">
+    <div style="text-align: center; margin-bottom: 40px;">
+      <span class="glass-pill-eyebrow"><span class="dot"></span> Core Mindset</span>
+      <h2 class="section-title" style="margin-left: auto; margin-right: auto; text-align: center;"><span class="gradient-text">Engineering Principles</span></h2>
+    </div>
+
+    <div class="grid-3" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+      <div class="card card-glass skill-panel-card" tabindex="0">
+        <i class="fa-solid fa-diagram-project panel-icon-64" style="color: var(--accent);"></i>
+        <h3 class="panel-title-large">Resilience First</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-top: 10px;">
+          Prioritizing event-driven Saga choreography over monolithic transaction locks to prevent system cascade failures.
+        </p>
+      </div>
+
+      <div class="card card-glass skill-panel-card" tabindex="0">
+        <i class="fa-solid fa-shield-halved panel-icon-64" style="color: #00d4ff;"></i>
+        <h3 class="panel-title-large">Zero-Trust Auth</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-top: 10px;">
+          Securing every API endpoint using Spring Security 6, stateless bearer JWT tokens, and strict role permissions.
+        </p>
+      </div>
+
+      <div class="card card-glass skill-panel-card" tabindex="0">
+        <i class="fa-solid fa-gauge-high panel-icon-64" style="color: #3FB950;"></i>
+        <h3 class="panel-title-large">Latency Optimization</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-top: 10px;">
+          Achieving 45% response time drops via Redis key-value caching layers and optimized database indexing queries.
+        </p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- Editorial Timeline Grid -->
-<section style="background: var(--bg-soft); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+<section style="background: var(--bg-soft); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); position: relative;">
   <div class="container">
-    <span class="eyebrow" style="justify-content: center; display: flex; margin-bottom: 16px;"><span class="dot"></span> Career Milestones</span>
-    <h2 class="section-title" style="text-align: center; margin-bottom: 64px;">My Journey from BCA to Backend Architecture</h2>
+    <span class="glass-pill-eyebrow" style="justify-content: center; display: flex; margin-bottom: 16px;"><span class="dot"></span> Career Milestones</span>
+    <h2 class="section-title" style="text-align: center; margin-bottom: 64px;"><span class="gradient-text">My Journey from BCA to Backend Architecture</span></h2>
     
     <div class="timeline-container">
       <div class="timeline-line"></div>
       
-      <!-- Milestone 1: 2022 -->
+      <!-- Milestone 1 -->
+      <div class="timeline-item">
+        <div class="timeline-year">2026 – PRESENT</div>
+        <div class="timeline-title">Event-Driven Backend Architectures</div>
+        <div class="timeline-desc">
+          Shifted focus towards distributed design. Built Delivo OS using 8 Spring Boot microservices, Kafka event streams, and Redis cache failovers, resulting in a 45% API latency drop.
+        </div>
+      </div>
+
+      <!-- Milestone 2 -->
+      <div class="timeline-item">
+        <div class="timeline-year">2024 – 2025</div>
+        <div class="timeline-title">REST APIs &amp; JWT Implementations</div>
+        <div class="timeline-desc">
+          Designed enterprise banking endpoints (SmartBank) securing transfer paths using Spring Security 6. Worked with SQL query optimizations, relational database integrity schema mappings, and basic JUnit test validation suites.
+        </div>
+      </div>
+
+      <!-- Milestone 3 -->
       <div class="timeline-item">
         <div class="timeline-year">2022</div>
         <div class="timeline-title">Foundation &amp; Academic Inception</div>
         <div class="timeline-desc">
           Began computer applications degree (BCA) learning structured algorithms, database normalization, relational algebra in SQL, OOP principles in Java, and basic Git patterns.
-        </div>
-      </div>
-
-      <!-- Milestone 2: 2023 - 2024 -->
-      <div class="timeline-item">
-        <div class="timeline-year">2023 - 2024</div>
-        <div class="timeline-title">REST APIs &amp; JWT Implementations</div>
-        <div class="timeline-desc">
-          Designed enterprise banking endpoints (SmartBank) securing transfer paths using Spring Security 6. Focused on SQL optimizations, relational database integrity mapping, and JUnit testing fundamentals.
-        </div>
-      </div>
-
-      <!-- Milestone 3: 2025 -->
-      <div class="timeline-item">
-        <div class="timeline-year">2025</div>
-        <div class="timeline-title">BCA Graduation</div>
-        <div class="timeline-desc">
-          Completed degree with 75% aggregate marks. Transitioned focus fully to enterprise microservices engineering and job applications.
-        </div>
-      </div>
-
-      <!-- Milestone 4: 2024 - PRESENT -->
-      <div class="timeline-item">
-        <div class="timeline-year">2024 - PRESENT</div>
-        <div class="timeline-title">Event-Driven Backend Architectures</div>
-        <div class="timeline-desc">
-          Shifted focus towards distributed design. Built Delivoos using 8 Spring Boot microservices, Kafka event streams, and Redis cache failovers, resulting in a 45% API latency drop.
         </div>
       </div>
     </div>
@@ -226,7 +321,7 @@
   <div class="container">
     <div class="grid-4">
       <div class="card counter-card">
-        <div class="num" data-count="4">0</div>
+        <div class="num" data-count="3">0</div>
         <div class="lbl">Enterprise Projects</div>
       </div>
       <div class="card counter-card">
@@ -237,10 +332,10 @@
         <div class="num" data-count="75" data-suffix="%">0</div>
         <div class="lbl">BCA Graduate Score</div>
       </div>
-      <div class="card counter-card">
-        <div class="num" data-count="14">0</div>
-        <div class="lbl">Java-First Technologies</div>
-      </div>
+      <a href="skills.html" class="card counter-card" style="text-decoration: none; cursor: pointer; display: block;">
+        <div class="num" data-count="21">0</div>
+        <div class="lbl" style="display: flex; align-items: center; justify-content: center; gap: 6px; color: var(--text-muted);">Java-First Technologies <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.72rem; opacity: 0.6;"></i></div>
+      </a>
     </div>
   </div>
 </section>
@@ -249,7 +344,7 @@
 <footer>
   <div class="container">
     <div class="footer-cta-box">
-      <h2>Ready to build something reliable?</h2>
+      <h2 class="section-title"><span class="gradient-text">Ready to build something reliable?</span></h2>
       <p>I am looking for Java Backend Developer roles. Let's discuss how I can contribute to your development team.</p>
       <a href="contact.html" class="btn btn-primary">Contact Me <i class="fa-solid fa-paper-plane"></i></a>
     </div>
@@ -265,10 +360,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
-<script src="https://unpkg.com/split-type" defer></script>
-
 <!-- Scripts -->
 <script src="assets/js/lightning.js?v=4" defer></script>
+<script src="assets/js/splash-cursor.js" defer></script>
 <script src="assets/js/main.js?v=4" defer></script>
 <script src="assets/js/animations.js?v=4" defer></script>
 </body>

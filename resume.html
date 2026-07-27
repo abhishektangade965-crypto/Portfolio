@@ -8,9 +8,9 @@
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://abhishektangade-portfolio.netlify.app/resume.html">
 
-<!-- Favicon -->
-<link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
-<link rel="alternate icon" href="favicon.ico">
+<!-- Premium AT Favicon -->
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
 
 <!-- Fonts & Libraries -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 
-<style>html,body{background:#0D0D0D;margin:0;}</style>
+<style>html,body{background:var(--bg);margin:0;}</style>
 
 <style>
 @view-transition { navigation: auto; }
@@ -32,6 +32,14 @@
 <link rel="stylesheet" href="assets/css/animations.css?v=8">
 </head>
 <body>
+
+<!-- Light Theme Background Video & Fallback (Dark Theme Untouched) -->
+<video id="silkBackground" class="silk-bg-video" autoplay muted loop playsinline preload="none">
+  <source src="assets/videos/silk-fabric-light-loop.webm" type="video/webm">
+  <source src="assets/videos/silk-fabric-light-loop.mp4" type="video/mp4">
+</video>
+<div id="silkBackdropFallback" class="silk-bg-fallback"></div>
+
 
 <div class="scroll-progress-bar" id="scrollProgress"></div>
 
@@ -116,6 +124,7 @@
   </ul>
   <div class="nav-actions">
     <button class="cmd-trigger-badge" aria-label="Open Commands" id="cmdTriggerBtn">⌘K</button>
+    <button class="cmd-trigger-btn" id="cmdTrigger" aria-label="Open Command Palette" title="Open Command Palette (⌘K)"><i class="fa-solid fa-terminal"></i><span class="cmd-shortcut">⌘K</span></button>
     <button class="theme-toggle" aria-label="Toggle theme"><i class="bi bi-sun"></i></button>
     <a href="contact.html" class="btn btn-primary btn-sm">Hire Me</a>
     <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -134,10 +143,10 @@
   </div>
 </div>
 
-<section class="resume-hero" id="main" style="padding-top: 140px; padding-bottom: 40px; text-align: center;">
+<section class="resume-hero" id="main" style="padding-top: 95px; padding-bottom: 40px; text-align: center; position: relative;">
   <div class="container">
     <span class="eyebrow" style="justify-content:center;"><span class="dot"></span> Print-Ready Document</span>
-    <h1 class="section-title">My Resume</h1>
+    <h1 class="section-title"><span class="gradient-text">My Resume</span></h1>
     <p class="section-sub" style="margin-left:auto; margin-right:auto;">
       A concise summary of my projects, education, and technical capabilities.
     </p>
@@ -148,76 +157,125 @@
 </section>
 
 <!-- Print Preview Sheet -->
-<section style="padding-top:20px;">
+<section style="padding-top:20px; position: relative;">
   <div class="container resume-preview" style="max-width: 800px;">
     <div class="card card-glass" style="padding: 48px;">
 
       <div style="text-align:center; margin-bottom:40px; border-bottom: 1px solid var(--border); padding-bottom: 24px;">
-        <h2 style="font-size: 2rem; font-weight: 800; margin-bottom:4px; color: var(--text);">Abhishek Tangade</h2>
-        <p style="color:var(--accent); font-family:var(--font-mono); font-size:.9rem; margin:0;">Java Backend Developer (Fresher)</p>
-        <p style="color:var(--text-muted); font-size:.85rem; margin-top:8px;">
-          Beed, Maharashtra &nbsp;·&nbsp; abhishektangade965@gmail.com &nbsp;·&nbsp; +91 98343 97528
+        <h2 style="font-size: 2.2rem; font-weight: 800; margin-bottom:4px; color: var(--text);">Abhishek Tangade</h2>
+        <p style="color:var(--accent); font-family:var(--font-mono); font-size:.95rem; margin:0;">Java Backend Developer (Fresher)</p>
+        <p style="color:var(--text-muted); font-size:.88rem; margin-top:8px;">
+          Beed, Maharashtra &nbsp;·&nbsp; <a href="mailto:abhishektangade965@gmail.com" style="color:var(--text-muted);">abhishektangade965@gmail.com</a> &nbsp;·&nbsp; +91 98343 97528
+        </p>
+        <p style="font-size:.85rem; font-family:var(--font-mono); color:var(--text-muted); margin-top:6px;">
+          <a href="https://github.com/abhishektangade965-crypto" target="_blank" rel="noopener noreferrer" style="color:var(--accent); text-decoration:none;"><i class="fa-brands fa-github"></i> github.com/abhishektangade965-crypto</a> &nbsp;·&nbsp;
+          <a href="https://linkedin.com/in/abhishek-tangade" target="_blank" rel="noopener noreferrer" style="color:var(--accent); text-decoration:none;"><i class="fa-brands fa-linkedin"></i> linkedin.com/in/abhishek-tangade</a>
         </p>
       </div>
 
       <div class="resume-block">
-        <h3>Summary</h3>
+        <h3 style="color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 6px; margin-bottom: 12px;">Summary</h3>
         <p style="color:var(--text-muted); font-size:.92rem; line-height:1.7;">
-          Java Backend Developer (Fresher) skilled in Java, Spring Boot, Spring Security, Hibernate/JPA, REST APIs, Kafka, Redis, JWT and MySQL. Built 3 full-stack backend systems applying event-driven design with Kafka, caching with Redis and secure authentication with JWT and Spring Security. Achieved a 45% API response-time reduction through Redis caching. Strong fundamentals in scalable, maintainable backend architecture.
+          Fresher Java Backend Developer skilled in Spring Boot 3.x, microservices, and event-driven architecture. Built and load-tested 3 Spring Boot applications (Kafka, Redis, MySQL), achieving 45% API latency reduction and sustaining 1,000+ msgs/sec Kafka throughput in simulated environments. Seeking a junior backend role to apply REST API design and distributed-systems fundamentals.
         </p>
       </div>
 
       <div class="resume-block">
-        <h3>Education</h3>
-        <div class="resume-entry">
-          <div class="head"><b>Bachelor of Computer Application (BCA)</b><span>2022 – 2025</span></div>
-          <p>R B Attal College, Georai — Dr. Babasaheb Ambedkar Marathwada University · Grade: 75%</p>
+        <h3 style="color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 6px; margin-bottom: 12px;">Technical Skills</h3>
+        <div style="color:var(--text-muted); font-size:.9rem; line-height:1.8;">
+          <p style="margin-bottom:6px;"><strong style="color:var(--text);">Languages:</strong> Java 17/21, SQL, PL/SQL</p>
+          <p style="margin-bottom:6px;"><strong style="color:var(--text);">Core Java:</strong> OOP, Collections, Exception Handling, Multithreading fundamentals</p>
+          <p style="margin-bottom:6px;"><strong style="color:var(--text);">Backend Frameworks:</strong> Spring Boot 3.x, Spring Security 6, Spring Data JPA, Hibernate</p>
+          <p style="margin-bottom:6px;"><strong style="color:var(--text);">API:</strong> REST APIs, JSON, JWT</p>
+          <p style="margin-bottom:6px;"><strong style="color:var(--text);">Messaging &amp; Caching:</strong> Kafka, Redis</p>
+          <p style="margin-bottom:6px;"><strong style="color:var(--text);">Databases:</strong> MySQL 8, Oracle SQL, MongoDB (NoSQL)</p>
+          <p style="margin-bottom:6px;"><strong style="color:var(--text);">DevOps:</strong> Docker (Basic), Apache Tomcat, Git/GitHub</p>
+          <p style="margin-bottom:6px;"><strong style="color:var(--text);">Tools:</strong> Maven, Gradle, IntelliJ IDEA, Eclipse</p>
+          <p style="margin-bottom:6px;"><strong style="color:var(--text);">Architecture:</strong> Microservices, API Gateway, Design Patterns, SOLID principles</p>
         </div>
       </div>
 
       <div class="resume-block">
-        <h3>Skills</h3>
-        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-          <span class="badge">Java</span><span class="badge">SQL</span><span class="badge">PL/SQL</span>
-          <span class="badge">Spring Boot</span><span class="badge">Spring Security 6</span><span class="badge">Spring Data JPA</span>
-          <span class="badge">Hibernate</span><span class="badge">Microservices</span><span class="badge">Kafka</span>
-          <span class="badge">Redis (Basic)</span><span class="badge">MySQL</span><span class="badge">Oracle SQL</span>
-          <span class="badge">MongoDB</span><span class="badge">HTML/CSS</span><span class="badge">JavaScript (Basic)</span>
-          <span class="badge">Git &amp; GitHub</span><span class="badge">Maven &amp; Gradle</span><span class="badge">JWT</span>
-          <span class="badge">Apache Tomcat</span><span class="badge">Eclipse</span>
+        <h3 style="color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 6px; margin-bottom: 16px;">Personal Projects</h3>
+        
+        <div class="resume-entry" style="margin-bottom: 20px;">
+          <div class="head" style="display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap;">
+            <b style="font-size:1.05rem; color:var(--text);">Delivo OS — Food Delivery Enterprise Platform</b>
+            <span style="font-family:var(--font-mono); font-size:.85rem; color:var(--accent);">2025 – 2026</span>
+          </div>
+          <p style="font-family:var(--font-mono); font-size:.84rem; color:var(--text-muted); margin-bottom:8px;">Spring Boot, Kafka, Redis, MySQL, Docker</p>
+          <ul style="color:var(--text-muted); font-size:.88rem; line-height:1.65; padding-left:18px; margin-bottom:8px;">
+            <li>Architected 8-service event-driven microservices system using Spring Boot and Kafka, decoupling order, payment, and delivery workflows via Saga orchestration pattern.</li>
+            <li>Configured Kafka producer/consumer pipeline for order-event streaming, load-tested to sustain 1,000+ msgs/sec in local benchmark.</li>
+            <li>Cut average API response latency 45% by implementing a Redis caching layer for order/restaurant data.</li>
+            <li>Built API Gateway with 10+ REST endpoints across customer, restaurant, and delivery flows.</li>
+          </ul>
+          <p style="font-family:var(--font-mono); font-size:.82rem; margin-top:4px;"><a href="https://github.com/abhishektangade965-crypto/Food-Delivery-Enterprise-System" target="_blank" rel="noopener noreferrer" style="color:var(--accent); text-decoration:none;"><i class="fa-brands fa-github"></i> github.com/abhishektangade965-crypto/Food-Delivery-Enterprise-System</a></p>
+        </div>
+
+        <div class="resume-entry" style="margin-bottom: 20px;">
+          <div class="head" style="display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap;">
+            <b style="font-size:1.05rem; color:var(--text);">SmartBank — Enterprise Banking Portal</b>
+            <span style="font-family:var(--font-mono); font-size:.85rem; color:var(--accent);">2025 – 2026</span>
+          </div>
+          <p style="font-family:var(--font-mono); font-size:.84rem; color:var(--text-muted); margin-bottom:8px;">Spring Boot, Spring Security 6, MySQL</p>
+          <ul style="color:var(--text-muted); font-size:.88rem; line-height:1.65; padding-left:18px; margin-bottom:8px;">
+            <li>Built ACID-compliant transaction engine using Spring @Transactional and MySQL across 30+ banking operations.</li>
+            <li>Engineered 30+ REST APIs covering customer, transaction, and account management.</li>
+            <li>Implemented Spring Security 6 with JWT authentication and role-based access control (customer, teller, admin roles).</li>
+            <li>Load-tested 10,000+ simulated transactions with zero data loss.</li>
+          </ul>
+          <p style="font-family:var(--font-mono); font-size:.82rem; margin-top:4px;"><a href="https://github.com/abhishektangade965-crypto/Smart-Banking-Enterprise-System" target="_blank" rel="noopener noreferrer" style="color:var(--accent); text-decoration:none;"><i class="fa-brands fa-github"></i> github.com/abhishektangade965-crypto/Smart-Banking-Enterprise-System</a></p>
+        </div>
+
+        <div class="resume-entry" style="margin-bottom: 20px;">
+          <div class="head" style="display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap;">
+            <b style="font-size:1.05rem; color:var(--text);">Smart Logistics &amp; Supply Chain Portal</b>
+            <span style="font-family:var(--font-mono); font-size:.85rem; color:var(--accent);">2025 – 2026</span>
+          </div>
+          <p style="font-family:var(--font-mono); font-size:.84rem; color:var(--text-muted); margin-bottom:8px;">Spring Boot, MySQL, Redis, REST APIs</p>
+          <ul style="color:var(--text-muted); font-size:.88rem; line-height:1.65; padding-left:18px; margin-bottom:8px;">
+            <li>Built a real-time dashboard with live KPI analytics for warehouse and shipping operations.</li>
+            <li>Reduced database query volume 60% via a Redis caching layer with failover fallback to MySQL.</li>
+            <li>Designed a fuzzy-search command palette for fast shipment tracking.</li>
+            <li>Deployed application to Render.com with Aiven-managed MySQL, resolving cross-platform deployment issues.</li>
+          </ul>
+          <p style="font-family:var(--font-mono); font-size:.82rem; margin-top:4px;"><a href="https://github.com/abhishektangade965-crypto/Smart-Logistics" target="_blank" rel="noopener noreferrer" style="color:var(--accent); text-decoration:none;"><i class="fa-brands fa-github"></i> github.com/abhishektangade965-crypto/Smart-Logistics</a></p>
         </div>
       </div>
 
       <div class="resume-block">
-        <h3>Projects</h3>
+        <h3 style="color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 6px; margin-bottom: 12px;">Education</h3>
         <div class="resume-entry">
-          <div class="head"><b>Delivoos — Enterprise Food Delivery Platform</b><span>Spring Boot · Kafka · Redis</span></div>
-          <p>Developed 8 Spring Boot microservices using event-driven Saga orchestration across services with Kafka and API Gateway. Achieved 45% faster response times by introducing Redis caching.</p>
-        </div>
-        <div class="resume-entry">
-          <div class="head"><b>SmartBank — Enterprise Banking Platform</b><span>Spring Boot · Spring Security 6 · MySQL</span></div>
-          <p>Built secure digital banking portal executing atomic ledger bookkeeping. Developed 30+ REST APIs, simulated 10K+ transactions, and secured endpoints using Spring Security 6 and JWT.</p>
-        </div>
-        <div class="resume-entry">
-          <div class="head"><b>Smart Logistics &amp; Supply Chain Portal</b><span>Spring Boot · MySQL · Redis</span></div>
-          <p>Built supply chain portal with live KPI analytics and warehouse space indicators. Added fuzzy search command palettes and robust Redis cache failover handling.</p>
+          <div class="head" style="display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap;">
+            <b style="font-size:1rem; color:var(--text);">Bachelor of Computer Applications (BCA)</b>
+            <span style="font-family:var(--font-mono); font-size:.85rem; color:var(--accent);">2022 – 2025 (Expected)</span>
+          </div>
+          <p style="color:var(--text-muted); font-size:.9rem; margin-top:4px;">
+            R B Attal College, Georai — Dr. Babasaheb Ambedkar Marathwada University &nbsp;·&nbsp; <strong style="color:var(--text);">Grade: 75% (3.0/4.0 GPA)</strong>
+          </p>
+          <p style="color:var(--text-muted); font-size:.86rem; margin-top:4px;">
+            <em>Relevant Coursework:</em> Data Structures, RDBMS, OOP, Software Engineering
+          </p>
         </div>
       </div>
 
       <div class="resume-block">
-        <h3>Certifications</h3>
-        <p style="color:var(--text-muted); font-size:.92rem; line-height:1.8;">
-          • <b>Java Programming Masterclass</b> — Udemy, 2024 (Completed)<br>
-          • <b>SQL Query Optimization</b> — Udemy, 2024 (Completed)<br>
-          • <b>Spring Boot Microservices</b> — Udemy (In Progress)
-        </p>
+        <h3 style="color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 6px; margin-bottom: 12px;">Certifications &amp; Learning</h3>
+        <ul style="color:var(--text-muted); font-size:.88rem; line-height:1.8; padding-left:18px;">
+          <li><strong style="color:var(--text);">Java Programming Masterclass</strong> — Udemy (Completed)</li>
+          <li><strong style="color:var(--text);">Spring Boot Microservices</strong> — Udemy (Completed)</li>
+          <li><strong style="color:var(--text);">SQL Query Optimization</strong> — Udemy (Completed)</li>
+        </ul>
       </div>
 
       <div class="resume-block" style="margin-bottom:0;">
-        <h3>Soft Skills</h3>
-        <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-          <span class="badge">Problem-Solving</span><span class="badge">Adaptability</span><span class="badge">Team Collaboration</span>
-        </div>
+        <h3 style="color: var(--accent); border-bottom: 1px solid var(--border); padding-bottom: 6px; margin-bottom: 12px;">Soft Skills</h3>
+        <ul style="color:var(--text-muted); font-size:.88rem; line-height:1.8; padding-left:18px;">
+          <li><strong style="color:var(--text);">Problem-Solving:</strong> Debugged Kafka consumer lag and Redis cache-invalidation issues across microservices</li>
+          <li><strong style="color:var(--text);">Attention to Detail:</strong> Designed 30+ REST APIs with structured request/response validation</li>
+          <li><strong style="color:var(--text);">Communication:</strong> Documented system architecture decisions for the Kafka event-driven pipeline</li>
+        </ul>
       </div>
 
     </div>
@@ -228,7 +286,7 @@
 <footer>
   <div class="container">
     <div class="footer-cta-box">
-      <h2>Ready to build something reliable?</h2>
+      <h2 class="section-title"><span class="gradient-text">Ready to build something reliable?</span></h2>
       <p>I am looking for Java Backend Developer roles. Let's discuss how I can contribute to your development team.</p>
       <a href="contact.html" class="btn btn-primary">Contact Me <i class="fa-solid fa-paper-plane"></i></a>
     </div>
@@ -247,6 +305,7 @@
 
 <!-- Scripts -->
 <script src="assets/js/lightning.js?v=4" defer></script>
+<script src="assets/js/splash-cursor.js" defer></script>
 <script src="assets/js/main.js?v=4" defer></script>
 <script src="assets/js/animations.js?v=4" defer></script>
 </body>
