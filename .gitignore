@@ -17,3 +17,8 @@ temp_git_clone/
 # Dependencies
 node_modules/
 npm-debug.log*
+
+# Unused duplicate images
+assets/images/abhishek-avatar.jpg
+assets/images/abhishek-full-poster.jpg
+assets/images/abhishek-portrait.jpg
