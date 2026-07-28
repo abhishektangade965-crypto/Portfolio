@@ -2897,6 +2897,31 @@ footer {
   color: var(--accent) !important;
 }
 
+/* Nav Keyboard Shortcut Legend Badge */
+.nav-kbd-legend {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--glass);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  cursor: help;
+  transition: all 0.25s var(--ease);
+}
+
+.nav-kbd-legend:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+@media (max-width: 992px) {
+  .nav-kbd-legend { display: none; }
+}
+
 
 
 
