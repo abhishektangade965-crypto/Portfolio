@@ -766,11 +766,7 @@ window.ElectricBorder = ElectricBorder;
 
 // Auto-decorator bootstrapper routine
 document.addEventListener('DOMContentLoaded', () => {
-  const CARD_SELECTORS = [
-    '.project-bento',
-    '.hero-btn-primary',
-    '#java-card'
-  ];
+  const CARD_SELECTORS = [];
 
   function decorateCards() {
     const selectors = CARD_SELECTORS.join(', ');

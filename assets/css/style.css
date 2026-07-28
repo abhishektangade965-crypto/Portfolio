@@ -1529,15 +1529,12 @@ footer {
   border: none !important;
 }
 
-/* Electric Border Canvas styling */
+/* Electric Border Canvas styling (Disabled to prevent double borders) */
 .electric-border-canvas {
-  position: absolute !important;
-  top: -8px !important;
-  left: -8px !important;
-  width: calc(100% + 16px) !important;
-  height: calc(100% + 16px) !important;
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
   pointer-events: none !important;
-  z-index: 100 !important;
 }
 
 /* Custom spotlight reflections when theme is dark */
