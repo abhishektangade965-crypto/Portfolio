@@ -14,14 +14,14 @@ A modern, production-grade personal portfolio website showcasing distributed mic
 
 ![Abhishek Tangade Portfolio Live Showcase](assets/images/portfolio-showcase.jpg)
 
-> 💡 **Interactive Live Demo Page**: Experience the automated live scrolling preview, dark/light theme switchers, and microservice sequence diagrams at [**demo.html**](https://abhishektangade-portfolio.netlify.app/demo.html).
+> 💡 **Interactive Live Demo Page**: Experience the automated live scrolling preview, dark/light theme switchers, and microservice sequence diagrams at [**demo.html**](https://abhishektangadeportfolio.vercel.app/demo.html).
 
 ---
 
 ## ✨ Enterprise Features & Technical Highlights
 
 ### ⚡ Architectural Mastery
-- **Delivo OS — Food Delivery Microservices**: Built using **8 Spring Boot microservices** orchestrating asynchronous orders via **Apache Kafka Saga Patterns** and **Redis cache failovers**, delivering a **45% reduction in API response latency**.
+- **Delivoos — Food Delivery Microservices**: Built using **8 Spring Boot microservices** orchestrating asynchronous orders via **Apache Kafka Saga Patterns** and **Redis cache failovers**, delivering a **45% reduction in API response latency**.
 - **SmartBank — Digital Banking Platform**: Implemented **30+ secure REST APIs** with **Spring Security 6 stateless JWT authentication** and strict **ACID ledger consistency** benchmarked across **10K+ simulated transaction loads**.
 - **Interactive Sequence Flow Diagrams**: Built-in **Mermaid.js** sequence diagrams embedded directly inside project case study modals.
 - **OpenAPI / Swagger Integration**: Direct links to full OpenAPI / Swagger specifications for live endpoint exploration.
