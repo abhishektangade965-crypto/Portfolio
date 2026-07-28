@@ -1112,11 +1112,17 @@ footer {
   width: 8px;
   height: 8px;
   background: var(--accent);
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent);
   border-radius: 50%;
   position: fixed;
+  top: 0;
+  left: 0;
   pointer-events: none;
   z-index: 10000;
-  transform: translate(-50%, -50%);
+  will-change: transform;
   transition: width 0.2s, height 0.2s, background-color 0.2s;
 }
 .cursor-ring {
@@ -1125,9 +1131,11 @@ footer {
   border: 1.5px solid var(--accent);
   border-radius: 50%;
   position: fixed;
+  top: 0;
+  left: 0;
   pointer-events: none;
   z-index: 9999;
-  transform: translate(-50%, -50%);
+  will-change: transform;
   transition: width 0.3s var(--ease), height 0.3s var(--ease), border-color 0.3s var(--ease);
 }
 .cursor-ring.active {
