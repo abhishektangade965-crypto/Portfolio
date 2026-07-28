@@ -467,11 +467,12 @@ section { padding: 96px 0; }
    HERO SECTION
    ====================================================================== */
 .hero {
-  min-height: calc(100vh - 20px);
-  padding: 100px 0 100px 0;
+  min-height: 100vh;
+  padding: 140px 0 80px 0;
   display: flex;
   align-items: center;
   position: relative;
+  z-index: 5;
 }
 
 .hero-kicker {
@@ -1112,17 +1113,11 @@ footer {
   width: 8px;
   height: 8px;
   background: var(--accent);
-.cursor-dot {
-  width: 8px;
-  height: 8px;
-  background-color: var(--accent);
   border-radius: 50%;
   position: fixed;
-  top: 0;
-  left: 0;
   pointer-events: none;
   z-index: 10000;
-  will-change: transform;
+  transform: translate(-50%, -50%);
   transition: width 0.2s, height 0.2s, background-color 0.2s;
 }
 .cursor-ring {
@@ -1131,11 +1126,9 @@ footer {
   border: 1.5px solid var(--accent);
   border-radius: 50%;
   position: fixed;
-  top: 0;
-  left: 0;
   pointer-events: none;
   z-index: 9999;
-  will-change: transform;
+  transform: translate(-50%, -50%);
   transition: width 0.3s var(--ease), height 0.3s var(--ease), border-color 0.3s var(--ease);
 }
 .cursor-ring.active {
@@ -2895,31 +2888,6 @@ footer {
   background: rgba(255, 77, 0, 0.1) !important;
   border: 1px solid rgba(255, 77, 0, 0.3) !important;
   color: var(--accent) !important;
-}
-
-/* Nav Keyboard Shortcut Legend Badge */
-.nav-kbd-legend {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  background: var(--glass);
-  border: 1px solid var(--border);
-  color: var(--text-muted);
-  padding: 4px 10px;
-  border-radius: var(--radius-sm);
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  cursor: help;
-  transition: all 0.25s var(--ease);
-}
-
-.nav-kbd-legend:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-}
-
-@media (max-width: 992px) {
-  .nav-kbd-legend { display: none; }
 }
 
 
