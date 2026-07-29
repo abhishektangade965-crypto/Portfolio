@@ -310,19 +310,50 @@
   </div>
 </section>
 
-<!-- GitHub Activity & Open-Source Section -->
+<!-- GitHub Activity & Open-Source Telemetry Section -->
 <section style="padding-top: 40px; padding-bottom: 40px; position: relative;">
   <div class="container">
     <div class="card card-glass" style="padding: 40px; text-align: center;">
-      <span class="eyebrow" style="justify-content: center; margin-bottom: 12px;"><span class="dot"></span> Real Activity Evidence</span>
+      <span class="eyebrow" style="justify-content: center; margin-bottom: 12px;"><span class="dot" style="background: #3FB950; box-shadow: 0 0 10px #3FB950;"></span> Live Real-Time Telemetry</span>
       <h3 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 16px;"><span class="gradient-text">GitHub Contribution &amp; Repository Activity</span></h3>
-      <p style="color: var(--text-muted); font-size: 0.95rem; max-width: 680px; margin: 0 auto 32px auto;">
-        Real-time telemetry from my public GitHub repositories (<a href="https://github.com/abhishektangade965-crypto" target="_blank" rel="noopener noreferrer" style="color: var(--accent);">github.com/abhishektangade965-crypto</a>), tracking commit frequency, Spring Boot microservices codebases, and open-source contributions.
+      <p style="color: var(--text-muted); font-size: 0.95rem; max-width: 680px; margin: 0 auto 28px auto;">
+        Live real-time activity metrics fetched directly from <a href="https://github.com/abhishektangade965-crypto" target="_blank" rel="noopener noreferrer" style="color: var(--accent); font-weight: 700;">@abhishektangade965-crypto</a> tracking commits, microservice repositories, and contribution frequency.
       </p>
 
-      <div style="display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; align-items: center;">
-        <img src="https://github-readme-stats.vercel.app/api?username=abhishektangade965-crypto&show_icons=true&theme=dark&bg_color=0D0D0D&title_color=FF4D00&text_color=E0E0E0&icon_color=FF4D00&border_color=262626" alt="Abhishek Tangade GitHub Stats" loading="lazy" style="max-width: 460px; width: 100%; border-radius: 12px; border: 1px solid var(--border);">
-        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=abhishektangade965-crypto&layout=compact&theme=dark&bg_color=0D0D0D&title_color=FF4D00&text_color=E0E0E0&icon_color=FF4D00&border_color=262626" alt="Abhishek Tangade Most Used Languages" loading="lazy" style="max-width: 380px; width: 100%; border-radius: 12px; border: 1px solid var(--border);">
+      <!-- Real-time Stat Chips -->
+      <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px;" id="ghStatsContainer">
+        <div style="background: var(--surface-1); border: 1px solid var(--border); padding: 14px 24px; border-radius: 12px; min-width: 160px;">
+          <div style="font-size: 1.6rem; font-weight: 800; color: var(--accent);" id="ghPublicRepos">12</div>
+          <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Public Repos</div>
+        </div>
+        <div style="background: var(--surface-1); border: 1px solid var(--border); padding: 14px 24px; border-radius: 12px; min-width: 160px;">
+          <div style="font-size: 1.6rem; font-weight: 800; color: #3FB950;">Spring Boot 3</div>
+          <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Primary Ecosystem</div>
+        </div>
+        <div style="background: var(--surface-1); border: 1px solid var(--border); padding: 14px 24px; border-radius: 12px; min-width: 160px;">
+          <div style="font-size: 1.6rem; font-weight: 800; color: #3B82F6;" id="ghLastUpdated">Today</div>
+          <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Last Active</div>
+        </div>
+      </div>
+
+      <!-- Real-Time Activity Graph -->
+      <div style="margin-bottom: 28px; background: rgba(13, 13, 13, 0.6); border: 1px solid var(--border); border-radius: 12px; padding: 20px; overflow-x: auto;">
+        <h4 style="font-size: 0.9rem; font-family: var(--font-mono); text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px;">Real-Time Commit Activity Trend</h4>
+        <img src="https://github-readme-activity-graph.vercel.app/graph?username=abhishektangade965-crypto&theme=react-dark&bg_color=0D0D0D&color=FF4D00&line=FF4D00&point=FFFFFF&area=true&hide_border=true" 
+             alt="Abhishek Tangade Real-Time GitHub Activity Graph" 
+             loading="lazy" 
+             style="width: 100%; max-width: 840px; border-radius: 8px;"
+             onerror="this.style.display='none'">
+      </div>
+
+      <!-- Real-Time Contribution Heatmap Matrix -->
+      <div style="background: rgba(13, 13, 13, 0.6); border: 1px solid var(--border); border-radius: 12px; padding: 20px; overflow-x: auto;">
+        <h4 style="font-size: 0.9rem; font-family: var(--font-mono); text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px;">Contribution Matrix Calendar</h4>
+        <img src="https://ghchart.rshah.org/FF4D00/abhishektangade965-crypto" 
+             alt="Abhishek Tangade GitHub Contribution Chart" 
+             loading="lazy" 
+             style="width: 100%; max-width: 840px; border-radius: 8px;"
+             onerror="this.style.display='none'">
       </div>
     </div>
   </div>
@@ -416,5 +447,25 @@
 <script src="assets/js/splash-cursor.js" defer></script>
 <script src="assets/js/main.js?v=4" defer></script>
 <script src="assets/js/animations.js?v=4" defer></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    fetch('https://api.github.com/users/abhishektangade965-crypto')
+      .then(res => res.json())
+      .then(data => {
+        if (data.public_repos !== undefined) {
+          const repoEl = document.getElementById('ghPublicRepos');
+          if (repoEl) repoEl.textContent = data.public_repos;
+        }
+        if (data.updated_at) {
+          const lastEl = document.getElementById('ghLastUpdated');
+          if (lastEl) {
+            const date = new Date(data.updated_at);
+            lastEl.textContent = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+          }
+        }
+      })
+      .catch(err => console.log('GitHub API Sync:', err));
+  });
+</script>
 </body>
 </html>
