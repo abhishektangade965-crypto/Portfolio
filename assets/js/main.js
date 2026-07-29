@@ -666,4 +666,56 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  /* ---------- Real-Time Skill Progress Bar Intersection Observer ---------- */
+  const progressFills = document.querySelectorAll('.bento-skill-progress-fill');
+  if (progressFills.length > 0) {
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const fill = entry.target;
+          const targetPercent = fill.getAttribute('data-percent') || '80';
+          fill.style.width = targetPercent + '%';
+          obs.unobserve(fill);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    progressFills.forEach(fill => {
+      fill.style.width = '0%';
+      fill.style.transition = 'width 1.2s cubic-bezier(0.16, 1, 0.3, 1)';
+      observer.observe(fill);
+    });
+  }
+
+  /* ---------- Active Navbar Link Highlighting ---------- */
+  const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.nav-links a, .nav-links-mobile a').forEach(link => {
+    const href = link.getAttribute('href');
+    if (href === currentPath || (currentPath === '' && href === 'index.html')) {
+      link.classList.add('active');
+    }
+  });
+
+  /* ---------- Floating Back-to-Top Button Logic ---------- */
+  let backBtn = document.querySelector('.back-to-top');
+  if (!backBtn) {
+    backBtn = document.createElement('button');
+    backBtn.className = 'back-to-top';
+    backBtn.setAttribute('aria-label', 'Back to top');
+    backBtn.innerHTML = '<i class="fa-solid fa-arrow-up"></i>';
+    document.body.appendChild(backBtn);
+  }
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      backBtn.classList.add('show');
+    } else {
+      backBtn.classList.remove('show');
+    }
+  });
+
+  backBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
 });
