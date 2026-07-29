@@ -96,7 +96,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const filterBtns = document.querySelectorAll('.filter-btn');
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      // Toggle active filters active state
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
@@ -111,33 +110,40 @@ document.addEventListener('DOMContentLoaded', () => {
           isMatch = true;
         } else if (filterCat === 'Messaging') {
           isMatch = (cardCat === 'Messaging' || cardCat === 'Caching');
+        } else if (filterCat === 'Database') {
+          isMatch = (cardCat === 'Database' || cardCat === 'Data');
+        } else if (filterCat === 'DevOps') {
+          isMatch = (cardCat === 'DevOps' || cardCat === 'Tools');
         } else {
           isMatch = (cardCat === filterCat);
         }
 
         if (isMatch) {
+          card.style.display = 'flex';
           gsap.to(card, {
             opacity: 1,
             scale: 1,
             y: 0,
-            duration: 0.4,
-            pointerEvents: 'auto',
-            display: 'flex'
+            duration: 0.35,
+            ease: 'power2.out'
           });
         } else {
           gsap.to(card, {
             opacity: 0,
             scale: 0.95,
             y: 10,
-            duration: 0.35,
-            pointerEvents: 'none',
-            display: 'none'
+            duration: 0.25,
+            ease: 'power2.in',
+            onComplete: () => {
+              card.style.display = 'none';
+            }
           });
         }
       });
 
-      // Recalculate GSAP ScrollTrigger trigger heights
-      setTimeout(() => ScrollTrigger.refresh(), 100);
+      setTimeout(() => {
+        if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
+      }, 300);
     });
   });
 
