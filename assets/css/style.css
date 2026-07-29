@@ -2887,6 +2887,63 @@ footer {
   color: var(--accent) !important;
 }
 
+/* ======================================================================
+   ACCESSIBILITY & PREFERS-REDUCED-MOTION SUPPORT
+   ====================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  #lightningCanvas, #ambient-canvas, .silk-bg-video {
+    display: none !important;
+  }
+}
+
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 3px solid var(--accent) !important;
+  outline-offset: 3px !important;
+  border-radius: 4px !important;
+}
+
+/* ======================================================================
+   TOAST NOTIFICATION FOR EMAIL COPY BUTTON
+   ====================================================================== */
+.toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 10000;
+  pointer-events: none;
+}
+.toast-msg {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--accent);
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 600;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.toast-msg.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+.toast-msg i {
+  color: var(--accent);
+  font-size: 1.1rem;
+}
+
 
 
 

@@ -624,4 +624,46 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  /* ---------- Email Copy Button & Toast Notification ---------- */
+  window.copyEmailToClipboard = function(email = 'abhishektangade965@gmail.com') {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(email).then(() => showToast('Email copied to clipboard! (' + email + ')'));
+    } else {
+      const el = document.createElement('textarea');
+      el.value = email;
+      document.body.appendChild(el);
+      el.select();
+      document.execCommand('copy');
+      document.body.removeChild(el);
+      showToast('Email copied to clipboard!');
+    }
+  };
+
+  function showToast(msgText) {
+    let container = document.querySelector('.toast-container');
+    if (!container) {
+      container = document.createElement('div');
+      container.className = 'toast-container';
+      document.body.appendChild(container);
+    }
+    const toast = document.createElement('div');
+    toast.className = 'toast-msg';
+    toast.innerHTML = '<i class="fa-solid fa-circle-check"></i> <span>' + msgText + '</span>';
+    container.appendChild(toast);
+
+    setTimeout(() => toast.classList.add('show'), 10);
+    setTimeout(() => {
+      toast.classList.remove('show');
+      setTimeout(() => toast.remove(), 300);
+    }, 2800);
+  }
+
+  document.querySelectorAll('.copy-email-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const email = btn.getAttribute('data-email') || 'abhishektangade965@gmail.com';
+      window.copyEmailToClipboard(email);
+    });
+  });
+
 });
