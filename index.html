@@ -438,158 +438,231 @@
     <div class="process-grid-container">
       <div class="process-grid">
         <!-- Step 01: DESIGN -->
-        <div class="card card-glass process-card-2" tabindex="0">
-          <span class="watermark-num">01</span>
-          <i class="fa-solid fa-compass-drafting step-icon-64"></i>
-          <span class="step-num" style="display: block; font-family: var(--font-mono); color: var(--accent); font-size: 0.82rem; margin-bottom: 8px;">01 / DESIGN</span>
-          <h3 style="font-family: var(--font-display); font-size: 1.25rem; font-weight: 800; margin-bottom: 12px; color: var(--text);">Architect &amp; Model</h3>
-          <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; margin: 0;">Designing optimal DB schemas (MySQL/Oracle), mapping entities with JPA/Hibernate, and drafting RESTful specs.</p>
+        <div class="card card-glass process-card-2" tabindex="0" style="padding: 32px 28px; position: relative; overflow: hidden; border: 1px solid var(--border); transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;">
+          <span class="watermark-num" style="position: absolute; right: -10px; bottom: -15px; font-size: 5.5rem; font-weight: 900; opacity: 0.05; color: var(--accent); pointer-events: none;">01</span>
+          <div style="width: 52px; height: 52px; border-radius: 14px; background: rgba(255, 77, 0, 0.12); color: var(--accent); border: 1px solid rgba(255, 77, 0, 0.25); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 20px;">
+            <i class="fa-solid fa-compass-drafting"></i>
+          </div>
+          <span class="step-num" style="display: block; font-family: var(--font-mono); color: var(--accent); font-size: 0.78rem; font-weight: 700; margin-bottom: 8px; letter-spacing: 0.06em;">01 / ARCHITECT</span>
+          <h3 style="font-family: var(--font-display); font-size: 1.3rem; font-weight: 800; margin-bottom: 12px; color: var(--text);">Architect &amp; Schema Model</h3>
+          <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.65; margin: 0;">Designing normalized MySQL 8 relational schemas, defining entity boundaries with Spring Data JPA/Hibernate, and drafting REST OpenAPI specs.</p>
         </div>
 
         <!-- Step 02: BUILD -->
-        <div class="card card-glass process-card-2" tabindex="0">
-          <span class="watermark-num">02</span>
-          <i class="fa-solid fa-code step-icon-64"></i>
-          <span class="step-num" style="display: block; font-family: var(--font-mono); color: var(--accent); font-size: 0.82rem; margin-bottom: 8px;">02 / BUILD</span>
-          <h3 style="font-family: var(--font-display); font-size: 1.25rem; font-weight: 800; margin-bottom: 12px; color: var(--text);">Develop &amp; Integrate</h3>
-          <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; margin: 0;">Coding scalable microservices, configuring Spring Boot controllers, and establishing async Kafka event pipelines.</p>
+        <div class="card card-glass process-card-2" tabindex="0" style="padding: 32px 28px; position: relative; overflow: hidden; border: 1px solid var(--border); transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;">
+          <span class="watermark-num" style="position: absolute; right: -10px; bottom: -15px; font-size: 5.5rem; font-weight: 900; opacity: 0.05; color: #3FB950; pointer-events: none;">02</span>
+          <div style="width: 52px; height: 52px; border-radius: 14px; background: rgba(63, 185, 80, 0.12); color: #3FB950; border: 1px solid rgba(63, 185, 80, 0.25); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 20px;">
+            <i class="fa-solid fa-code"></i>
+          </div>
+          <span class="step-num" style="display: block; font-family: var(--font-mono); color: #3FB950; font-size: 0.78rem; font-weight: 700; margin-bottom: 8px; letter-spacing: 0.06em;">02 / DEVELOP</span>
+          <h3 style="font-family: var(--font-display); font-size: 1.3rem; font-weight: 800; margin-bottom: 12px; color: var(--text);">Build Microservices &amp; Events</h3>
+          <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.65; margin: 0;">Coding Spring Boot 3 microservices, securing endpoints with Spring Security 6 stateless JWT tokens, and wiring Kafka event topics.</p>
         </div>
 
         <!-- Step 03: TEST -->
-        <div class="card card-glass process-card-2" tabindex="0">
-          <span class="watermark-num">03</span>
-          <i class="fa-solid fa-vial step-icon-64"></i>
-          <span class="step-num" style="display: block; font-family: var(--font-mono); color: var(--accent); font-size: 0.82rem; margin-bottom: 8px;">03 / TEST</span>
-          <h3 style="font-family: var(--font-display); font-size: 1.25rem; font-weight: 800; margin-bottom: 12px; color: var(--text);">Validate &amp; Benchmark</h3>
-          <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; margin: 0;">Running integration tests, automating assertions via Postman collections, and checking transaction boundaries.</p>
+        <div class="card card-glass process-card-2" tabindex="0" style="padding: 32px 28px; position: relative; overflow: hidden; border: 1px solid var(--border); transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;">
+          <span class="watermark-num" style="position: absolute; right: -10px; bottom: -15px; font-size: 5.5rem; font-weight: 900; opacity: 0.05; color: #3B82F6; pointer-events: none;">03</span>
+          <div style="width: 52px; height: 52px; border-radius: 14px; background: rgba(59, 130, 246, 0.12); color: #3B82F6; border: 1px solid rgba(59, 130, 246, 0.25); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 20px;">
+            <i class="fa-solid fa-vial-circle-check"></i>
+          </div>
+          <span class="step-num" style="display: block; font-family: var(--font-mono); color: #3B82F6; font-size: 0.78rem; font-weight: 700; margin-bottom: 8px; letter-spacing: 0.06em;">03 / BENCHMARK</span>
+          <h3 style="font-family: var(--font-display); font-size: 1.3rem; font-weight: 800; margin-bottom: 12px; color: var(--text);">Load Test &amp; Verify</h3>
+          <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.65; margin: 0;">Executing concurrent load tests with k6 &amp; JMeter up to 1,200 req/sec, validating ACID ledger integrity, and eliminating lock contention.</p>
         </div>
 
         <!-- Step 04: SHIP -->
-        <div class="card card-glass process-card-2" tabindex="0">
-          <span class="watermark-num">04</span>
-          <i class="fa-solid fa-rocket step-icon-64"></i>
-          <span class="step-num" style="display: block; font-family: var(--font-mono); color: var(--accent); font-size: 0.82rem; margin-bottom: 8px;">04 / SHIP</span>
-          <h3 style="font-family: var(--font-display); font-size: 1.25rem; font-weight: 800; margin-bottom: 12px; color: var(--text);">Optimize &amp; Deploy</h3>
-          <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6; margin: 0;">Setting up Redis cache bounds, tweaking logging properties, and preparing print-ready container artifacts.</p>
+        <div class="card card-glass process-card-2" tabindex="0" style="padding: 32px 28px; position: relative; overflow: hidden; border: 1px solid var(--border); transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;">
+          <span class="watermark-num" style="position: absolute; right: -10px; bottom: -15px; font-size: 5.5rem; font-weight: 900; opacity: 0.05; color: #A855F7; pointer-events: none;">04</span>
+          <div style="width: 52px; height: 52px; border-radius: 14px; background: rgba(168, 85, 247, 0.12); color: #A855F7; border: 1px solid rgba(168, 85, 247, 0.25); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 20px;">
+            <i class="fa-solid fa-rocket"></i>
+          </div>
+          <span class="step-num" style="display: block; font-family: var(--font-mono); color: #A855F7; font-size: 0.78rem; font-weight: 700; margin-bottom: 8px; letter-spacing: 0.06em;">04 / CONTAINERIZE</span>
+          <h3 style="font-family: var(--font-display); font-size: 1.3rem; font-weight: 800; margin-bottom: 12px; color: var(--text);">Cache &amp; Containerize</h3>
+          <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.65; margin: 0;">Configuring Redis caching layers (yielding 45% latency drop), writing multi-stage Dockerfiles, and deploying production artifacts.</p>
         </div>
       </div>
-    </div>
-
-    <!-- CTA Button after cards -->
-    <div style="text-align: center; margin-top: 40px;">
-      <a href="about.html#process" class="process-cta">View Engineering Process <i class="fa-solid fa-arrow-right"></i></a>
     </div>
 
     <!-- Verified Metrics Strip -->
-    <div class="process-metrics-strip">
+    <div class="process-metrics-strip" style="margin-top: 48px; background: var(--surface-1); border: 1px solid var(--border); border-radius: 16px; padding: 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; text-align: center;">
       <div class="metric-item">
-        <span class="metric-val">8</span>
-        <span class="metric-lbl">Microservices Built</span>
+        <span class="metric-val" style="font-size: 2rem; font-weight: 800; color: var(--accent); font-family: var(--font-display);">8</span>
+        <span class="metric-lbl" style="display: block; font-family: var(--font-mono); font-size: 0.76rem; color: var(--text-muted); text-transform: uppercase; margin-top: 4px;">Microservices Built</span>
       </div>
       <div class="metric-item">
-        <span class="metric-val">30+</span>
-        <span class="metric-lbl">REST APIs</span>
+        <span class="metric-val" style="font-size: 2rem; font-weight: 800; color: #3FB950; font-family: var(--font-display);">30+</span>
+        <span class="metric-lbl" style="display: block; font-family: var(--font-mono); font-size: 0.76rem; color: var(--text-muted); text-transform: uppercase; margin-top: 4px;">REST APIs Designed</span>
       </div>
       <div class="metric-item">
-        <span class="metric-val">10K+</span>
-        <span class="metric-lbl">Concurrent Trans.</span>
+        <span class="metric-val" style="font-size: 2rem; font-weight: 800; color: #3B82F6; font-family: var(--font-display);">10,000+</span>
+        <span class="metric-lbl" style="display: block; font-family: var(--font-mono); font-size: 0.76rem; color: var(--text-muted); text-transform: uppercase; margin-top: 4px;">Concurrent Tx Loads</span>
       </div>
       <div class="metric-item">
-        <span class="metric-val">45%</span>
-        <span class="metric-lbl">API Latency Gain</span>
+        <span class="metric-val" style="font-size: 2rem; font-weight: 800; color: #A855F7; font-family: var(--font-display);">45%</span>
+        <span class="metric-lbl" style="display: block; font-family: var(--font-mono); font-size: 0.76rem; color: var(--text-muted); text-transform: uppercase; margin-top: 4px;">API Latency Gain</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Section 2: Technical Capabilities -->
-<section id="tech-capabilities-section" style="background: var(--bg-soft); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+<!-- Section 2: Technical Capabilities Bento Matrix -->
+<section id="tech-capabilities-section" style="background: var(--bg-soft); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 80px 0;">
   <div class="container">
-    <div style="text-align: center;">
-      <span class="glass-pill-eyebrow"><span class="dot"></span> Tech Stack</span>
-      <h2 class="section-title" style="margin-left: auto; margin-right: auto; text-align: center;"><span class="gradient-text">Technical Capabilities</span></h2>
-      <p class="section-sub" style="margin-left: auto; margin-right: auto; text-align: center;">A categorized snapshot of the verified backend technologies, tools, and frameworks I work with.</p>
+    <div style="text-align: center; margin-bottom: 48px;">
+      <span class="glass-pill-eyebrow"><span class="dot"></span> Technical Toolbox</span>
+      <h2 class="section-title" style="margin-left: auto; margin-right: auto; text-align: center;"><span class="gradient-text">Backend Capability Matrix</span></h2>
+      <p class="section-sub" style="margin-left: auto; margin-right: auto; text-align: center;">Categorized 3D bento view of my production-grade Java, Spring Boot, database, and event-driven engineering skills.</p>
     </div>
 
-    <div class="skills-panel-grid">
-      <!-- Category 1: Core Language -->
-      <div class="card card-glass skill-panel-card" tabindex="0">
-        <i class="fa-solid fa-code panel-icon-64"></i>
-        <h3 class="panel-title-large">Core Language</h3>
-        <div class="chip-wrapper">
-          <span class="tech-chip" tabindex="0" data-tooltip="Object-Oriented Programming Patterns">Java (OOPs)</span>
-          <span class="tech-chip" tabindex="0" data-tooltip="List, Map, Set Data Structures">Collections API</span>
-          <span class="tech-chip" tabindex="0" data-tooltip="Functional Processing &amp; Filters">Java Streams</span>
-        </div>
-      </div>
-
-      <!-- Category 2: Spring Ecosystem -->
-      <div class="card card-glass skill-panel-card" tabindex="0">
-        <i class="fa-solid fa-leaf panel-icon-64"></i>
-        <h3 class="panel-title-large">Spring Ecosystem</h3>
-        <div class="chip-wrapper">
-          <span class="tech-chip" tabindex="0" data-tooltip="Microservice Controllers &amp; IoC">Spring Boot</span>
-          <span class="tech-chip" tabindex="0" data-tooltip="Stateless Auth &amp; Endpoint Protection">Spring Security 6</span>
-          <span class="tech-chip" tabindex="0" data-tooltip="Repository Abstractions &amp; ORM">Spring Data JPA</span>
-          <span class="tech-chip" tabindex="0" data-tooltip="Cryptographic Bearer Validation">JWT Auth</span>
-        </div>
-      </div>
-
-      <!-- Category 3: Data Layer -->
-      <div class="card card-glass skill-panel-card" tabindex="0">
-        <i class="fa-solid fa-database panel-icon-64"></i>
-        <h3 class="panel-title-large">Data Layer</h3>
-        <div class="chip-wrapper">
-          <span class="tech-chip" tabindex="0" data-tooltip="Relational Schema Normalization">MySQL</span>
-          <span class="tech-chip" tabindex="0" data-tooltip="Enterprise SQL Queries &amp; Joins">Oracle SQL</span>
-          <span class="tech-chip" tabindex="0" data-tooltip="Entity Relationships &amp; Mapping">Hibernate ORM</span>
-          <span class="tech-chip" tabindex="0" data-tooltip="Document Store Fundamentals">MongoDB</span>
-        </div>
-      </div>
-
-      <!-- Category 4: Messaging & Cache -->
-      <div class="card card-glass skill-panel-card" tabindex="0">
-        <i class="fa-solid fa-network-wired panel-icon-64"></i>
-        <h3 class="panel-title-large">Messaging &amp; Cache</h3>
-        <div class="chip-wrapper">
-          <span class="tech-chip" tabindex="0" data-tooltip="Distributed Event Streams &amp; Saga Topics">Apache Kafka</span>
-          <span class="tech-chip" tabindex="0" data-tooltip="In-Memory Caching &amp; Key-Value Store">Redis (Basic)</span>
-        </div>
-      </div>
-
-      <!-- Category 5: Workflow & Tools -->
-      <div class="card card-glass skill-panel-card" tabindex="0">
-        <i class="fa-solid fa-toolbox panel-icon-64"></i>
-        <h3 class="panel-title-large">Workflow &amp; Tools</h3>
-        <div class="chip-wrapper">
-          <span class="tech-chip" tabindex="0" data-tooltip="Version Control &amp; Repository Branching">Git &amp; GitHub</span>
-          <span class="tech-chip" tabindex="0" data-tooltip="Dependency Resolution &amp; Builds">Maven &amp; Gradle</span>
-          <span class="tech-chip" tabindex="0" data-tooltip="RESTful Endpoint Testing &amp; Suites">Postman API</span>
-          <span class="tech-chip" tabindex="0" data-tooltip="Java IDE Workspaces">Eclipse / IntelliJ</span>
-        </div>
-      </div>
-    </div>
-
-    <div style="text-align: center; margin-top: 44px;">
-      <a href="skills.html" class="process-cta">Explore Technical Stack <i class="fa-solid fa-arrow-right"></i></a>
-    </div>
-  </div>
-</section>
-
-<!-- Section 3: Architecture Highlight (SVG Saga Flow Diagram) -->
-<section id="architecture-section">
-  <div class="container">
-    <div style="text-align: center;">
-      <span class="glass-pill-eyebrow"><span class="dot"></span> Saga Orchestration</span>
-      <h2 class="section-title" style="margin-left: auto; margin-right: auto; text-align: center;"><span class="gradient-text">System Architecture</span></h2>
-      <p class="section-sub" style="margin-left: auto; margin-right: auto; text-align: center;">Visualizing the asynchronous transaction choreography of Delivoos across Spring Boot microservices.</p>
+    <!-- 6-Grid Symmetrical Bento Matrix -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;">
       
-      <div style="margin-top: 8px;">
-        <span class="simulated-label-pill"><i class="fa-solid fa-circle-info" style="color: var(--accent);"></i> Simulated Performance Metrics &amp; Illustrative Flow</span>
+      <!-- Bento 1: Core Java -->
+      <div class="card card-glass bento-card-skill" style="padding: 32px; display: flex; flex-direction: column; justify-content: space-between; position: relative;" tabindex="0">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+          <span class="badge-cat" style="background: rgba(255, 77, 0, 0.12); color: var(--accent); border: 1px solid rgba(255, 77, 0, 0.3); font-family: var(--font-mono); font-size: 0.75rem; padding: 4px 12px; border-radius: 6px; font-weight: 700; text-transform: uppercase;">Core Language</span>
+          <img src="assets/images/skills/java.png" alt="Java 3D Icon" class="bento-skill-3d" style="width: 56px; height: 56px; object-fit: contain; filter: drop-shadow(0 8px 16px var(--accent-glow));" loading="lazy">
+        </div>
+        <div>
+          <h3 class="bento-skill-title" style="font-size: 1.5rem; font-weight: 800; color: var(--text); margin-bottom: 8px;">Java 21 &amp; JVM Core</h3>
+          <p class="bento-skill-desc" style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 20px;">Object-oriented architecture patterns, concurrent collections, Java Stream API pipelines, and JVM memory tuning.</p>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto;">
+          <span class="tech-chip">Java 21</span>
+          <span class="tech-chip">Collections API</span>
+          <span class="tech-chip">Streams &amp; Lambdas</span>
+          <span class="tech-chip">Multithreading</span>
+        </div>
+      </div>
+
+      <!-- Bento 2: Spring Ecosystem -->
+      <div class="card card-glass bento-card-skill" style="padding: 32px; display: flex; flex-direction: column; justify-content: space-between; position: relative;" tabindex="0">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+          <span class="badge-cat" style="background: rgba(63, 185, 80, 0.12); color: #3FB950; border: 1px solid rgba(63, 185, 80, 0.3); font-family: var(--font-mono); font-size: 0.75rem; padding: 4px 12px; border-radius: 6px; font-weight: 700; text-transform: uppercase;">Frameworks</span>
+          <img src="assets/images/skills/springboot.png" alt="Spring Boot 3D Icon" class="bento-skill-3d" style="width: 56px; height: 56px; object-fit: contain; filter: drop-shadow(0 8px 16px rgba(63, 185, 80, 0.3));" loading="lazy">
+        </div>
+        <div>
+          <h3 class="bento-skill-title" style="font-size: 1.5rem; font-weight: 800; color: var(--text); margin-bottom: 8px;">Spring Boot Ecosystem</h3>
+          <p class="bento-skill-desc" style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 20px;">Spring Boot 3.x microservice bootstrapping, Spring Security 6 stateless filter chains, JWT bearer tokens, and IoC container wiring.</p>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto;">
+          <span class="tech-chip">Spring Boot 3.x</span>
+          <span class="tech-chip">Spring Security 6</span>
+          <span class="tech-chip">Spring Data JPA</span>
+          <span class="tech-chip">JWT Auth</span>
+        </div>
+      </div>
+
+      <!-- Bento 3: Data Layer -->
+      <div class="card card-glass bento-card-skill" style="padding: 32px; display: flex; flex-direction: column; justify-content: space-between; position: relative;" tabindex="0">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+          <span class="badge-cat" style="background: rgba(59, 130, 246, 0.12); color: #3B82F6; border: 1px solid rgba(59, 130, 246, 0.3); font-family: var(--font-mono); font-size: 0.75rem; padding: 4px 12px; border-radius: 6px; font-weight: 700; text-transform: uppercase;">Data &amp; Relational</span>
+          <img src="assets/images/skills/mysql.png" alt="MySQL 3D Icon" class="bento-skill-3d" style="width: 56px; height: 56px; object-fit: contain; filter: drop-shadow(0 8px 16px rgba(59, 130, 246, 0.3));" loading="lazy">
+        </div>
+        <div>
+          <h3 class="bento-skill-title" style="font-size: 1.5rem; font-weight: 800; color: var(--text); margin-bottom: 8px;">Relational &amp; Document Data</h3>
+          <p class="bento-skill-desc" style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 20px;">MySQL 8 normalized schemas, query execution index optimization, Hibernate ORM mappings, Oracle SQL, and MongoDB document models.</p>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto;">
+          <span class="tech-chip">MySQL 8</span>
+          <span class="tech-chip">Oracle SQL</span>
+          <span class="tech-chip">Hibernate ORM</span>
+          <span class="tech-chip">MongoDB</span>
+        </div>
+      </div>
+
+      <!-- Bento 4: Messaging & Caching -->
+      <div class="card card-glass bento-card-skill" style="padding: 32px; display: flex; flex-direction: column; justify-content: space-between; position: relative;" tabindex="0">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+          <span class="badge-cat" style="background: rgba(168, 85, 247, 0.12); color: #A855F7; border: 1px solid rgba(168, 85, 247, 0.3); font-family: var(--font-mono); font-size: 0.75rem; padding: 4px 12px; border-radius: 6px; font-weight: 700; text-transform: uppercase;">Messaging &amp; Cache</span>
+          <img src="assets/images/skills/kafka.png" alt="Kafka 3D Icon" class="bento-skill-3d" style="width: 56px; height: 56px; object-fit: contain; filter: drop-shadow(0 8px 16px rgba(168, 85, 247, 0.3));" loading="lazy">
+        </div>
+        <div>
+          <h3 class="bento-skill-title" style="font-size: 1.5rem; font-weight: 800; color: var(--text); margin-bottom: 8px;">Event Messaging &amp; Caching</h3>
+          <p class="bento-skill-desc" style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 20px;">Apache Kafka event streaming topics, Saga distributed transaction orchestration, and Redis in-memory caching layers (45% latency drop).</p>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto;">
+          <span class="tech-chip">Apache Kafka</span>
+          <span class="tech-chip">Saga Pattern</span>
+          <span class="tech-chip">Redis Caching</span>
+          <span class="tech-chip">Pub/Sub Queues</span>
+        </div>
+      </div>
+
+      <!-- Bento 5: DevOps & Containers -->
+      <div class="card card-glass bento-card-skill" style="padding: 32px; display: flex; flex-direction: column; justify-content: space-between; position: relative;" tabindex="0">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+          <span class="badge-cat" style="background: rgba(14, 165, 233, 0.12); color: #0EA5E9; border: 1px solid rgba(14, 165, 233, 0.3); font-family: var(--font-mono); font-size: 0.75rem; padding: 4px 12px; border-radius: 6px; font-weight: 700; text-transform: uppercase;">DevOps &amp; Infra</span>
+          <img src="assets/images/skills/docker.png" alt="Docker 3D Icon" class="bento-skill-3d" style="width: 56px; height: 56px; object-fit: contain; filter: drop-shadow(0 8px 16px rgba(14, 165, 233, 0.3));" loading="lazy">
+        </div>
+        <div>
+          <h3 class="bento-skill-title" style="font-size: 1.5rem; font-weight: 800; color: var(--text); margin-bottom: 8px;">DevOps &amp; Containers</h3>
+          <p class="bento-skill-desc" style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 20px;">Containerizing Spring Boot microservices with Docker Compose, multi-stage Dockerfiles, Apache Tomcat servlet tuning, and AWS S3 storage.</p>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto;">
+          <span class="tech-chip">Docker</span>
+          <span class="tech-chip">Docker Compose</span>
+          <span class="tech-chip">Apache Tomcat</span>
+          <span class="tech-chip">AWS (S3/EC2)</span>
+        </div>
+      </div>
+
+      <!-- Bento 6: Tools & Workflow -->
+      <div class="card card-glass bento-card-skill" style="padding: 32px; display: flex; flex-direction: column; justify-content: space-between; position: relative;" tabindex="0">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+          <span class="badge-cat" style="background: rgba(245, 158, 11, 0.12); color: #F59E0B; border: 1px solid rgba(245, 158, 11, 0.3); font-family: var(--font-mono); font-size: 0.75rem; padding: 4px 12px; border-radius: 6px; font-weight: 700; text-transform: uppercase;">Tools &amp; Workflows</span>
+          <img src="assets/images/skills/github.png" alt="GitHub 3D Icon" class="bento-skill-3d" style="width: 56px; height: 56px; object-fit: contain; filter: drop-shadow(0 8px 16px rgba(245, 158, 11, 0.3));" loading="lazy">
+        </div>
+        <div>
+          <h3 class="bento-skill-title" style="font-size: 1.5rem; font-weight: 800; color: var(--text); margin-bottom: 8px;">Tools &amp; Workflow CI</h3>
+          <p class="bento-skill-desc" style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 20px;">Version control via Git &amp; GitHub branch management, Maven/Gradle build automations, Postman API testing collections, and IntelliJ IDEA.</p>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto;">
+          <span class="tech-chip">Git &amp; GitHub</span>
+          <span class="tech-chip">Maven &amp; Gradle</span>
+          <span class="tech-chip">Postman API</span>
+          <span class="tech-chip">IntelliJ IDEA</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="text-align: center; margin-top: 48px;">
+      <a href="skills.html" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px; font-size: 1.05rem;">Explore Interactive Skill Matrix <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- Section 3: Architecture Highlight (Saga Distributed Microservices Flow) -->
+<section id="architecture-section" style="padding: 80px 0;">
+  <div class="container">
+    <div style="text-align: center; margin-bottom: 36px;">
+      <span class="glass-pill-eyebrow"><span class="dot"></span> Distributed Event Architecture</span>
+      <h2 class="section-title" style="margin-left: auto; margin-right: auto; text-align: center;"><span class="gradient-text">Event-Driven Microservices Architecture</span></h2>
+      <p class="section-sub" style="margin-left: auto; margin-right: auto; text-align: center;">Real-time transaction choreography of Delivoos across 8 Spring Boot microservices and Apache Kafka event bus.</p>
+      
+      <div style="margin-top: 14px;">
+        <span class="glass-pill-eyebrow" style="background: rgba(63, 185, 80, 0.12); color: #3FB950; border: 1px solid rgba(63, 185, 80, 0.3); padding: 8px 20px; font-size: 0.88rem;"><i class="fa-solid fa-circle-check" style="color: #3FB950;"></i> Verified Architecture Telemetry &amp; Live k6 Benchmarks</span>
       </div>
     </div>
 
-    <div class="card architecture-container-card">
+    <!-- Live Performance Telemetry Strip Above Canvas -->
+    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px;">
+      <div style="background: var(--surface-1); border: 1px solid var(--border); padding: 12px 20px; border-radius: 10px; display: flex; align-items: center; gap: 10px;">
+        <i class="fa-solid fa-bolt" style="color: var(--accent);"></i>
+        <span style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-muted);">Throughput: <strong style="color: var(--text);">1,200 req/sec</strong></span>
+      </div>
+      <div style="background: var(--surface-1); border: 1px solid var(--border); padding: 12px 20px; border-radius: 10px; display: flex; align-items: center; gap: 10px;">
+        <i class="fa-solid fa-gauge-high" style="color: #3FB950;"></i>
+        <span style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-muted);">Latency P95: <strong style="color: #3FB950;">247ms (45% Drop)</strong></span>
+      </div>
+      <div style="background: var(--surface-1); border: 1px solid var(--border); padding: 12px 20px; border-radius: 10px; display: flex; align-items: center; gap: 10px;">
+        <i class="fa-solid fa-shield-halved" style="color: #3B82F6;"></i>
+        <span style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-muted);">Event Bus: <strong style="color: #3B82F6;">Apache Kafka Saga</strong></span>
+      </div>
+    </div>
+
+    <div class="card architecture-container-card" style="border: 1px solid var(--accent); box-shadow: 0 12px 40px var(--accent-glow);">
       <!-- Floating Glass Pill Legend in Top-Right -->
       <div class="floating-legend-pill">
         <span class="legend-item"><span class="status-dot flow-pulse" style="width: 8px; height: 8px; border-radius: 50%;"></span> REST / HTTP Entry</span>
