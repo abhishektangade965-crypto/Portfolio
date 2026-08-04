@@ -631,105 +631,112 @@
       <a href="skills.html" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px; font-size: 1.05rem;">Explore Interactive Skill Matrix <i class="fa-solid fa-arrow-right"></i></a>
     </div>
   </div>
-</section>
-
-<!-- Section 3: Architecture Highlight (Saga Distributed Microservices Flow) -->
-<section id="architecture-section" style="padding: 80px 0;">
+<!-- Section 3: Architecture Highlight (Saga Distributed Microservices Topology Canvas) -->
+<section id="architecture-section" style="padding: 80px 0; position: relative;">
   <div class="container">
-    <div style="text-align: center; margin-bottom: 36px;">
+    <div style="text-align: center; margin-bottom: 32px;">
       <span class="glass-pill-eyebrow"><span class="dot"></span> Distributed Event Architecture</span>
       <h2 class="section-title" style="margin-left: auto; margin-right: auto; text-align: center;"><span class="gradient-text">Event-Driven Microservices Architecture</span></h2>
-      <p class="section-sub" style="margin-left: auto; margin-right: auto; text-align: center;">Real-time transaction choreography of Delivoos across 8 Spring Boot microservices and Apache Kafka event bus.</p>
+      <p class="section-sub" style="margin-left: auto; margin-right: auto; text-align: center;">Visualizing real-time transaction choreography of Delivoos across Spring Boot microservices &amp; Apache Kafka event bus.</p>
+    </div>
+
+    <!-- Top Metrics Bar (5 Stat Cards with GSAP Counters) -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 16px; margin-bottom: 24px;">
       
-      <div style="margin-top: 14px;">
-        <span class="glass-pill-eyebrow" style="background: rgba(63, 185, 80, 0.12); color: #3FB950; border: 1px solid rgba(63, 185, 80, 0.3); padding: 8px 20px; font-size: 0.88rem;"><i class="fa-solid fa-circle-check" style="color: #3FB950;"></i> Verified Architecture Telemetry &amp; Live k6 Benchmarks</span>
+      <div class="card arch-metric-card" style="padding: 16px 20px; border: 1px solid var(--border); background: var(--surface-1); border-radius: 14px; display: flex; align-items: center; gap: 14px;">
+        <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(59, 130, 246, 0.12); color: #3B82F6; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
+          <i class="fa-solid fa-server"></i>
+        </div>
+        <div>
+          <span style="display: block; font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase;">SERVICES</span>
+          <span class="arch-metric-val" data-target="8" style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; color: var(--text);">0</span>
+          <span style="display: block; font-size: 0.7rem; color: #3FB950; font-family: var(--font-mono);"><i class="fa-solid fa-circle" style="font-size: 0.4rem; vertical-align: middle;"></i> Healthy</span>
+        </div>
       </div>
+
+      <div class="card arch-metric-card" style="padding: 16px 20px; border: 1px solid var(--border); background: var(--surface-1); border-radius: 14px; display: flex; align-items: center; gap: 14px;">
+        <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(255, 77, 0, 0.12); color: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
+          <i class="fa-solid fa-network-wired"></i>
+        </div>
+        <div>
+          <span style="display: block; font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase;">KAFKA TOPICS</span>
+          <span class="arch-metric-val" data-target="14" style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; color: var(--accent);">0</span>
+          <span style="display: block; font-size: 0.7rem; color: #3FB950; font-family: var(--font-mono);"><i class="fa-solid fa-circle" style="font-size: 0.4rem; vertical-align: middle;"></i> Active</span>
+        </div>
+      </div>
+
+      <div class="card arch-metric-card" style="padding: 16px 20px; border: 1px solid var(--border); background: var(--surface-1); border-radius: 14px; display: flex; align-items: center; gap: 14px;">
+        <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(168, 85, 247, 0.12); color: #A855F7; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
+          <i class="fa-solid fa-code"></i>
+        </div>
+        <div>
+          <span style="display: block; font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase;">REST APIs</span>
+          <span class="arch-metric-val" data-target="30" data-suffix="+" style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; color: #A855F7;">0</span>
+          <span style="display: block; font-size: 0.7rem; color: #3FB950; font-family: var(--font-mono);"><i class="fa-solid fa-circle" style="font-size: 0.4rem; vertical-align: middle;"></i> Live</span>
+        </div>
+      </div>
+
+      <div class="card arch-metric-card" style="padding: 16px 20px; border: 1px solid var(--border); background: var(--surface-1); border-radius: 14px; display: flex; align-items: center; gap: 14px;">
+        <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(59, 130, 246, 0.12); color: #3B82F6; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
+          <i class="fa-solid fa-chart-simple"></i>
+        </div>
+        <div>
+          <span style="display: block; font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase;">AVG LATENCY</span>
+          <span class="arch-metric-val" data-target="43" data-suffix="ms" style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; color: #3B82F6;">0</span>
+          <span style="display: block; font-size: 0.7rem; color: #3FB950; font-family: var(--font-mono);"><i class="fa-solid fa-circle" style="font-size: 0.4rem; vertical-align: middle;"></i> Good</span>
+        </div>
+      </div>
+
+      <div class="card arch-metric-card" style="padding: 16px 20px; border: 1px solid var(--border); background: var(--surface-1); border-radius: 14px; display: flex; align-items: center; gap: 14px;">
+        <div style="width: 44px; height: 44px; border-radius: 12px; background: rgba(63, 185, 80, 0.12); color: #3FB950; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+        <div>
+          <span style="display: block; font-family: var(--font-mono); font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase;">AVAILABILITY</span>
+          <span class="arch-metric-val" data-target="99.9" data-suffix="%" data-decimals="1" style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; color: #3FB950;">0</span>
+          <span style="display: block; font-size: 0.7rem; color: #3FB950; font-family: var(--font-mono);"><i class="fa-solid fa-circle" style="font-size: 0.4rem; vertical-align: middle;"></i> Stable</span>
+        </div>
+      </div>
+
     </div>
 
-    <!-- Live Performance Telemetry Strip Above Canvas -->
-    <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px;">
-      <div style="background: var(--surface-1); border: 1px solid var(--border); padding: 12px 20px; border-radius: 10px; display: flex; align-items: center; gap: 10px;">
-        <i class="fa-solid fa-bolt" style="color: var(--accent);"></i>
-        <span style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-muted);">Throughput: <strong style="color: var(--text);">1,200 req/sec</strong></span>
-      </div>
-      <div style="background: var(--surface-1); border: 1px solid var(--border); padding: 12px 20px; border-radius: 10px; display: flex; align-items: center; gap: 10px;">
-        <i class="fa-solid fa-gauge-high" style="color: #3FB950;"></i>
-        <span style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-muted);">Latency P95: <strong style="color: #3FB950;">247ms (45% Drop)</strong></span>
-      </div>
-      <div style="background: var(--surface-1); border: 1px solid var(--border); padding: 12px 20px; border-radius: 10px; display: flex; align-items: center; gap: 10px;">
-        <i class="fa-solid fa-shield-halved" style="color: #3B82F6;"></i>
-        <span style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-muted);">Event Bus: <strong style="color: #3B82F6;">Apache Kafka Saga</strong></span>
-      </div>
-    </div>
+    <!-- Main Dynamic Architecture Diagram Container -->
+    <div id="arch-canvas-container" class="card" style="position: relative; overflow: hidden; border: 1px solid var(--border); border-radius: 20px; background: #07090E; padding: 24px; box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
+      
+      <!-- Background Generated Architecture Diagram Image Visual Base -->
+      <img src="assets/images/architecture/event_driven_microservices.png" alt="Event-Driven Microservices Architecture Diagram" style="width: 100%; height: auto; border-radius: 12px; display: block; filter: brightness(0.92) contrast(1.05);" loading="lazy">
 
-    <div class="card architecture-container-card" style="border: 1px solid var(--accent); box-shadow: 0 12px 40px var(--accent-glow);">
-      <!-- Floating Glass Pill Legend in Top-Right -->
-      <div class="floating-legend-pill">
-        <span class="legend-item"><span class="status-dot flow-pulse" style="width: 8px; height: 8px; border-radius: 50%;"></span> REST / HTTP Entry</span>
-        <span class="legend-item"><span class="status-dot accent-pulse" style="width: 8px; height: 8px; border-radius: 50%;"></span> Kafka Event Bus</span>
-        <span class="legend-item"><span class="status-dot success-pulse" style="width: 8px; height: 8px; border-radius: 50%;"></span> Microservices</span>
-      </div>
+      <!-- Interactive SVG Flow Layer overlaying exact image coordinates -->
+      <svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 10;" viewBox="0 0 1200 800">
+        <!-- SVG Paths matching node connectors -->
+        <path id="path-gw-order" class="arch-flow-path" data-connects="arch-node-gateway arch-node-order" d="M 180 340 H 280" stroke="#3B82F6" stroke-width="2" stroke-dasharray="6,6" fill="none" />
+        <path id="path-order-kafka" class="arch-flow-path" data-connects="arch-node-order arch-node-kafka" d="M 410 340 H 530" stroke="var(--accent)" stroke-width="2" stroke-dasharray="6,6" fill="none" />
+        <path id="path-kafka-payment" class="arch-flow-path" data-connects="arch-node-kafka arch-node-payment" d="M 720 280 Q 770 230 910 230" stroke="var(--accent)" stroke-width="2" stroke-dasharray="6,6" fill="none" />
+        <path id="path-kafka-delivery" class="arch-flow-path" data-connects="arch-node-kafka arch-node-delivery" d="M 720 380 Q 770 470 910 470" stroke="var(--accent)" stroke-width="2" stroke-dasharray="6,6" fill="none" />
+        <path id="path-kafka-notification" class="arch-flow-path" data-connects="arch-node-kafka arch-node-notification" d="M 640 450 V 520" stroke="var(--accent)" stroke-width="2" stroke-dasharray="6,6" fill="none" />
+        <path id="path-notif-mysql" class="arch-flow-path" data-connects="arch-node-notification arch-node-mysql" d="M 640 600 V 670 H 460" stroke="#A855F7" stroke-width="2" stroke-dasharray="6,6" fill="none" />
+        <path id="path-mysql-redis" class="arch-flow-path" data-connects="arch-node-mysql arch-node-redis" d="M 570 700 H 680" stroke="#0EA5E9" stroke-width="2" stroke-dasharray="6,6" fill="none" />
 
-      <div class="architecture-canvas">
-        <svg class="architecture-svg-canvas" viewBox="0 0 900 520" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Connector Lines with animated packet dash offsets -->
-          <!-- Gateway -> Order -->
-          <path d="M195 260 H280" stroke="var(--border-strong)" stroke-width="2" />
-          <path class="dash-flow-line" d="M195 260 H280" stroke="#3B82F6" stroke-width="3" />
-          
-          <!-- Order -> Kafka Hero -->
-          <path d="M455 260 H520" stroke="var(--border-strong)" stroke-width="2" />
-          <path class="dash-flow-line" d="M455 260 H520" stroke="#3B82F6" stroke-width="3" />
-          
-          <!-- Kafka Hero -> Payment (Top Right) -->
-          <path d="M620 230 V115 H710" stroke="var(--border-strong)" stroke-width="2" />
-          <path class="dash-flow-line" d="M620 230 V115 H710" stroke="var(--accent)" stroke-width="3" />
-          
-          <!-- Kafka Hero -> Delivery (Bottom Right) -->
-          <path d="M620 290 V405 H710" stroke="var(--border-strong)" stroke-width="2" />
-          <path class="dash-flow-line" d="M620 290 V405 H710" stroke="var(--accent)" stroke-width="3" />
-        </svg>
+        <!-- MotionPath Travelling Data Packets -->
+        <circle id="packet-gw-order" r="5" fill="#3B82F6" filter="drop-shadow(0 0 8px #3B82F6)" />
+        <circle id="packet-order-kafka" r="5" fill="var(--accent)" filter="drop-shadow(0 0 8px var(--accent))" />
+        <circle id="packet-kafka-payment" r="5" fill="var(--accent)" filter="drop-shadow(0 0 8px var(--accent))" />
+        <circle id="packet-kafka-delivery" r="5" fill="var(--accent)" filter="drop-shadow(0 0 8px var(--accent))" />
+        <circle id="packet-kafka-notification" r="5" fill="var(--accent)" filter="drop-shadow(0 0 8px var(--accent))" />
+        <circle id="packet-notif-mysql" r="5" fill="#A855F7" filter="drop-shadow(0 0 8px #A855F7)" />
+        <circle id="packet-mysql-redis" r="5" fill="#0EA5E9" filter="drop-shadow(0 0 8px #0EA5E9)" />
+      </svg>
 
-        <!-- Node 1: API Gateway (width 175px, height 115px) -->
-        <div class="node-glass std-arch-node" style="left: 20px; top: 202px;" tabindex="0" title="API Gateway: Ingress Routing &amp; JWT Validation">
-          <span class="status-dot flow-pulse" style="position: absolute; top: 12px; left: 12px;"></span>
-          <i class="fa-solid fa-door-open" style="font-size: 1.4rem; color: #3B82F6;"></i>
-          <span class="node-main-title">API Gateway</span>
-          <span class="node-sub-title">HTTP Ingress · Port 8080</span>
-        </div>
+      <!-- Invisible Interactive Hotspot Overlay for Nodes (Enables 3D tilt & Hover isolation) -->
+      <div id="arch-node-gateway" class="arch-interactive-node" style="position: absolute; left: 4%; top: 32%; width: 14%; height: 22%; cursor: pointer; z-index: 20;" title="API Gateway: HTTP Ingress &amp; JWT Verification (Port 8080)"></div>
+      <div id="arch-node-order" class="arch-interactive-node" style="position: absolute; left: 23%; top: 32%; width: 14%; height: 22%; cursor: pointer; z-index: 20;" title="Order Service: Saga Coordinator (Port 8081)"></div>
+      <div id="arch-node-kafka" class="arch-interactive-node" style="position: absolute; left: 44%; top: 24%; width: 19%; height: 38%; cursor: pointer; z-index: 20;" title="Apache Kafka Cluster: Event Streaming Topics"></div>
+      <div id="arch-node-payment" class="arch-interactive-node" style="position: absolute; left: 76%; top: 22%; width: 15%; height: 20%; cursor: pointer; z-index: 20;" title="Payment Service: Balance Settlement (Port 8082)"></div>
+      <div id="arch-node-delivery" class="arch-interactive-node" style="position: absolute; left: 76%; top: 52%; width: 15%; height: 20%; cursor: pointer; z-index: 20;" title="Delivery Service: Dispatcher (Port 8083)"></div>
+      <div id="arch-node-notification" class="arch-interactive-node" style="position: absolute; left: 42%; top: 65%; width: 22%; height: 16%; cursor: pointer; z-index: 20;" title="Notification Service: Alert Dispatcher (Port 8084)"></div>
+      <div id="arch-node-mysql" class="arch-interactive-node" style="position: absolute; left: 30%; top: 83%; width: 19%; height: 14%; cursor: pointer; z-index: 20;" title="MySQL Database: Relational Store (Port 3306)"></div>
+      <div id="arch-node-redis" class="arch-interactive-node" style="position: absolute; left: 51%; top: 83%; width: 19%; height: 14%; cursor: pointer; z-index: 20;" title="Redis Cache: Key-Value Caching Layer (Port 6379)"></div>
 
-        <!-- Node 2: Order Service (width 175px, height 115px) -->
-        <div class="node-glass std-arch-node" style="left: 280px; top: 202px;" tabindex="0" title="Order Service: Saga Orchestrator &amp; Transaction Bounds">
-          <span class="status-dot flow-pulse" style="position: absolute; top: 12px; left: 12px;"></span>
-          <i class="fa-solid fa-diagram-project" style="font-size: 1.4rem; color: #3B82F6;"></i>
-          <span class="node-main-title">Order Service</span>
-          <span class="node-sub-title">Saga Coordinator</span>
-        </div>
-
-        <!-- Node 3: Kafka Hero Node (width 200px, height 135px) -->
-        <div class="node-glass std-arch-node hero-kafka-node" style="left: 520px; top: 192px;" tabindex="0" title="Apache Kafka: Distributed Event Streaming Bus">
-          <span class="status-dot accent-pulse" style="position: absolute; top: 12px; left: 12px;"></span>
-          <i class="fa-solid fa-network-wired" style="font-size: 1.8rem; color: var(--accent);"></i>
-          <span class="node-main-title" style="font-size: 19px; color: var(--accent); letter-spacing: 0.05em;">KAFKA BUS</span>
-          <span class="node-sub-title" style="color: var(--text);">Event Streams &amp; Topics</span>
-        </div>
-
-        <!-- Node 4: Payment Service (width 175px, height 115px) -->
-        <div class="node-glass std-arch-node" style="left: 710px; top: 57px;" tabindex="0" title="Payment Service: Balance Checks &amp; Settlement">
-          <span class="status-dot success-pulse" style="position: absolute; top: 12px; left: 12px;"></span>
-          <i class="fa-solid fa-credit-card" style="font-size: 1.4rem; color: #10B981;"></i>
-          <span class="node-main-title">Payment Service</span>
-          <span class="node-sub-title">ACID Settlement</span>
-        </div>
-
-        <!-- Node 5: Delivery Service (width 175px, height 115px) -->
-        <div class="node-glass std-arch-node" style="left: 710px; top: 347px;" tabindex="0" title="Delivery Service: Dispatcher &amp; Tracking">
-          <span class="status-dot success-pulse" style="position: absolute; top: 12px; left: 12px;"></span>
-          <i class="fa-solid fa-truck-fast" style="font-size: 1.4rem; color: #10B981;"></i>
-          <span class="node-main-title">Delivery Service</span>
-          <span class="node-sub-title">Courier Dispatcher</span>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -787,11 +794,13 @@
 <!-- Animations Dependencies -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/MotionPathPlugin.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
 <!-- Scripts -->
 <script src="assets/js/lightning.js?v=4" defer></script>
 <script src="assets/js/splash-cursor.js" defer></script>
 <script src="assets/js/main.js?v=4" defer></script>
 <script src="assets/js/animations.js?v=4" defer></script>
+<script src="assets/js/architecture-interactive.js?v=4" defer></script>
 </body>
 </html>
